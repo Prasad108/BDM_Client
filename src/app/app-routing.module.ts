@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-//import { RegisterComponent } from '/register/register.component';
-export class LoginComponent implements OnInit {
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { UserComponent } from './user/user.component';
-import { PmComponent } from './pm/pm.component';
-import { AdminComponent } from './admin/admin.component';
+// import { RegisterComponent } from '/register/register.component';
+
+import { LoginComponent } from 'app/login/login/login.component';
+import { HomeComponent } from 'app/dashboard/home/home.component';
+import { UserHomeComponent} from 'app/user/user-home/user-home.component';
+import { AdminHomeComponent} from 'app/admin/admin-home/admin-home.component';
 
 const routes: Routes = [
     {
@@ -16,23 +15,15 @@ const routes: Routes = [
     },
     {
         path: 'user',
-        component: UserComponent
-    },
-    {
-        path: 'pm',
-        component: PmComponent
+        component: UserHomeComponent
     },
     {
         path: 'admin',
-        component: AdminComponent
+        component: AdminHomeComponent
     },
     {
         path: 'auth/login',
         component: LoginComponent
-    },
-    {
-        path: 'signup',
-        component: RegisterComponent
     },
     {
         path: '',
