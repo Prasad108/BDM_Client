@@ -5,6 +5,7 @@
 
 <div *ngIf="isLoggedIn; else loggedOut">
   Logged in as {{roles}}.
+  <a routerLink="/home" routerLinkActive="active" class="btn btn-secondary ">Home</a>
 </div>
 
 <ng-template #loggedOut>
