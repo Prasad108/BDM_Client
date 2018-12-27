@@ -16,7 +16,7 @@
         <a class="nav-link" href="#">Dashbord</a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="loggedIn">
 
         <a routerLink="/auth/login" routerLinkActive="active" class="nav-link" >Login</a>
       </li>
