@@ -1,37 +1,36 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {MyBooleans} from 'app/shared/localEnums';
+import {  Subject} from 'rxjs';
 
 const TOKEN_KEY = 'AuthToken';
 const USERNAME_KEY = 'AuthUsername';
 const AUTHORITIES_KEY = 'AuthAuthorities';
+const LOGGED_IN_STATUS_KEY = 'IsLoggedIN';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenStorageService {
   private roles: Array<string> = [];
- // public loggedIn: boolean= false;
-  public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  sharedData$: Observable<any> = this.loggedIn.asObservable();
-  constructor() { }
+  public isLoggedIn: boolean = false;
+  public loginStatusChanged: Subject<boolean> = new Subject<boolean>();
 
-  setLogin(loggedStatus: BehaviorSubject<boolean>) {
-   // this.loggedIn = loggedStatus;
-    this.loggedIn.next(loggedStatus.value);
+  constructor() {
+    this.loginStatusChanged.subscribe((value) => {
+      this.isLoggedIn = value;
+     });
   }
 
   signOut() {
     window.sessionStorage.clear();
-    this.loggedIn = new BehaviorSubject<boolean>(false);
-    this.setLogin(new BehaviorSubject<boolean>(false))
-    // this.loggedIn.next(this.loggedIn);
+    this.loginStatusChanged.next(false);
   }
 
   public saveToken(token: string) {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
-    this.loggedIn = new BehaviorSubject<boolean>(true);
-    this.setLogin(new BehaviorSubject<boolean>(true));
+    window.sessionStorage.setItem(LOGGED_IN_STATUS_KEY, MyBooleans.TRUE);
+    this.loginStatusChanged.next(true);
 
   }
 
@@ -63,5 +62,12 @@ export class TokenStorageService {
     }
 
     return this.roles;
+  }
+  public getLoggedInStatus(): boolean {
+    if (sessionStorage.getItem(LOGGED_IN_STATUS_KEY) === null) {
+        return false;
+    } else {
+      return true;
+    }
   }
 }

@@ -6,12 +6,12 @@
   <p>
     <strong>Username:</strong> {{info.username}}<br/>
     <strong>Roles:</strong> {{info.authorities}}<br />
-    <strong>Token:</strong> {{info.token}}.
+    <strong>Token:</strong> {{info.token}} <br />
+    <strong>LoggedIn: </strong>{{info.loggedIn}}
   </p>
   <button class="btn btn-secondary" (click)="logout()">Logout</button>
 </div>
 
 <ng-template #loggedOut>
   Please login.
-  <a routerLink="/auth/login" routerLinkActive="active" class="btn btn-secondary ">Login</a>
 </ng-template>
