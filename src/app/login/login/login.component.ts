@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 
-import { AuthService } from 'app/auth/auth.service';
-import { TokenStorageService } from 'app/core/services/token-storage.service';
-import { AuthLoginInfo } from 'app/auth/login-info';
+import { AuthService } from 'app/shared/services/auth.service';
+import { TokenStorageService } from 'app/shared/services/token-storage.service';
+import { AuthLoginInfo } from 'app/shared/models/login-info';
 
 
 @Component({

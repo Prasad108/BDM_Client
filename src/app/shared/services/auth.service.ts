@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { JwtResponse } from './jwt-response';
-import { AuthLoginInfo } from './login-info';
-import { SignUpInfo } from './sigup-info';
-import {AppSettings} from '../appSettings';
+
+import { JwtResponse } from 'app/shared/models/jwt-response';
+import { AuthLoginInfo } from 'app/shared/models/login-info';
+import { SignUpInfo } from 'app/shared/models/sigup-info';
+import {AppSettings} from 'app/appSettings';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

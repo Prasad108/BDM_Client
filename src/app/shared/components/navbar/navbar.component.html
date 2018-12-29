@@ -17,26 +17,28 @@
       </li>
 
       <li class="nav-item" *ngIf="!isLoggedIn">
-        <a  routerLink="/auth/login" routerLinkActive="active" class="nav-link" >Login</a>
+        <a  routerLink="/login" routerLinkActive="active" class="nav-link"> <i class="fas fa-sign-in-alt"></i> Login</a>
       </li>
       
 
-      <div *ngIf="isAdmin()">
-        <li class="nav-item" >
-           
-          <a class="nav-link" routerLink="/admin" routerLinkActive="active"> <i class="fa fa-user"></i> Admin</a>
-        </li>
-      </div>
+      <ng-container *ngIf="isAdmin()" style="display:inline;">
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/admin" routerLinkActive="active"> <i class="fa fa-user"></i> Admin</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/admin/challans" routerLinkActive="active"> <i class="fas fa-clipboard-list"></i> challans</a>
+            </li>
+      </ng-container>
       
-      <div *ngIf="isUser()">
+      <ng-container *ngIf="isUser()">
         <li class="nav-item" >
           <a class="nav-link" routerLink="/user" routerLinkActive="active">User</a>
         </li>
-    </div>
+      </ng-container>
 
     <li class="nav-item" *ngIf="isLoggedIn">
-      <a href="#" class="btn btn-info btn-md">
-        <i class="fa fa-sign-out"></i> Log out
+      <a class="nav-link" (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i> Log out
       </a>
     </li>
       

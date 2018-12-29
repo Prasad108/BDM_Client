@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenStorageService } from 'app/core/services/token-storage.service';
+import { TokenStorageService } from 'app/shared/services/token-storage.service';
 import {UserRoles} from 'app/shared/localEnums';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +16,9 @@ export class NavbarComponent implements OnInit {
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
   }
-  constructor(private tokenStorage: TokenStorageService) {
+  constructor(private tokenStorage: TokenStorageService,
+              private router: Router
+          ) {
   }
 
   ngOnInit() {
@@ -33,7 +36,8 @@ export class NavbarComponent implements OnInit {
   }
   logout() {
     this.tokenStorage.signOut();
-    window.location.reload();
+    this.router.navigate(['/home']);
+   // window.location.reload();
   }
 
 }
