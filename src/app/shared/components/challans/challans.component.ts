@@ -17,7 +17,6 @@ export class ChallansComponent implements OnInit {
 
     this.challanService.getChallanListOfUsersCenter().subscribe(data => {
       this.challan = data;
-      console.log(data);
     });
   }
 
