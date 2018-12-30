@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {ChallanService} from 'app/shared/services/challan.service';
+import { Component, OnInit, Input } from '@angular/core';
 import {Challan} from 'app/shared/models/Challan';
 
 @Component({
@@ -8,16 +7,12 @@ import {Challan} from 'app/shared/models/Challan';
   styleUrls: ['./challans.component.css']
 })
 export class ChallansComponent implements OnInit {
-  challan: Challan[];
+  @Input() challan: Challan[];
 
 
-  constructor(private challanService: ChallanService) { }
+  constructor() { }
 
   ngOnInit() {
-
-    this.challanService.getChallanListOfUsersCenter().subscribe(data => {
-      this.challan = data;
-    });
   }
 
 }
