@@ -7,7 +7,7 @@ import {Challan} from 'app/shared/models/Challan';
   styleUrls: ['./challans.component.css']
 })
 export class ChallansComponent implements OnInit {
-  @Input() challan: Challan[];
+  @Input() challanList: Challan[];
 
 
   constructor() { }

@@ -1,2 +1,32 @@
-<pre>{{challan | json}}</pre>
+<div class="table-responsive">
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col"><i class="fas fa-calendar-alt"></i> Issued Date</th>
+      <th scope="col"><i class="fas fa-user-tie"></i> Issued By</th>
+      <th scope="col"><i class="far fa-user"></i> Issued To</th>
+      <th scope="col">Status</th>
+      <th scope="col"><i class="fas fa-cogs"></i> Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let challan of challanList; index as i" [class.table-primary]="challan.settled==1" [class.table-danger]="challan.settled==0">
+      <th scope="row"> {{i + 1 }}</th>
+      <td>{{challan.issuedDate | date: 'MMM d, y'}}</td>
+      <td>{{challan.userByIssuedBy.name}}</td>
+      <td>{{challan.userByIssuedTo.name}}</td>
+      <td *ngIf="challan.settled==1"><i class="fas fa-check"></i></td>  <td *ngIf="challan.settled==0"><i class="fas fa-clock"></i></td>
+      <td>
+        <div class="btn-group">
+        <a [routerLink]="['details', challan.id]"><button class="btn btn-info"><i class="fas fa-eye"></i></button></a>
+        <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
+      </div>
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+</div>
 

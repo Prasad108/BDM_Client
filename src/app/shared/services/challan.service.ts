@@ -15,9 +15,13 @@ export class ChallanService {
   constructor(private http: HttpClient) { }
 
   private challanListOfUserCenterURL = AppSettings.API_ENDPOINT + '/challan/detailedChallnListForUsersCenter';
-
+  private challanURL = AppSettings.API_ENDPOINT + '/challan/detailed/';
   getChallanListOfUsersCenter(): Observable<Challan[]> {
     return this.http.get<Challan[]>(this.challanListOfUserCenterURL);
+  }
+
+  getDetailedChallan(id: numbe): Observable<Challan> {
+    return this.http.get<Challan>(this.challanURL + id);
   }
 
 }

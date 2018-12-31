@@ -1,0 +1,21 @@
+<form *ngIf="challan">
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">ID</label>
+      <div class="col-sm-10">
+        <input type="text" readonly class="form-control-plaintext" id="staticEmail" [value]="challan.id">
+      </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-4 col-form-label"><i class="fas fa-calendar-alt"></i> Issued Date</label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+        </div>
+      </div>
+      <div class="form-group row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+          </div>
+        </div>
+  </form>
+<pre>{{challan | json}}</pre>
