@@ -10,7 +10,7 @@ import {Challan} from 'app/shared/models/Challan';
   styleUrls: ['./challan-details.component.css']
 })
 export class ChallanDetailsComponent implements OnInit {
-  private id: number;
+  private id: string;
   challan: Challan;
   constructor(private route: ActivatedRoute,
               private router: Router,

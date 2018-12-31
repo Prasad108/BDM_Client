@@ -20,7 +20,7 @@ export class ChallanService {
     return this.http.get<Challan[]>(this.challanListOfUserCenterURL);
   }
 
-  getDetailedChallan(id: numbe): Observable<Challan> {
+  getDetailedChallan(id): Observable<Challan> {
     return this.http.get<Challan>(this.challanURL + id);
   }
 
