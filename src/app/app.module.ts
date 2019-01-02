@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import * as $ from "jquery";
+
+
+import * as $ from 'jquery';
 
 import { AppComponent } from './app.component';
 
@@ -20,13 +22,14 @@ import {SharedModule} from 'app/shared/shared.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
     FormsModule,
     SharedModule,
     UserModule,
     LoginModule,
     AdminModule,
     DashboardModule,
+    AppRoutingModule,
+
   ],
   exports: [SharedModule, AdminModule],
   providers: [],

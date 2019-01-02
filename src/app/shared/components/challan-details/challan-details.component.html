@@ -1,36 +1,78 @@
-<form *ngIf="challan">
-    <div class="form-group row">
-      <label for="staticEmail" class="col-sm-2 col-form-label">ID</label>
-      <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext"  [value]="challan.id">
-      </div>
-    </div>
+  <table class="table table-bordered " *ngIf="challan">
+    <tbody>
+      <tr>
+        <td scope="row">Challan Id</td>
+        <td>{{challan.id}}</td>
+      </tr>
+      <tr>
+        <td>Essuid By   <i class="fas fa-user-tie"></i></td>
+        <td>{{challan.userByIssuedBy.name}}</td>
+        <td>Essuid To  <i class="fas fa-user"></i></td>
+        <td>{{challan.userByIssuedTo.name}}</td>
+      </tr>
+      <tr>
+        <td>Issued Date </td>
+        <td>{{challan.issuedDate | date: 'MMM d, y'}}</td>
+        <td>Settelled Date </td>
+        <td *ngIf="challan.settled == 1" >{{challan.settledDate | date: 'MMM d, y'}}</td>
+        <td *ngIf="challan.settled == 0" >Not Yet Settelled</td>
+      </tr>
+      <tr>
+        <td>Total Ammount</td>
+        <td *ngIf="challan.totalAmount">{{challan.totalAmount}}</td> <td *ngIf="!challan.totalAmount"> --- </td>
+        <td>Recieved Ammount</td>
+        <td *ngIf="challan.receivedAmount">{{challan.totalAmount}}</td><td *ngIf="!challan.receivedAmount"> --- </td>
+      </tr>
+      <tr *ngIf="challan.expAmount || challan.expComment">
+        <td *ngIf="challan.expAmount">Expenditure Ammount</td>
+        <td *ngIf="challan.expAmount"> {{challan.expAmount}}</td>
+        <td *ngIf="challan.expComment">Expenditure Details</td>
+        <td *ngIf="challan.expComment"> {{challan.expComment}}</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  <div *ngIf="challan.cbDetailses.length ==0" class="alert alert-warning">
+      <h4>No Books Issued</h4>
+  </div>
 
-      <div class="form-group row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Essuid By <i class="fas fa-user-tie"></i></label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="staticEmail" [value]="challan.userByIssuedBy.name">
-          </div>
-        </div>
-      <div class="form-group row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Essuid To <i class="far fa-user"></i></label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="staticEmail" [value]="challan.userByIssuedTo.name">
-          </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label"> Issued Date <i class="fas fa-calendar-alt"></i></label>
-            <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext"  [value]="challan.issuedDate | date: 'MMM d, y'">
-            </div>
-          </div>
-          <div class="form-group row">
-              <label for="staticEmail" class="col-sm-2 col-form-label"> Setteled Date <i class="fas fa-calendar-alt"></i></label>
-              <div class="col-sm-10">
-                <input *ngIf="challan.settled == 0" type="text" readonly class="form-control-plaintext"  [value]="'Not Yet Setteled'">
-                <input *ngIf="challan.settled == 1" type="text" readonly class="form-control-plaintext"  [value]="challan.settledDate | date : 'MMM d, y'">
-              </div>
-            </div>
+  <table class="table table-bordered table-sm table-responsive-lg" *ngIf="challan && challan.cbDetailses.length > 0 ">
+      <caption style="caption-side: top;">List of Issued Books</caption>
+      <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Book Name</th>
+            <th scope="col">Language</th>
+            <th scope="col">Type</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Issued</th>
+            <th scope="col">Returned</th>
+            <th scope="col">Sale Value</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let Book of challan.cbDetailses; let i=index">
+          <td>{{i+1}}</td>
+          <td>{{Book.book.name}} </td>
+          <td>{{Book.book.languages.name}} </td>
+          <td>{{Book.book.type.name}} </td>
+          <td>{{Book.rate | currency:'INR' }} </td>
+          <td>{{Book.quantity}} </td>
+          <td *ngIf="Book.returned">{{Book.returned}} </td> <td *ngIf="!Book.returned"> 0 </td>
+          <td >{{Book.saleValue | currency:'INR'}} </td>
+        </tr>
+      </tbody>
+      <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total</td>
+            <td>{{getSum('quantity')}}</td>
+            <td>{{getSum('returned')}}</td>
+            <td>{{getSum('saleValue') | currency:'INR' }}</td>
+          </tr>
+        </tfoot>
 
-  </form>
-<pre>{{challan | json}}</pre>
+  </table>

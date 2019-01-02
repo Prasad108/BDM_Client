@@ -8,6 +8,7 @@ import { HomeComponent } from 'app/dashboard/home/home.component';
 import { UserHomeComponent} from 'app/user/user-home/user-home.component';
 import {SignUpComponent} from 'app/login//sign-up/sign-up.component';
 import {ChallansComponent} from 'app/shared/components/challans/challans.component';
+import {PageNotFoundComponent} from 'app/shared/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
     {path: 'home', component: HomeComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
     {path: 'user', component: UserHomeComponent},
     {path: 'login', component: LoginComponent},
     {path: 'signUp', component: SignUpComponent},
-    {path: '', redirectTo: 'home', pathMatch: 'full'}
+    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
