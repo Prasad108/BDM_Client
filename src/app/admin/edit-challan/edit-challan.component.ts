@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {ChallanService} from 'app/shared/services/challan.service';
 import {Challan} from 'app/shared/models/Challan';
-
+import {Book} from 'app/shared/models/Book';
 
 @Component({
   selector: 'app-edit-challan',
@@ -14,6 +14,7 @@ export class EditChallanComponent implements OnInit {
   challan: Challan;
   issuedTotal: Number = 0;
   salevalueTotal: Number = 0;
+  modalBook: Book;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private challanService: ChallanService
@@ -33,6 +34,10 @@ export class EditChallanComponent implements OnInit {
       sum += this.challan.cbDetailses[i][column];
     }
     return sum;
+  }
+
+  loadModalBook(modalBook: Book) {
+      this.modalBook = modalBook;
   }
 
 }

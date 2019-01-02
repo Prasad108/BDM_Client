@@ -1,4 +1,5 @@
   <table class="table table-bordered " *ngIf="challan">
+      <caption style="caption-side: top;" class="alert alert-dark" role="alert">Challan Summary</caption>
     <tbody>
       <tr>
         <td scope="row">Challan Id</td>
@@ -11,9 +12,9 @@
         <td>{{challan.userByIssuedTo.name}}</td>
       </tr>
       <tr>
-        <td>Issued Date </td>
+        <td>Issued Date <i class="fas fa-calendar-alt"></i></td>
         <td>{{challan.issuedDate | date: 'MMM d, y'}}</td>
-        <td>Settelled Date </td>
+        <td>Settelled Date <i class="fas fa-calendar-alt"></i></td>
         <td *ngIf="challan.settled == 1" >{{challan.settledDate | date: 'MMM d, y'}}</td>
         <td *ngIf="challan.settled == 0" >Not Yet Settelled</td>
       </tr>
@@ -29,7 +30,7 @@
         <td *ngIf="challan.expComment">Expenditure Details</td>
         <td *ngIf="challan.expComment"> {{challan.expComment}}</td>
       </tr>
-      
+
     </tbody>
   </table>
   <div *ngIf="challan.cbDetailses.length ==0" class="alert alert-warning">
@@ -37,7 +38,7 @@
   </div>
 
   <table class="table table-bordered table-sm table-responsive-lg" *ngIf="challan && challan.cbDetailses.length > 0 ">
-      <caption style="caption-side: top;">List of Issued Books</caption>
+      <caption style="caption-side: top;" class="alert alert-secondary" role="alert">List of Issued Books</caption>
       <thead>
           <tr>
             <th scope="col">#</th>
