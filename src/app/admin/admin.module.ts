@@ -7,8 +7,9 @@ import { ChallanListComponent } from './challan-list/challan-list.component';
 import {SharedModule} from 'app/shared/shared.module';
 import { EditChallanComponent } from './edit-challan/edit-challan.component';
 import {AdminRoutingModule} from './admin-routing.module';
+import { AddUpdateChallanComponent } from './edit-challan/add-update-challan/add-update-challan.component';
 @NgModule({
-  declarations: [AdminHomeComponent, AdminMenuComponent, ChallanListComponent, EditChallanComponent],
+  declarations: [AdminHomeComponent, AdminMenuComponent, ChallanListComponent, EditChallanComponent, AddUpdateChallanComponent],
   imports: [
     CommonModule,
     FormsModule,

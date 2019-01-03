@@ -54,7 +54,7 @@
         <tbody>
         <tr *ngFor="let Book of challan.cbDetailses; let i=index">
           <td>{{i+1}}</td>
-          <td>{{Book.book.name}} </td>
+          <td>{{Book.book.name.name}} </td>
           <td>{{Book.book.languages.name}} </td>
           <td>{{Book.book.type.name}} </td>
           <td>{{Book.rate | currency:'INR' }} </td>

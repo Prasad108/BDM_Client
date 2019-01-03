@@ -1,0 +1,63 @@
+<p>
+  add-update-challan works!
+</p>
+<div class="modal-content">
+  <!--Header-->
+  <div class="modal-header">
+    <p class="heading lead">Update Issued Book
+    </p>
+
+    <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true" class="white-text">×</span>
+    </button>
+  </div>
+
+  <!--Body-->
+  <div class="modal-body" *ngIf="cbDetails" >
+      <form>
+    <table class="table table-bordered">
+      <tr>
+        <td>Book Name</td>
+        <td>{{cbDetails.book.name.name}}</td>
+      </tr>
+      <tr>
+        <td>Book Language</td>
+        <td>{{cbDetails.book.languages.name}}</td>
+      </tr>
+      <tr>
+          <td>Book Type</td>
+          <td>{{cbDetails.book.type.name}}</td>
+      </tr>
+      <tr>
+        <td >
+            <label for="inputRate" class="col-sm-4 col-form-label">Rate</label>
+        </td>
+        <td>
+           <input type="number" name="cbDetailsRate" class="form-control" id="inputRate" placeholder="Rate" [(ngModel)]="cbDetails.rate">
+        </td>
+      </tr>
+      <tr>
+          <td><label for="inputCbDetailsIssued" class="col-sm-4 col-form-label">Issued Quantity</label></td>
+          <td><input type="number" name="cbDetailsIssued" class="form-control" id="inputCbDetailsIssued" placeholder="Issued Quantity" [(ngModel)]="cbDetails.quantity" min="0" [attr.min]="cbDetails.returned"></td>
+      </tr>
+      <tr>
+          <td><label for="inputCbDetailsReturned" class="col-sm-4 col-form-label">Returned Quantity</label></td>
+          <td><input type="number" name="cbDetailsReturned" class="form-control" id="inputCbDetailsReturned" placeholder="Returned Quantity" [(ngModel)]="cbDetails.returned" min="0" [attr.max]="cbDetails.quantity" ></td>
+      </tr>
+      <tr>
+          <td> <label for="inputCbDetailsSaleVlaue" class="col-sm-4 col-form-label">Sale Value</label></td>
+          <td><input type="number" name="cbDetailsSaleValue" disabled class="form-control" id="inputCbDetailsSaleVlaue" placeholder=" 0 | currency:'INR'" [(ngModel)]="cbDetails.saleValue" [value]="cbDetails.rate * (cbDetails.quantity - cbDetails.returned)" min="0"></td>
+      </tr>
+
+    </table>
+      </form>
+  </div>
+
+  <!--Footer-->
+  <div class="modal-footer justify-content-center">
+    <a type="button" class="btn btn-primary waves-effect waves-light">Save
+        <i class="fas fa-save"></i>
+    </a>
+    <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
+  </div>
+</div>

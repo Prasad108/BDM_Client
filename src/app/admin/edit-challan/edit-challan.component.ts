@@ -36,7 +36,7 @@ export class EditChallanComponent implements OnInit {
     return sum;
   }
 
-  loadModalBook(modalBook: Book) {
+  loadModalCbDetails(modalBook: Book) {
       this.modalBook = modalBook;
   }
 

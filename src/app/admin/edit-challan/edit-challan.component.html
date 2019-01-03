@@ -53,24 +53,25 @@
           </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let Book of challan.cbDetailses; let i=index">
+        <tr *ngFor="let CbDetails of challan.cbDetailses; let i=index">
           <td>{{i+1}}</td>
           <td>
               <div class="btn-group">
-              <button (click)="loadModalBook(Book)" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalPoll-1"><i class="fas fa-edit"></i></button>
+              <button (click)="loadModalCbDetails(CbDetails)" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalPoll-1"><i class="fas fa-edit"></i></button>
             </div>
             </td>
-          <td>{{Book.book.name}} </td>
-          <td>{{Book.book.languages.name}} </td>
-          <td>{{Book.book.type.name}} </td>
-          <td>{{Book.rate | currency:'INR' }} </td>
-          <td>{{Book.quantity}} </td>
-          <td *ngIf="Book.returned">{{Book.returned}} </td> <td *ngIf="!Book.returned"> 0 </td>
-          <td >{{Book.saleValue | currency:'INR'}} </td>
+          <td>{{CbDetails.book.name.name}} </td>
+          <td>{{CbDetails.book.languages.name}} </td>
+          <td>{{CbDetails.book.type.name}} </td>
+          <td>{{CbDetails.rate | currency:'INR' }} </td>
+          <td>{{CbDetails.quantity}} </td>
+          <td *ngIf="CbDetails.returned">{{CbDetails.returned}} </td> <td *ngIf="!CbDetails.returned"> 0 </td>
+          <td >{{CbDetails.saleValue | currency:'INR'}} </td>
         </tr>
       </tbody>
       <tfoot>
           <tr>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -89,66 +90,7 @@
 <div class="modal fade top" id="modalPoll-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true" data-backdrop="false">
   <div class="modal-dialog modal-lg modal-top modal-notify modal-info" role="document">
-    <div class="modal-content">
-      <!--Header-->
-      <div class="modal-header">
-        <p class="heading lead">Update Issued Book
-        </p>
-
-        <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" class="white-text">×</span>
-        </button>
-      </div>
-
-      <!--Body-->
-      <div class="modal-body" *ngIf="modalBook" >
-          <form>
-        <table class="table table-bordered">
-          <tr>
-            <td>Book Name</td>
-            <td>{{modalBook.book.name}}</td>
-          </tr>
-          <tr>
-            <td>Book Language</td>
-            <td>{{modalBook.book.languages.name}}</td>
-          </tr>
-          <tr>
-              <td>Book Type</td>
-              <td>{{modalBook.book.type.name}}</td>
-          </tr>
-          <tr>
-            <td >
-                <label for="inputRate" class="col-sm-4 col-form-label">Rate</label>
-            </td>
-            <td>
-               <input type="number" name="modalBookRate" class="form-control" id="inputRate" placeholder="Rate" [(ngModel)]="modalBook.rate">
-            </td>
-          </tr>
-          <tr>
-              <td><label for="inputModalBookIssued" class="col-sm-4 col-form-label">Issued Quantity</label></td>
-              <td><input type="number" name="modalBookIssued" class="form-control" id="inputModalBookIssued" placeholder="Issued Quantity" [(ngModel)]="modalBook.quantity"></td>
-          </tr>
-          <tr>
-              <td><label for="inputModalBookReturned" class="col-sm-4 col-form-label">Returned Quantity</label></td>
-              <td><input type="number" name="modalBookReturned" class="form-control" id="inputModalBookReturned" placeholder="Returned Quantity" [(ngModel)]="modalBook.returned"></td>
-          </tr>
-          <tr>
-              <td> <label for="inputModalBookSaleVlaue" class="col-sm-4 col-form-label">Sale Value</label></td>
-              <td><input type="number" name="modalBookSaleValue" disabled class="form-control" id="inputModalBookSaleVlaue" placeholder=" 0 | currency:'INR'" [(ngModel)]="modalBook.saleValue"></td>
-          </tr>
-
-        </table>
-          </form>
-      </div>
-
-      <!--Footer-->
-      <div class="modal-footer justify-content-center">
-        <a type="button" class="btn btn-primary waves-effect waves-light">Save
-            <i class="fas fa-save"></i>
-        </a>
-        <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
-      </div>
-    </div>
+    <app-add-update-challan [cbDetails]="modalBook" mode="'UPDATE'"></app-add-update-challan>
   </div>
 </div>
 <!-- Modal: modalPoll -->
