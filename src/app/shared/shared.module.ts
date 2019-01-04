@@ -13,6 +13,8 @@ import {AuthService} from './services/auth.service';
 import {AuthInterceptor, httpInterceptorProviders} from './services/auth-interceptor';
 import { ChallanDetailsComponent } from './components/challan-details/challan-details.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import {ShairedService } from './services/shaired.service';
+import { CbDetailsService } from './services/cb-details.service';
 
 @NgModule({
   declarations: [NavbarComponent, ChallansComponent, ChallanDetailsComponent, PageNotFoundComponent],
@@ -23,7 +25,16 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     RouterModule,
     MDBBootstrapModule
   ],
-  providers: [ConstantsService, TokenStorageService, ChallanService, AuthService, AuthInterceptor, httpInterceptorProviders],
+  providers: [
+    ConstantsService,
+    TokenStorageService,
+    ChallanService,
+    AuthService,
+    AuthInterceptor,
+    httpInterceptorProviders,
+    ShairedService,
+    CbDetailsService
+  ],
   exports: [NavbarComponent, ChallansComponent, ChallanDetailsComponent, PageNotFoundComponent]
 })
 export class SharedModule { }

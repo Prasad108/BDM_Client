@@ -1,20 +1,26 @@
-<p>
-  add-update-challan works!
-</p>
+
+
+
 <div class="modal-content">
+    <form (ngSubmit)="updateCbDetail()">
   <!--Header-->
   <div class="modal-header">
     <p class="heading lead">Update Issued Book
     </p>
+
 
     <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true" class="white-text">×</span>
     </button>
   </div>
 
-  <!--Body-->
+  <!-- <div class="modal-body" >
+    <h1>add-update-challan works!</h1>
+  </div> -->
+
+  <!--Body  -->
   <div class="modal-body" *ngIf="cbDetails" >
-      <form>
+
     <table class="table table-bordered">
       <tr>
         <td>Book Name</td>
@@ -50,14 +56,15 @@
       </tr>
 
     </table>
-      </form>
+
   </div>
 
   <!--Footer-->
   <div class="modal-footer justify-content-center">
-    <a type="button" class="btn btn-primary waves-effect waves-light">Save
-        <i class="fas fa-save"></i>
+    <a><button type="submit" class="btn btn-primary waves-effect waves-light">Save
+        <i class="fas fa-save"></i> </button>
     </a>
-    <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
+    <a> <button  class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</button></a>
   </div>
+</form>
 </div>

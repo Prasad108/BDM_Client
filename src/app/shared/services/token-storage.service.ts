@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import {MyBooleans} from 'app/shared/localEnums';
 import {  Subject} from 'rxjs';
 
@@ -7,18 +7,23 @@ const USERNAME_KEY = 'AuthUsername';
 const AUTHORITIES_KEY = 'AuthAuthorities';
 const LOGGED_IN_STATUS_KEY = 'IsLoggedIN';
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class TokenStorageService {
+export class TokenStorageService implements OnInit {
   private roles: Array<string> = [];
-  public isLoggedIn: boolean = false;
+  public isLoggedIn: boolean;
   public loginStatusChanged: Subject<boolean> = new Subject<boolean>();
 
   constructor() {
     this.loginStatusChanged.subscribe((value) => {
       this.isLoggedIn = value;
      });
+  }
+
+  ngOnInit(): void {
+    this.isLoggedIn = false;
   }
 
   signOut() {

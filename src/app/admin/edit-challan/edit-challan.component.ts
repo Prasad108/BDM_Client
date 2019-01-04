@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {ChallanService} from 'app/shared/services/challan.service';
 import {Challan} from 'app/shared/models/Challan';
-import {Book} from 'app/shared/models/Book';
+import { ShairedService } from './../../shared/services/shaired.service';
+import { CbDetails } from './../../shared/models/CbDetails';
 
 @Component({
   selector: 'app-edit-challan',
@@ -14,10 +15,11 @@ export class EditChallanComponent implements OnInit {
   challan: Challan;
   issuedTotal: Number = 0;
   salevalueTotal: Number = 0;
-  modalBook: Book;
+  modalCbDetails: CbDetails;
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private challanService: ChallanService
+    private challanService: ChallanService,
+    private shairedService: ShairedService
       ) { }
 
   ngOnInit() {
@@ -36,8 +38,12 @@ export class EditChallanComponent implements OnInit {
     return sum;
   }
 
-  loadModalCbDetails(modalBook: Book) {
-      this.modalBook = modalBook;
+  loadModalCbDetails(loadmodalCbDetails: CbDetails) {
+    // this.modalCbDetails = loadmodalCbDetails;
+    let temp: any;
+    temp = loadmodalCbDetails ;
+      this.shairedService.updateCbDetails(temp);
+      console.log('' + this.router.url);
+      this.router.navigate([this.router.url + '/update']);
   }
-
 }
