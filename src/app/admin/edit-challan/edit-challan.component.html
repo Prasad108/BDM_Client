@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <td>Total Ammount</td>
-        <td *ngIf="challan.totalAmount">{{challan.totalAmount}}</td> <td *ngIf="!challan.totalAmount"> --- </td>
+        <td *ngIf="challan.totalAmount">{{challan.totalAmount}}</td> <td *ngIf="!challan.totalAmount"> --- {{getSum('saleValue') | currency:'INR' }}</td>
         <td>Recieved Ammount</td>
         <td *ngIf="challan.receivedAmount">{{challan.totalAmount}}</td><td *ngIf="!challan.receivedAmount"> --- </td>
       </tr>
@@ -58,7 +58,6 @@
           <td>
               <div class="btn-group">
              <button (click)="loadModalCbDetails(CbDetails)" class="btn btn-primary btn-sm" ><i class="fas fa-edit"></i></button>
-             <!-- [routerLink]="['update']" data-toggle="modal" data-target="#modalPoll-1" -->
             </div>
             </td>
           <td>{{CbDetails.book.name.name}} </td>
@@ -85,16 +84,4 @@
         </tfoot>
 
   </table>
-
-
-<!-- Modal: modalPoll -->
-<div class="modal fade right" id="modalPoll-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true" data-backdrop="false">
-  <div class="modal-dialog modal-lg modal-top modal-notify modal-info" role="document">
-    <!-- <app-add-update-challan [modalcbDetails]="modalCbDetails" mode="'UPDATE'"></app-add-update-challan> -->
-    <!-- <router-outlet></router-outlet> -->
-  </div>
-</div>
-<!-- Modal: modalPoll -->
-
 </ng-template>

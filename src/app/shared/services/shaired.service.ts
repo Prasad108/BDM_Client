@@ -15,8 +15,6 @@ export class ShairedService {
   updateCbDetails(data: CbDetails) {
     this.cbDetails = data;
     this.$cbDetails.next(data);
-    console.log('cbDetails changed in the shared servie ' + this.cbDetails);
-    console.log(this.cbDetails);
   }
 
 }

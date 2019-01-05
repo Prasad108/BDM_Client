@@ -39,11 +39,9 @@ export class EditChallanComponent implements OnInit {
   }
 
   loadModalCbDetails(loadmodalCbDetails: CbDetails) {
-    // this.modalCbDetails = loadmodalCbDetails;
     let temp: any;
     temp = loadmodalCbDetails ;
       this.shairedService.updateCbDetails(temp);
-      console.log('' + this.router.url);
       this.router.navigate([this.router.url + '/update']);
   }
 }

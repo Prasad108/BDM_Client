@@ -1,48 +1,54 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange} from '@angular/core';
+import { Router } from '@angular/router';
 import {CbDetails} from 'app/shared/models/CbDetails';
 import { ShairedService } from 'app/shared/services/shaired.service';
 import { CbDetailsService } from 'app/shared/services/cb-details.service';
+import { PreviousRouteService } from 'app/shared/services/previous-route.service';
 
 @Component({
   selector: 'app-add-update-challan',
   templateUrl: './add-update-challan.component.html',
   styleUrls: ['./add-update-challan.component.css']
 })
-export class AddUpdateChallanComponent implements OnInit, OnChanges {
-  // @Input() modalcbDetails: CbDetails;
-  // @Input() mode: string;
-    tempcbDetails: CbDetails;
+export class AddUpdateChallanComponent implements OnInit {
    cbDetails: CbDetails;
+   errorMessage = false;
+   succuessMessage = false;
   constructor(private shairedService: ShairedService,
-              private cbDetailsService: CbDetailsService  ) {
+              private cbDetailsService: CbDetailsService,
+              private router: Router,
+              private previousRouteService: PreviousRouteService  ) {
    }
 
   ngOnInit() {
-    // console.log(this.modalcbDetails);
-    // this.cbDetails = this.modalcbDetails;
-    console.log('from update1');
+    if (typeof this.shairedService.cbDetails === 'undefined' ) {
+      this.router.navigate(['/admin/challans']);
+    }
     this.cbDetails = this.shairedService.cbDetails;
-    console.log(this.cbDetails);
     this.shairedService.$cbDetails.subscribe(data => {
-      this.tempcbDetails = data;
-      let temp: any;
-      temp = data;
-      this.cbDetails = temp ;
-      console.log('from update2');
-      console.log(this.cbDetails);
-
+      this.cbDetails = data ;
     });
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    // const modalcbDetails: SimpleChange = changes.modalcbDetails;
-    // console.log('prev value: ', modalcbDetails.previousValue);
-    // console.log('got name: ', modalcbDetails.currentValue);
-    // this.cbDetails = modalcbDetails.currentValue;
-  }
 
   updateCbDetail() {
-    this.cbDetailsService.updateCbdetails(this.cbDetails).subscribe(data => console.log(data));
+    this.succuessMessage = false;
+    this.errorMessage = false;
+    this.cbDetailsService.updateCbdetails(this.cbDetails).subscribe(data => {
+      this.succuessMessage = true;
+    },
+    error => {
+      this.errorMessage = true;
+    }
+    );
+  }
+
+  updateSaleValue() {
+    this.cbDetails.saleValue = (this.cbDetails.rate * (this.cbDetails.quantity - this.cbDetails.returned ));
+  }
+
+  goBack() {
+    this.router.navigate([this.previousRouteService.getPreviousUrl()]);
   }
 
 }
