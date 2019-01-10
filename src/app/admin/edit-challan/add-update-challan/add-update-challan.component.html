@@ -2,7 +2,7 @@
 
 
 <div class="modal-content">
-    <form (ngSubmit)="updateCbDetail()">
+    <form #form="ngForm" novalidate  (ngSubmit)="updateCbDetail()">
   <!--Header-->
   <div class="modal-header">
     <p class="heading lead">Update Issued Book
@@ -36,23 +36,48 @@
       </tr>
       <tr>
         <td >
-            <label for="inputRate" class="col-sm-4 col-form-label">Rate</label>
+            <label for="inputRate" required class="col-sm-4 col-form-label">Rate</label>
         </td>
         <td>
-           <input type="number" name="cbDetailsRate" class="form-control" id="inputRate" placeholder="Rate" [(ngModel)]="cbDetails.rate">
+           <input type="number" #inputeRate="ngModel" required name="cbDetailsRate"
+           class="form-control" id="inputRate" placeholder="Rate"
+           (input)="updateSaleValue()" [(ngModel)]="cbDetails.rate" min="1" step="1" >
+           <div *ngIf="!validateRate()" class="alert alert-danger justify-content-center" role="alert">
+            Rate is required and it must be greater than 0.
+          </div>
         </td>
       </tr>
       <tr>
           <td><label for="inputCbDetailsIssued" class="col-sm-4 col-form-label">Issued Quantity</label></td>
-          <td><input type="number" name="cbDetailsIssued" class="form-control" id="inputCbDetailsIssued" placeholder="Issued Quantity" (input)="updateSaleValue()" [(ngModel)]="cbDetails.quantity" min="0" [attr.min]="cbDetails.returned"></td>
+          <td><input type="number" #issued="ngModel" required name="cbDetailsIssued"
+            class="form-control" id="inputCbDetailsIssued" placeholder="Issued Quantity"
+             (input)="updateSaleValue();" [(ngModel)]="cbDetails.quantity" min="0"
+              [attr.min]="cbDetails.returned">
+              <div *ngIf="!validateIssued() || issued.invalid" class="alert alert-danger justify-content-center" role="alert">
+                Issued quantity is required, it must be greater than 0 and  greater than returned quantity.
+             </div>
+          </td>
       </tr>
       <tr>
           <td><label for="inputCbDetailsReturned" class="col-sm-4 col-form-label">Returned Quantity</label></td>
-          <td><input type="number" name="cbDetailsReturned" class="form-control" id="inputCbDetailsReturned" placeholder="Returned Quantity" (input)="updateSaleValue()" [(ngModel)]="cbDetails.returned" min="0" [attr.max]="cbDetails.quantity" ></td>
+          <td>
+            <input type="number"  required #returnedQuantity="ngModel" name="cbDetailsReturned"
+             class="form-control" id="inputCbDetailsReturned" placeholder="Returned Quantity"
+             (input)="updateSaleValue()" [(ngModel)]="cbDetails.returned" min="0"
+              [attr.max]="cbDetails.quantity" >
+               <div *ngIf="!validateReturned() || returnedQuantity.invalid" class="alert alert-danger justify-content-center" role="alert">
+                 Returned quantity is required, it must be greater than 0 and  less than Issued quantity.
+            </div>
+          </td>
+
       </tr>
       <tr>
           <td> <label for="inputCbDetailsSaleVlaue" class="col-sm-4 col-form-label">Sale Value</label></td>
-          <td><input type="number" name="cbDetailsSaleValue" disabled class="form-control" id="inputCbDetailsSaleVlaue" placeholder=" 0 | currency:'INR'" [(ngModel)]="cbDetails.saleValue" min="0"></td>
+          <td>
+            <input type="number" required name="cbDetailsSaleValue" disabled class="form-control"
+             id="inputCbDetailsSaleVlaue"  [(ngModel)]="cbDetails.saleValue"
+              min="0">
+            </td>
       </tr>
 
     </table>
@@ -67,8 +92,7 @@
       Failed to updted the issued book
   </div>
   <div class="modal-footer justify-content-center">
-    
-    <a><button type="submit" class="btn btn-primary waves-effect waves-light">Save
+    <a><button type="submit" [disabled]="form.invalid || !validateIssued() || !validateReturned() || !validateRate()" class="btn btn-primary waves-effect waves-light">Save
         <i class="fas fa-save"></i> </button>
     </a>
      <button type="button" (click)="goBack()" class="btn btn-outline-primary waves-effect"> <i class="fas fa-arrow-left"></i> Back</button>

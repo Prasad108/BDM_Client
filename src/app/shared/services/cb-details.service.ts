@@ -28,17 +28,12 @@ export class CbDetailsService {
   private obj: any;
  challan: Challan;
   updateCbdetails(cbDetails: CbDetails) {
-    console.log(cbDetails);
     const temp = cbDetails.challan;
     if (typeof temp === 'number' ) {
       (<Challan>cbDetails.challan) = {
         id: <number>cbDetails.challan
       };
     }
-
-    console.log(cbDetails);
-
-
     return this.http.put<CbDetails>(this._updateCbDetailsURL + cbDetails.id, cbDetails, httpOptions);
   }
 }
