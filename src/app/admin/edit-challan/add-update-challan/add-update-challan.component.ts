@@ -5,6 +5,7 @@ import { ShairedService } from 'app/shared/services/shaired.service';
 import { CbDetailsService } from 'app/shared/services/cb-details.service';
 import { PreviousRouteService } from 'app/shared/services/previous-route.service';
 import { NgForm } from '@angular/forms';
+import { ToastaService } from 'ngx-toasta';
 
 @Component({
   selector: 'app-add-update-challan',
@@ -21,7 +22,8 @@ export class AddUpdateChallanComponent implements OnInit {
   constructor(private shairedService: ShairedService,
               private cbDetailsService: CbDetailsService,
               private router: Router,
-              private previousRouteService: PreviousRouteService  ) {
+              private previousRouteService: PreviousRouteService,
+              private toastr: ToastaService  ) {
    }
 
   ngOnInit() {
@@ -36,18 +38,21 @@ export class AddUpdateChallanComponent implements OnInit {
 
 
   updateCbDetail() {
-    this.succuessMessage = false;
-    this.errorMessage = false;
+    // this.succuessMessage = false;
+    // this.errorMessage = false;
     this.cbDetailsService.updateCbdetails(this.cbDetails).subscribe(data => {
-      this.succuessMessage = true;
+      // this.succuessMessage = true;
+      this.toastr.success('Challan updated successfully!');
     },
     error => {
-      this.errorMessage = true;
+     // this.errorMessage = true;
+     this.toastr.error('Error in updating Challan!');
     }
     );
   }
 
   updateSaleValue() {
+    console.log('sale Value updated!');
     this.cbDetails.saleValue = (this.cbDetails.rate * (this.cbDetails.quantity - this.cbDetails.returned ));
   }
 

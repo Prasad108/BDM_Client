@@ -15,7 +15,7 @@
           "options": {
             "outputPath": "dist/BDMClient",
             "index": "src/index.html",
-            "main": "src/main.ts",  
+            "main": "src/main.ts",    
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
@@ -29,7 +29,8 @@
               "./node_modules/@fortawesome/fontawesome-free/css/all.css",
               "./node_modules/font-awesome/scss/font-awesome.scss",
               "./node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
-              "./node_modules/angular-bootstrap-md/scss/mdb-free.scss"
+              "./node_modules/angular-bootstrap-md/scss/mdb-free.scss",
+              "./node_modules/ngx-toasta/styles/style-default.css"    
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

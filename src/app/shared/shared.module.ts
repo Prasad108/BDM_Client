@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
+import {ToastaModule} from 'ngx-toasta';
+
 import {ConstantsService} from './services/constants.service';
 import {TokenStorageService} from './services/token-storage.service';
 import {ChallanService} from './services/challan.service';
@@ -23,7 +25,8 @@ import { CbDetailsService } from './services/cb-details.service';
     FormsModule,
     CommonModule,
     RouterModule,
-    MDBBootstrapModule
+    MDBBootstrapModule,
+    ToastaModule.forRoot()
   ],
   providers: [
     ConstantsService,
@@ -35,6 +38,6 @@ import { CbDetailsService } from './services/cb-details.service';
     ShairedService,
     CbDetailsService
   ],
-  exports: [NavbarComponent, ChallansComponent, ChallanDetailsComponent, PageNotFoundComponent]
+  exports: [ToastaModule, NavbarComponent, ChallansComponent, ChallanDetailsComponent, PageNotFoundComponent]
 })
 export class SharedModule { }
