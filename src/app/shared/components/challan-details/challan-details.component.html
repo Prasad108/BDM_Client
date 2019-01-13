@@ -1,43 +1,48 @@
-  <table class="table table-bordered " *ngIf="challan">
+<button class="btn btn-primary pull-right" (click)="print()"> <i class="fas fa-file-pdf"></i> print</button>
+
+<table id="ChallanSummary" class="table table-bordered " *ngIf="challan">
       <caption style="caption-side: top;" class="alert alert-dark" role="alert">Challan Summary</caption>
     <tbody>
       <tr>
         <td scope="row">Challan Id</td>
         <td>{{challan.id}}</td>
+        <td></td>
+        <td></td>
       </tr>
       <tr>
-        <td>Essuid By   <i class="fas fa-user-tie"></i></td>
+        <td>Essuid By   <i class="fas fa-user-tie"></i>:</td>
         <td>{{challan.userByIssuedBy.name}}</td>
-        <td>Essuid To  <i class="fas fa-user"></i></td>
+        <td>Essuid To  <i class="fas fa-user"></i>:</td>
         <td>{{challan.userByIssuedTo.name}}</td>
       </tr>
       <tr>
-        <td>Issued Date <i class="fas fa-calendar-alt"></i></td>
+        <td>Issued Date <i class="fas fa-calendar-alt"></i>:</td>
         <td>{{challan.issuedDate | date: 'MMM d, y'}}</td>
-        <td>Settelled Date <i class="fas fa-calendar-alt"></i></td>
+        <td>Settelled Date <i class="fas fa-calendar-alt"></i>:</td>
         <td *ngIf="challan.settled == 1" >{{challan.settledDate | date: 'MMM d, y'}}</td>
         <td *ngIf="challan.settled == 0" >Not Yet Settelled</td>
       </tr>
       <tr>
-        <td>Total Ammount</td>
-        <td *ngIf="challan.totalAmount">{{challan.totalAmount}}</td> <td *ngIf="!challan.totalAmount"> --- </td>
-        <td>Recieved Ammount</td>
-        <td *ngIf="challan.receivedAmount">{{challan.totalAmount}}</td><td *ngIf="!challan.receivedAmount"> --- </td>
+        <td>Total Ammount :</td>
+        <td *ngIf="challan.totalAmount">{{challan.totalAmount | currency:'INR': 'Rs '}}</td> <td *ngIf="!challan.totalAmount"> --- </td>
+        <td>Recieved Ammount :</td>
+        <td *ngIf="challan.receivedAmount">{{challan.totalAmount | currency:'INR': 'Rs '}}</td><td *ngIf="!challan.receivedAmount"> --- </td>
       </tr>
       <tr *ngIf="challan.expAmount || challan.expComment">
-        <td *ngIf="challan.expAmount">Expenditure Ammount</td>
-        <td *ngIf="challan.expAmount"> {{challan.expAmount}}</td>
-        <td *ngIf="challan.expComment">Expenditure Details</td>
+        <td *ngIf="challan.expAmount">Expenditure Ammount :</td>
+        <td *ngIf="challan.expAmount"> {{challan.expAmount | currency:'INR': 'Rs '}}</td>
+        <td *ngIf="challan.expComment">Expenditure Details :</td>
         <td *ngIf="challan.expComment"> {{challan.expComment}}</td>
       </tr>
 
     </tbody>
   </table>
-  <div *ngIf="challan.cbDetailses.length ==0" class="alert alert-warning">
+  <div *ngIf="challan?.cbDetailses.length ==0" class="alert alert-warning">
       <h4>No Books Issued</h4>
   </div>
+  
 
-  <table class="table table-bordered table-sm table-responsive-lg" *ngIf="challan && challan.cbDetailses.length > 0 ">
+  <table id="cbDetailses" class="table table-bordered table-sm table-responsive-lg" *ngIf="challan && challan.cbDetailses.length > 0 ">
       <caption style="caption-side: top;" class="alert alert-secondary" role="alert">List of Issued Books</caption>
       <thead>
           <tr>
@@ -57,10 +62,10 @@
           <td>{{Book.book.name.name}} </td>
           <td>{{Book.book.languages.name}} </td>
           <td>{{Book.book.type.name}} </td>
-          <td>{{Book.rate | currency:'INR' }} </td>
+          <td> {{Book.rate | currency:'INR': 'Rs '}} </td>
           <td>{{Book.quantity}} </td>
           <td *ngIf="Book.returned">{{Book.returned}} </td> <td *ngIf="!Book.returned"> 0 </td>
-          <td >{{Book.saleValue | currency:'INR'}} </td>
+          <td >  {{Book.saleValue | currency:'INR': 'Rs '}} </td>
         </tr>
       </tbody>
       <tfoot>
@@ -72,7 +77,7 @@
             <td>Total</td>
             <td>{{getSum('quantity')}}</td>
             <td>{{getSum('returned')}}</td>
-            <td>{{getSum('saleValue') | currency:'INR' }}</td>
+            <td>{{getSum('saleValue') | currency:'INR': 'Rs '}}</td>
           </tr>
         </tfoot>
 

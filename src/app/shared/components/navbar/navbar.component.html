@@ -13,26 +13,26 @@
        [ngClass]="{ 'show': navbarOpen }">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" >
-        <a  routerLink="/home" routerLinkActive="active" class="nav-link" > <i class="fa fa-home"></i> Home</a>
+        <a  routerLink="/home" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" class="nav-link" > <i class="fa fa-home"></i> Home</a>
       </li>
 
       <li class="nav-item" *ngIf="!isLoggedIn">
-        <a  routerLink="/login" routerLinkActive="active" class="nav-link"> <i class="fas fa-sign-in-alt"></i> Login</a>
+        <a  routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link"> <i class="fas fa-sign-in-alt"></i> Login</a>
       </li>
       
 
       <ng-container *ngIf="isAdmin()" style="display:inline;">
           <li class="nav-item">
-              <a class="nav-link" routerLink="/admin" routerLinkActive="active"> <i class="fa fa-user"></i> Admin</a>
+              <a class="nav-link" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> <i class="fa fa-user"></i> Admin</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/admin/challans" routerLinkActive="active"> <i class="fas fa-clipboard-list"></i> challans</a>
+              <a class="nav-link" routerLink="/admin/challans" routerLinkActive="active" > <i class="fas fa-clipboard-list"></i> challans</a>
             </li>
       </ng-container>
       
       <ng-container *ngIf="isUser()">
         <li class="nav-item" >
-          <a class="nav-link" routerLink="/user" routerLinkActive="active">User</a>
+          <a class="nav-link" routerLink="/user" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">User</a>
         </li>
 
         <li class="nav-item">

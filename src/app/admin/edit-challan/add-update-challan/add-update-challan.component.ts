@@ -52,7 +52,6 @@ export class AddUpdateChallanComponent implements OnInit {
   }
 
   updateSaleValue() {
-    console.log('sale Value updated!');
     this.cbDetails.saleValue = (this.cbDetails.rate * (this.cbDetails.quantity - this.cbDetails.returned ));
   }
 
