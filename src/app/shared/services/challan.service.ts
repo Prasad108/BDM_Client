@@ -21,7 +21,7 @@ export class ChallanService {
     return this.http.get<Challan[]>(this.challanListOfUserCenterURL);
   }
 
- getListOfUserSpecificChallan ():Observable<Challan[]>{
+ getListOfUserSpecificChallan (): Observable<Challan[]> {
    return this.http.get<Challan[]>(this.listOfUserSpecificChallanURL);
  }
 

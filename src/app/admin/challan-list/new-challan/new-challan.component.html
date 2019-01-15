@@ -1,0 +1,19 @@
+
+<i class="fa fa-search" aria-hidden="true"></i>
+<form #NewChallanForm="ngForm">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Essuid To   <i class="fas fa-user"></i>:</label>
+      <div class="col-sm-10">
+          <div class="form-group">
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option>please choose one user</option>
+                <option *ngFor="let user of userlist" [value]="user.id">{{user.name}}</option>
+              </select>
+            </div>
+      </div>
+    </div>
+
+  </form>
+
+  <pre>{{userlist | json}}
+    </pre>

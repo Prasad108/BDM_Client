@@ -17,6 +17,7 @@ import { ChallanDetailsComponent } from './components/challan-details/challan-de
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import {ShairedService } from './services/shaired.service';
 import { CbDetailsService } from './services/cb-details.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [NavbarComponent, ChallansComponent, ChallanDetailsComponent, PageNotFoundComponent],
@@ -36,7 +37,8 @@ import { CbDetailsService } from './services/cb-details.service';
     AuthInterceptor,
     httpInterceptorProviders,
     ShairedService,
-    CbDetailsService
+    CbDetailsService,
+    UserService
   ],
   exports: [ToastaModule, NavbarComponent, ChallansComponent, ChallanDetailsComponent, PageNotFoundComponent]
 })
