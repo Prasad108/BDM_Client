@@ -2,7 +2,7 @@
 
 
 <div class="modal-content">
-    <form #form="ngForm" novalidate  (ngSubmit)="updateCbDetail()">
+    <form #Updateform="ngForm" novalidate  (ngSubmit)="updateCbDetail()">
   <!--Header-->
   <div class="modal-header">
     <p class="heading lead">Update Issued Book
@@ -48,15 +48,8 @@
         </td>
       </tr>
       <tr>
-          <td><label for="inputCbDetailsIssued" class="col-sm-4 col-form-label">Issued Quantity</label></td>
-          <td><input type="number" #issued="ngModel" required name="cbDetailsIssued"
-            class="form-control" id="inputCbDetailsIssued" placeholder="Issued Quantity"
-             (input)="updateSaleValue();" [(ngModel)]="cbDetails.quantity" min="0"
-              [attr.min]="cbDetails.returned">
-              <div *ngIf="!validateIssued() || issued.invalid" class="alert alert-danger justify-content-center" role="alert">
-                Issued quantity is required, it must be greater than 0 and  greater than returned quantity.
-             </div>
-          </td>
+          <td>Issued Quantity</td>
+          <td>  {{cbDetails.quantity}} </td>
       </tr>
       <tr>
           <td><label for="inputCbDetailsReturned" class="col-sm-4 col-form-label">Returned Quantity</label></td>
@@ -92,7 +85,7 @@
       Failed to updted the issued book
   </div>
   <div class="modal-footer justify-content-center">
-    <a><button type="submit" [disabled]="form.invalid || !validateIssued() || !validateReturned() || !validateRate()" class="btn btn-primary waves-effect waves-light">Save
+    <a><button type="submit" [disabled]=" Updateform.invalid  || !validateReturned() || !validateRate()" class="btn btn-primary waves-effect waves-light">Save
         <i class="fas fa-save"></i> </button>
     </a>
      <button type="button" (click)="goBack()" class="btn btn-outline-primary waves-effect"> <i class="fas fa-arrow-left"></i> Back</button>

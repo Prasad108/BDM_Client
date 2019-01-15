@@ -43,6 +43,7 @@ export class AddUpdateChallanComponent implements OnInit {
     this.cbDetailsService.updateCbdetails(this.cbDetails).subscribe(data => {
       // this.succuessMessage = true;
       this.toastr.success('Challan updated successfully!');
+      this.goBack();
     },
     error => {
      // this.errorMessage = true;
@@ -67,16 +68,6 @@ export class AddUpdateChallanComponent implements OnInit {
     }
   }
 
-  validateIssued(): boolean {
-    if (this.cbDetails) {
-      if (this.cbDetails.quantity >= this.cbDetails.returned && this.cbDetails.quantity >= 0) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  }
-
   validateReturned(): boolean {
     if (this.cbDetails.returned <= this.cbDetails.quantity && this.cbDetails.returned >= 0) {
       return true;
@@ -85,8 +76,12 @@ export class AddUpdateChallanComponent implements OnInit {
     }
   }
 
-   validateForm(form: NgForm): boolean {
-       return (form.pristine && (form.invalid || !this.validateIssued() || !this.validateReturned() || !this.validateRate()));
-   }
+  //  validateForm(form: NgForm): boolean {
+  //   //  console.log('pristine: ' + form.pristine + ' dirty: ' + form.dirty);
+  //   //  console.log((!form.dirty  && (form.invalid  || !this.validateReturned() || !this.validateRate())));
+  //   console.log(form);
+  //      return ( (form.invalid  || !this.validateReturned() || !this.validateRate()));
+  //  }
+
 
 }
