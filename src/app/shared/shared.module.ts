@@ -18,6 +18,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import {ShairedService } from './services/shaired.service';
 import { CbDetailsService } from './services/cb-details.service';
 import { UserService } from './services/user.service';
+import { InventryService } from './services/inventry.service';
 
 @NgModule({
   declarations: [NavbarComponent, ChallansComponent, ChallanDetailsComponent, PageNotFoundComponent],
@@ -38,7 +39,8 @@ import { UserService } from './services/user.service';
     httpInterceptorProviders,
     ShairedService,
     CbDetailsService,
-    UserService
+    UserService,
+    InventryService
   ],
   exports: [ToastaModule, NavbarComponent, ChallansComponent, ChallanDetailsComponent, PageNotFoundComponent]
 })

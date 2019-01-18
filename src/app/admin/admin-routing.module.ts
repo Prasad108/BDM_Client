@@ -6,12 +6,16 @@ import {ChallanDetailsComponent} from 'app/shared/components/challan-details/cha
 import {EditChallanComponent} from './edit-challan/edit-challan.component';
 import { AddUpdateChallanComponent } from './edit-challan/add-update-challan/add-update-challan.component';
 import { NewChallanComponent } from './challan-list/new-challan/new-challan.component';
+import { InventryComponent } from './inventry/inventry.component';
+import { UpdateInventryComponent } from './inventry/update-inventry/update-inventry.component';
 
 const routes: Routes = [
   {path: 'admin', component: AdminHomeComponent},
   {path: 'admin/challans', component: ChallanListComponent},
   {path: 'admin/challans/new', component: NewChallanComponent},
   {path: 'admin/challans/details/:id', component: ChallanDetailsComponent},
+  {path: 'admin/inventry', component: InventryComponent},
+  {path: 'admin/inventry/bookName', component: UpdateInventryComponent},
   {path: 'admin/challans/edit/:id', component: EditChallanComponent
   },
    {path: 'admin/challans/edit/:id/update', component: AddUpdateChallanComponent }

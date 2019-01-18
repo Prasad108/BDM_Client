@@ -9,6 +9,9 @@ import { EditChallanComponent } from './edit-challan/edit-challan.component';
 import {AdminRoutingModule} from './admin-routing.module';
 import { AddUpdateChallanComponent } from './edit-challan/add-update-challan/add-update-challan.component';
 import { NewChallanComponent } from './challan-list/new-challan/new-challan.component';
+import { InventryComponent } from './inventry/inventry.component';
+import { UpdateInventryComponent } from './inventry/update-inventry/update-inventry.component';
+
 @NgModule({
   declarations: [
     AdminHomeComponent,
@@ -16,7 +19,9 @@ import { NewChallanComponent } from './challan-list/new-challan/new-challan.comp
     ChallanListComponent,
     EditChallanComponent,
     AddUpdateChallanComponent,
-    NewChallanComponent
+    NewChallanComponent,
+    InventryComponent,
+    UpdateInventryComponent
   ],
   imports: [
     CommonModule,
