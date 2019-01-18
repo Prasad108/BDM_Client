@@ -1,19 +1,22 @@
 
-<i class="fa fa-search" aria-hidden="true"></i>
-<form #NewChallanForm="ngForm">
-    <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Essuid To   <i class="fas fa-user"></i>:</label>
-      <div class="col-sm-10">
-          <div class="form-group">
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>please choose one user</option>
-                <option *ngFor="let user of userlist" [value]="user.id">{{user.name}}</option>
+<div id="newChallanDiv">
+<form  #NewChallanForm="ngForm" novalidate  (ngSubmit)="CreatNewChallan()">
+    <div class="form-group row has-error" [class.has-error]="userSelectError">
+        <div id="selectLbl" class="col-xs-4">
+              <label class="control-label" for="exampleFormControlSelect1">Essuid To <i class="fas fa-user"></i>:</label>
+        </div>
+        <div id="selectDiv" class="col-sm-4" >
+              <select class="form-control" id="exampleFormControlSelect1"
+               name="IssuedToUserID" [(ngModel)]="IssuedToUserID" (blur)="ValidateUser()"
+               (change)="ValidateUser()">
+                  <option value="default">Select a User ...</option>
+                  <option *ngFor="let user of userlist" [value]="user.id">{{user.name}}</option>
               </select>
-            </div>
-      </div>
+              <div *ngIf="userSelectError" class="alert alert-danger justify-content-center" role="alert">
+                 Please select a User
+             </div>
+        </div>
     </div>
+    <button class="btn btn-primary" [disabled]="userSelectError || NewChallanForm.pristine" type="submit">Submit</button>
 
   </form>
-
-  <pre>{{userlist | json}}
-    </pre>

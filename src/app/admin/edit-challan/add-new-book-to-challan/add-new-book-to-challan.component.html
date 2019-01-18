@@ -1,0 +1,37 @@
+<div id="compDiv">
+
+<form  #NewChallanForm="ngForm" novalidate  (ngSubmit)="CreatNewChallan()">
+  <div class="form-group row">
+      <div class="col-xs-4 selectLabel">
+            <label class="control-label" for="bookNameSelect">Book Name :</label>
+      </div>
+      <div class="col-sm-4 selectInput" >
+            <select class="form-control" id="bookNameSelect"
+             name="IssuedToUserID" [(ngModel)]="id">
+                <option value="default">Select a Book Name ...</option>
+                <option *ngFor="let bookName of bookNames" [value]="bookName.id">{{bookName.name }} ({{bookName.abbreviation }})</option>
+            </select>
+            <div *ngIf="userSelectError" class="alert alert-danger justify-content-center" role="alert">
+               Please select Book Name
+           </div>
+      </div>
+  </div>
+  <button class="btn btn-primary" [disabled]="userSelectError || NewChallanForm.pristine" type="submit">Submit</button>
+    <div class="form-group row">
+      <div class="col-xs-4 selectLabel">
+            <label class="control-label" for="bookLanguageSelect">Book Language :</label>
+      </div>
+      <div class="col-sm-4 selectInput" >
+            <select class="form-control" id="bookLanguageSelect"
+            name="IssuedToUserID" [(ngModel)]="id">
+                <option value="default">Select a Book Language ...</option>
+                <option *ngFor="let bookName of bookNames" [value]="bookName.id">{{bookName.name }} ({{bookName.abbreviation }})</option>
+            </select>
+            <div *ngIf="userSelectError" class="alert alert-danger justify-content-center" role="alert">
+              Please select Book Language
+          </div>
+      </div>
+  </div>
+</form>
+
+</div>

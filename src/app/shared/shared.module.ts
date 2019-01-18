@@ -21,7 +21,12 @@ import { UserService } from './services/user.service';
 import { InventryService } from './services/inventry.service';
 
 @NgModule({
-  declarations: [NavbarComponent, ChallansComponent, ChallanDetailsComponent, PageNotFoundComponent],
+  declarations: [
+    NavbarComponent,
+    ChallansComponent,
+    ChallanDetailsComponent,
+    PageNotFoundComponent,
+    ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -42,6 +47,11 @@ import { InventryService } from './services/inventry.service';
     UserService,
     InventryService
   ],
-  exports: [ToastaModule, NavbarComponent, ChallansComponent, ChallanDetailsComponent, PageNotFoundComponent]
+  exports: [ToastaModule,
+    NavbarComponent,
+    ChallansComponent,
+    ChallanDetailsComponent,
+    PageNotFoundComponent
+  ]
 })
 export class SharedModule { }

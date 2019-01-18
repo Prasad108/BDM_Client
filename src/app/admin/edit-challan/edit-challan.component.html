@@ -32,6 +32,7 @@
 
     </tbody>
   </table>
+  <a  [routerLink] = "['addNewBook']"><button class="btn btn-primary"> <i class="fas fa-plus-square"></i> Add New Book to Challan</button></a>
 
   <div *ngIf=" challan && challan.cbDetailses.length ==0; else bookdatailsTable" class="alert alert-warning">
       <h4>No Books Issued</h4>

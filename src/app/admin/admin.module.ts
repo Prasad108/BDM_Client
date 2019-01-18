@@ -11,7 +11,7 @@ import { AddUpdateChallanComponent } from './edit-challan/add-update-challan/add
 import { NewChallanComponent } from './challan-list/new-challan/new-challan.component';
 import { InventryComponent } from './inventry/inventry.component';
 import { UpdateInventryComponent } from './inventry/update-inventry/update-inventry.component';
-
+import { AddNewBookToChallanComponent } from './edit-challan/add-new-book-to-challan/add-new-book-to-challan.component';
 @NgModule({
   declarations: [
     AdminHomeComponent,
@@ -21,7 +21,8 @@ import { UpdateInventryComponent } from './inventry/update-inventry/update-inven
     AddUpdateChallanComponent,
     NewChallanComponent,
     InventryComponent,
-    UpdateInventryComponent
+    UpdateInventryComponent,
+    AddNewBookToChallanComponent
   ],
   imports: [
     CommonModule,
