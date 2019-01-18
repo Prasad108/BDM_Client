@@ -27,7 +27,6 @@ challan: Challan;
   }
 
   ValidateUser() {
-    console.log('inside the validate function');
     if (this.IssuedToUserID === 'default') {
       this.userSelectError = true;
     } else {
