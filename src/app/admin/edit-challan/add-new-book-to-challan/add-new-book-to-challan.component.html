@@ -1,60 +1,84 @@
 <div id="compDiv">
-
-<form  #NewChallanForm="ngForm" novalidate  (ngSubmit)="CreatNewChallan()">
-  <div class="form-group row">
-      <div class="col-sm-3 selectLabel">
-            <label class="control-label" for="bookNameSelect">Book Name :</label>
-      </div>
-      <div class="col-sm-4 selectInput" >
-            <select class="form-control" id="bookNameSelect"
-            #bookNameSelect="ngModel"
-             name="IssuedToUserID" [(ngModel)]="bookNameId"
-             (change)="validateBookName()">
-                <option value="default">Select a Book Name ...</option>
-                <option *ngFor="let bookName of bookNames" [value]="bookName.id">{{bookName.name }} ({{bookName.abbreviation }})</option>
-            </select>
-            <div *ngIf="nameSelectError" class="alert alert-danger justify-content-center" role="alert">
-               Please select Book Name
-           </div>
-      </div>
-  </div>
-
-  <div class="form-group row">
-      <div class="col-sm-3 selectLabel">
-            <label class="control-label" for="bookLanguageSelect">Book Language :</label>
-      </div>
-      <div class="col-sm-4 selectInput" >
-            <select #bookLanguageSelect="ngModel" class="form-control" id="bookLanguageSelect"
-            name="bookLanguageSelect" [(ngModel)]="languageId"
-            (change)="validateLanguage()"
-            [disabled]="bookNameSelect.pristine || nameSelectError || bookLanguages?.length < 1">
-                <option value="default">Select a Book Language ...</option>
-                <option *ngFor="let language of bookLanguages" [value]="language.id">{{language.name }}</option>
-            </select>
-            <div *ngIf="languageError" class="alert alert-danger justify-content-center" role="alert">
-              Please select Book Language
-          </div>
-      </div>
-  </div>
-
-  <div class="form-group row">
-    <div class="col-sm-3 selectLabel">
-          <label class="control-label" for="bookLanguageSelect">Book Type :</label>
-    </div>
-    <div class="col-sm-4 selectInput" >
-          <select #bookTypeSelect="ngModel" class="form-control" id="bookTypeSelect"
-          name="bookTypeSelect" [(ngModel)]="typeId"
-          (change)="validateType()"
-          [disabled]="bookLanguageSelect.pristine || languageError || languageId=== 'default'|| bookTypes?.length < 1">
-              <option value="default">Select a Book Type ...</option>
-              <option *ngFor="let Type of bookTypes" [value]="Type.id">{{Type.name }}</option>
-          </select>
-          <div *ngIf="userSelectError" class="alert alert-danger justify-content-center" role="alert">
-            Please select Book Type
-        </div>
-    </div>
-  </div>
-  <button class="btn btn-primary" [disabled]="userSelectError || NewChallanForm.pristine" type="submit">Submit</button>
-</form>
+    <app-three-select (threeSelected)=afterSelect($event)></app-three-select>
+    
+    <table class="table table-bordered table-sm table-responsive-lg" *ngIf="CbDetails?.book">
+        <caption style="caption-side: top;">You Have Issued this kooks</caption>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col"><i class="fas fa-cogs"></i> Action</th>
+                <th scope="col">Book Name</th>
+                <th scope="col">Language</th>
+                <th scope="col">Type</th>
+                <th scope="col">Rate</th>
+                <th scope="col">Issued</th>
+                <th scope="col">Returned</th>
+                <th scope="col">Sale Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td>{{i+1}}</td>
+            <td>
+                <div class="btn-group">
+                <a><button (click)="updateCbDetails()" class="btn btn-primary btn-sm" ><i class="fas fa-edit"></i></button></a>
+                </div>
+                </td>
+            <td>{{CbDetails.book.name.name}} </td>
+            <td>{{CbDetails.book.languages.name}} </td>
+            <td>{{CbDetails.book.type.name}} </td>
+            <td>{{CbDetails.rate | currency:'INR' }} </td>
+            <td>{{CbDetails.quantity}} </td>
+            <td *ngIf="CbDetails.returned">{{CbDetails.returned}} </td> <td *ngIf="!CbDetails.returned"> 0 </td>
+            <td >{{CbDetails.saleValue | currency:'INR'}} </td>
+            </tr>
+        </tbody>
+    
+    </table>
+    <div *ngIf="bookDoesNotExistForChallan">
+            <form novalidate #AddNewBook="ngForm" (submit)="addNewBook()">
+                 <div class="form-group row">
+                               <label class="control-label col-sm-3 inputLabel" for="bookRate">Book Rate :</label>
+                         <div class="col-xs-2 inputStyle" >
+                                <input class="form-control" type="number"  id="bookRate" required  name="bookRate"
+                                #bookRateInput="ngModel"
+                                [(ngModel)]="bookRate"  (input)="validateRate()"
+                                 >
+                               <div *ngIf="bookRateError && bookRateInput.dirty" class="alert alert-danger justify-content-center" role="alert">
+                                  Rate should be positive number.
+                              </div>
+                         </div>
+                </div>
+                <div class=" form-group row">
+                        <label class="control-label col-sm-3 inputLabel" for="inventryStockInput">Inventry Stock :</label>
+                        <div class="col-xs-2 inputStyle" >
+                            <input class="form-control" type="number"  id="inventryStockInput" required  name="inventryStockInput"
+                            #bookInventryStockInput="ngModel"
+                            [(ngModel)]="inventryStock" readonly
+                            >
+                         </div>
+                </div>
+                <div class="form-group row">
+                        <label class="control-label col-sm-3 inputLabel" for="issuedQuantity">Issue Quantity :</label>
+                  <div class="col-xs-2 inputStyle" >
+                         <input class="form-control" type="number"  id="issuedQuantity" required  name="issuedQuantity"
+                         #bookIssuedQuantityInput="ngModel"
+                         [(ngModel)]="bookIssuedQuantity" (input)="validateIssuedQuantity()" (focusout)="validateIssuedQuantity()"
+                          >
+                        <div *ngIf="bookIssuedQuantityError" class="alert alert-danger justify-content-center" role="alert">
+                                It is required, It must be less than or equal to Inventry stock and positive number.
+                       </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-xs-2 col-sm-offset-3 inputStyle">
+                        <button type="submit" [disabled]="AddNewBook.invalid || bookIssuedQuantityError || bookRateError" 
+                            class="btn btn-primary waves-effect waves-light">Save
+                            <i class="fas fa-save"></i> </button>
+                    </div>
+                </div>
+            </form>
+         </div>
 
 </div>

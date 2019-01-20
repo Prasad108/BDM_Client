@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { CbDetailsService } from 'app/shared/services/cb-details.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { CbDetails } from 'app/shared/models/CbDetails';
-import { Book } from './../../../shared/models/Book';
-import { BookService } from './../../../shared/services/book.service';
-import { BookName } from './../../../shared/models/BookName';
+import { ShairedService } from 'app/shared/services/shaired.service';
+import { NgForm } from '@angular/forms';
+import { ChallanService } from 'app/shared/services/challan.service';
 import { ToastaService } from 'ngx-toasta';
-import { Language } from './../../../shared/models/Language';
-import { LanguageService } from 'app/shared/services/language.service';
-import { TypeService } from 'app/shared/services/type.service';
-import { Type } from 'app/shared/models/Type';
-
+import { Challan } from 'app/shared/models/Challan';
+import { Book } from 'app/shared/models/Book';
 
 @Component({
   selector: 'app-add-new-book-to-challan',
@@ -16,56 +15,94 @@ import { Type } from 'app/shared/models/Type';
   styleUrls: ['./add-new-book-to-challan.component.css']
 })
 export class AddNewBookToChallanComponent implements OnInit {
-  cbDetails: CbDetails;
-
-  bookNames: BookName[];
-  bookLanguages: Language[];
-  bookTypes: Type[];
-  bookNameId = 'default';
-  nameSelectError = false;
-  languageId = 'default';
-  languageError = false;
-  typeId = 'default';
-  typeError = false;
-  constructor(private bookService: BookService,
-              private toastr: ToastaService,
-              private languageService: LanguageService,
-              private typeService: TypeService
-    ) { }
+  challanId;
+  CbDetails: CbDetails;
+  bookDoesNotExistForChallan = false;
+  rate: number;
+  inventryStock: number;
+  bookId: number;
+  bookIssuedQuantity: number;
+  bookRate: number;
+  bookRateError = false;
+  bookIssuedQuantityError = false;
+  constructor(
+    private cbDetailsService: CbDetailsService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private shairedService: ShairedService,
+    private challanService: ChallanService,
+    private toastr: ToastaService
+  ) { }
 
   ngOnInit() {
-    this.bookService.getAllBookNameOfUsersInventory().subscribe(data => this.bookNames = data,
-      error => this.toastr.error('Error While Fetching Book Names'));
+    this.route.paramMap.subscribe(params => {
+      this.challanId = params.get('id');
+    });
   }
 
-  validateBookName() {
-    if (this.bookNameId === 'default') {
-      this.nameSelectError = true;
-      this.languageId = 'default';
-      this.typeId = 'default';
-    } else {
-      this.nameSelectError = false;
-      this.languageId = 'default';
-      this.typeId = 'default';
-      this.languageService.getAllLanguagesForBookNameInUsersInventory(this.bookNameId)
-      .subscribe(data => this.bookLanguages = data);
+  afterSelect(result) {
+    this.CbDetails = null;
+    this.bookDoesNotExistForChallan = false;
+    if (result.bookNameId !== 'default' && result.languageId !== 'default' && result.typeId !== 'default') {
+      this.cbDetailsService.getCbDetailFromChallanWithRequestedNameLangType(
+        this.challanId, result.bookNameId, result.languageId, result.typeId)
+      .subscribe(
+        data => {
+          console.log(data);
+          if (data.found) {
+            this.CbDetails = data;
+          } else {
+            this.bookId = data.bookId;
+            this.rate = data.rate;
+            this.bookRate = data.rate;
+            this.inventryStock = data.inventryStock;
+            this.bookDoesNotExistForChallan = true;
+
+          }
+        }
+       );
     }
   }
 
-  validateLanguage() {
-    if (this.languageId === 'default') {
-      this.languageError = true;
-      this.typeId = 'default';
+  updateCbDetails() {
+    this.shairedService.updateCbDetails(this.CbDetails);
+    this.router.navigate([this.router.url.slice(0, -11) + '/update']);
+  }
+  validateRate(): boolean {
+    if (this.bookRate < 0 ) {
+      this.bookRateError = true;
+      return true;
     } else {
-      this.languageError = false;
-      this.typeId = 'default';
-      this.typeService.getAllTypesForBookNameInUsersInventory(this.bookNameId, this.languageId)
-      .subscribe(data => this.bookTypes = data);
+      this.bookRateError = false;
+      return false;
     }
   }
-
-  validateType() {
+  validateIssuedQuantity(): boolean {
+    if (this.bookIssuedQuantity > this.inventryStock || this.bookIssuedQuantity < 1 || this.bookIssuedQuantity == null) {
+        this.bookIssuedQuantityError = true;
+        return true;
+    } else {
+      this.bookIssuedQuantityError = false;
+        return false;
+    }
   }
+  addNewBook() {
+    const cb: CbDetails = new CbDetails();
+    cb.book = new Book();
+    (<Book>cb.book).id = <number>this.bookId;
+    (<Challan>cb.challan) = {id: this.challanId};
+    cb.quantity = this.bookIssuedQuantity;
+    cb.rate = this.bookRate;
+    cb.returned = 0;
+    cb.saleValue = this.bookRate * this.bookIssuedQuantity;
+    this.challanService.addNewBookToChallan(cb).subscribe(
+      data => {
+        this.toastr.success('New Book added to Challan');
+        this.router.navigate([this.router.url.slice(0, -11)]);
+      },
+      error => this.toastr.error('Error while adding book')
+    );
 
+  }
 
 }

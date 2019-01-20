@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {AppSettings} from 'app/appSettings';
 import {Challan} from '../models/Challan';
+import { CbDetails } from '../models/CbDetails';
 
 
 @Injectable({
@@ -16,6 +17,7 @@ export class ChallanService {
   private listOfUserSpecificChallanURL = AppSettings.API_ENDPOINT + '/challan/userSpecificChallanList';
   private challanURL = AppSettings.API_ENDPOINT + '/challan/detailed/';
   private createNewChallanURL = AppSettings.API_ENDPOINT + '/challan/new/';
+  private addNewBookToChallan_URL = AppSettings.API_ENDPOINT + '/cbDetails/';
   getChallanListOfUsersCenter(): Observable<Challan[]> {
     return this.http.get<Challan[]>(this.challanListOfUserCenterURL);
   }
@@ -30,6 +32,11 @@ export class ChallanService {
 
   creatNewChallan(id: number): Observable<Challan> {
     return this.http.post<Challan>(this.createNewChallanURL + id, '', AppSettings.HTTP_OPTIONS);
+  }
+
+  addNewBookToChallan(cb: any): Observable<CbDetails> {
+    return this.http.put<CbDetails>(this.addNewBookToChallan_URL, cb, AppSettings.HTTP_OPTIONS);
+
   }
 
 }

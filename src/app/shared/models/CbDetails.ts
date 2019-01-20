@@ -81,8 +81,9 @@ export class CbDetails {
         this.saleValue = value;
         }
 
-    constructor($id: number, $book: Book |number, $challan: Challan |number ,
-        $rate: number, $quantity: number, $returned: number, $saleValue: number) {
+
+    constructor($id?: number, $book?: Book |number, $challan?: Challan |number ,
+        $rate?: number, $quantity?: number, $returned?: number, $saleValue?: number) {
         this.id = $id;
         this.book = $book;
         this.challan = $challan;

@@ -56,7 +56,7 @@ export class ChallanDetailsComponent implements OnInit {
     if (this.challan && this.challan.cbDetailses.length > 0) {
       // print the Cb Details
       doc.text('Challan Details', 14, doc.autoTable.previous.finalY + 10);
-      //let f: Inr;
+      // let f: Inr;
       // doc.addFileToVFS('InrFont.ttf', f.inrfont);
       // doc.addFont('InrFont.ttf', 'inr', 'normal');
       // doc.setFont('inr', 'normal');

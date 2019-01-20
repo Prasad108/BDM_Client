@@ -19,6 +19,7 @@ import {ShairedService } from './services/shaired.service';
 import { CbDetailsService } from './services/cb-details.service';
 import { UserService } from './services/user.service';
 import { InventryService } from './services/inventry.service';
+import { ThreeSelectComponent } from './components/three-select/three-select.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { InventryService } from './services/inventry.service';
     ChallansComponent,
     ChallanDetailsComponent,
     PageNotFoundComponent,
+    ThreeSelectComponent,
     ],
   imports: [
     BrowserModule,
@@ -47,11 +49,13 @@ import { InventryService } from './services/inventry.service';
     UserService,
     InventryService
   ],
-  exports: [ToastaModule,
+  exports: [
+    ToastaModule,
     NavbarComponent,
     ChallansComponent,
     ChallanDetailsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ThreeSelectComponent
   ]
 })
 export class SharedModule { }
