@@ -18,13 +18,13 @@
         <td *ngIf="challan.settled == 0" >Not Yet Settelled</td>
       </tr>
       <tr>
-        <td>Total Ammount</td>
+        <td>Total Amount</td>
         <td *ngIf="challan.totalAmount">{{challan.totalAmount}}</td> <td *ngIf="!challan.totalAmount"> --- {{getSum('saleValue') | currency:'INR' }}</td>
-        <td>Recieved Ammount</td>
+        <td>Recieved Amount</td>
         <td *ngIf="challan.receivedAmount">{{challan.totalAmount}}</td><td *ngIf="!challan.receivedAmount"> --- </td>
       </tr>
       <tr *ngIf="challan.expAmount || challan.expComment">
-        <td *ngIf="challan.expAmount">Expenditure Ammount</td>
+        <td *ngIf="challan.expAmount">Expenditure Amount</td>
         <td *ngIf="challan.expAmount"> {{challan.expAmount}}</td>
         <td *ngIf="challan.expComment">Expenditure Details</td>
         <td *ngIf="challan.expComment"> {{challan.expComment}}</td>
