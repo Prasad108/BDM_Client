@@ -18,9 +18,9 @@
       <tr>
         <td>Issued Date <i class="fas fa-calendar-alt"></i>:</td>
         <td>{{challan.issuedDate | date: 'MMM d, y'}}</td>
-        <td>Settelled Date <i class="fas fa-calendar-alt"></i>:</td>
+        <td>Settled Date <i class="fas fa-calendar-alt"></i>:</td>
         <td *ngIf="challan.settled == 1" >{{challan.settledDate | date: 'MMM d, y'}}</td>
-        <td *ngIf="challan.settled == 0" >Not Yet Settelled</td>
+        <td *ngIf="challan.settled == 0" >Not Yet Settled</td>
       </tr>
       <tr>
         <td>Total Amount :</td>
