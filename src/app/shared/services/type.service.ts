@@ -11,9 +11,14 @@ import { Type } from './../models/Type';
 export class TypeService {
   private getAllLanguagesForBookNameInUsersInventory_URL = AppSettings.API_ENDPOINT
   + '/type/getAllTypesForBookNameAndLanguageInUsersInventory/';
+  getAllTypesForBookNameAndLanguageFromAllBooks_URL = AppSettings.API_ENDPOINT
+  + '/type/getAllTypesForBookNameAndLanguageFromAllBooks/';
 constructor(private http: HttpClient) { }
 
 getAllTypesForBookNameInUsersInventory(nameId: any, langId: any): Observable <Type[]> {
 return this.http.get<Type[]>(this.getAllLanguagesForBookNameInUsersInventory_URL + nameId + '/' + langId);
 }
+getAllTypesForBookNameAndLanguageFromAllBooks(nameId: any, langId: any): Observable <Type[]> {
+  return this.http.get<Type[]>(this.getAllTypesForBookNameAndLanguageFromAllBooks_URL + nameId + '/' + langId);
+  }
 }

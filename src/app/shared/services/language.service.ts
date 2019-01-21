@@ -10,9 +10,14 @@ import { Language } from './../models/Language';
 export class LanguageService {
   private getAllLanguagesForBookNameInUsersInventory_URL = AppSettings.API_ENDPOINT
                          + '/languages/getAllLanguagesForBookNameInUsersInventory/';
+  getLanguagesOfAllBooksHavingBookName_URL = AppSettings.API_ENDPOINT
+  + '/languages/getLanguagesOfAllBooksHavingBookName/';
   constructor(private http: HttpClient) { }
 
   getAllLanguagesForBookNameInUsersInventory(langId: any): Observable <Language[]> {
       return this.http.get<Language[]>(this.getAllLanguagesForBookNameInUsersInventory_URL + langId);
   }
+  getLanguagesOfAllBooksHavingBookName(langId: any): Observable <Language[]> {
+    return this.http.get<Language[]>(this.getLanguagesOfAllBooksHavingBookName_URL + langId);
+}
 }

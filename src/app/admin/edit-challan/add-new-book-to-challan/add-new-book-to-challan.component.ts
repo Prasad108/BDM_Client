@@ -8,7 +8,7 @@ import { ChallanService } from 'app/shared/services/challan.service';
 import { ToastaService } from 'ngx-toasta';
 import { Challan } from 'app/shared/models/Challan';
 import { Book } from 'app/shared/models/Book';
-
+import {ThreeSelectMode} from 'app/shared/Enum/threeSelectEnum';
 @Component({
   selector: 'app-add-new-book-to-challan',
   templateUrl: './add-new-book-to-challan.component.html',
@@ -25,6 +25,7 @@ export class AddNewBookToChallanComponent implements OnInit {
   bookRate: number;
   bookRateError = false;
   bookIssuedQuantityError = false;
+  threeSelectMode: ThreeSelectMode = ThreeSelectMode.BOOKS_IN_INVENTORY;
   constructor(
     private cbDetailsService: CbDetailsService,
     private route: ActivatedRoute,

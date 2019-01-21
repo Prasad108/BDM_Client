@@ -10,10 +10,15 @@ import { BookName } from './../models/BookName';
 })
 export class BookService {
   private getAllBookNameOfUsersInventory_URL = AppSettings.API_ENDPOINT + '/bookName/getAllBookNameOfUsersInventory';
+  private getBooNameOfAllBooks_URL = AppSettings.API_ENDPOINT + '/bookName/getBooNameOfAllBooks';
 
   constructor(private http: HttpClient) { }
 
   getAllBookNameOfUsersInventory(): Observable <BookName[]> {
     return this.http.get<BookName[]>(this.getAllBookNameOfUsersInventory_URL);
+  }
+
+  getBooNameOfAllBooks(): Observable <BookName[]> {
+    return this.http.get<BookName[]>(this.getBooNameOfAllBooks_URL);
   }
 }

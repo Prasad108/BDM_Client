@@ -1,5 +1,5 @@
 <div id="compDiv">
-    <app-three-select (threeSelected)=afterSelect($event)></app-three-select>
+    <app-three-select [mode]="threeSelectMode" (threeSelected)=afterSelect($event)></app-three-select>
     
     <table class="table table-bordered table-sm table-responsive-lg" *ngIf="CbDetails?.book">
         <caption style="caption-side: top;">You Have Issued this kooks</caption>
