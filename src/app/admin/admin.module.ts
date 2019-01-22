@@ -12,6 +12,7 @@ import { NewChallanComponent } from './challan-list/new-challan/new-challan.comp
 import { InventryComponent } from './inventry/inventry.component';
 import { UpdateInventryComponent } from './inventry/update-inventry/update-inventry.component';
 import { AddNewBookToChallanComponent } from './edit-challan/add-new-book-to-challan/add-new-book-to-challan.component';
+import { RequestNewBookComponent } from './inventry/request-new-book/request-new-book.component';
 @NgModule({
   declarations: [
     AdminHomeComponent,
@@ -22,7 +23,8 @@ import { AddNewBookToChallanComponent } from './edit-challan/add-new-book-to-cha
     NewChallanComponent,
     InventryComponent,
     UpdateInventryComponent,
-    AddNewBookToChallanComponent
+    AddNewBookToChallanComponent,
+    RequestNewBookComponent
   ],
   imports: [
     CommonModule,

@@ -9,6 +9,7 @@ import { NewChallanComponent } from './challan-list/new-challan/new-challan.comp
 import { InventryComponent } from './inventry/inventry.component';
 import { UpdateInventryComponent } from './inventry/update-inventry/update-inventry.component';
 import { AddNewBookToChallanComponent } from './edit-challan/add-new-book-to-challan/add-new-book-to-challan.component';
+import { RequestNewBookComponent } from './inventry/request-new-book/request-new-book.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'admin/challans/edit/:id/update', component: AddUpdateChallanComponent },
   {path: 'admin/challans/edit/:id/addNewBook', component: AddNewBookToChallanComponent },
   {path: 'admin/inventry', component: InventryComponent},
-  {path: 'admin/inventry/bookName', component: UpdateInventryComponent}
+  {path: 'admin/inventry/bookName', component: UpdateInventryComponent},
+  {path: 'admin/inventry/RequestNewBook', component: RequestNewBookComponent}
 ];
 
 @NgModule({

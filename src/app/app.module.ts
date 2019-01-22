@@ -14,6 +14,7 @@ import {LoginModule} from 'app/login/login.module';
 import { AdminModule } from 'app/admin/admin.module';
 import {DashboardModule} from 'app/dashboard/dashboard.module';
 import {SharedModule} from 'app/shared/shared.module';
+import { SuperadminModule } from './superadmin/superadmin.module';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,10 @@ import {SharedModule} from 'app/shared/shared.module';
     AdminModule,
     DashboardModule,
     AppRoutingModule,
+    SuperadminModule
 
   ],
-  exports: [SharedModule, AdminModule],
+  exports: [SharedModule, AdminModule,SuperadminModule],
   providers: [],
   bootstrap: [AppComponent]
 })
