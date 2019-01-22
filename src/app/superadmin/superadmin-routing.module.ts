@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SuperadminHomeComponent } from './superadmin-home/superadmin-home.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path:'superadmin', component: SuperadminHomeComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
