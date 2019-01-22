@@ -29,11 +29,15 @@ import { SuperadminModule } from './superadmin/superadmin.module';
     LoginModule,
     AdminModule,
     DashboardModule,
-    AppRoutingModule,
-    SuperadminModule
+    SuperadminModule,
+    AppRoutingModule
 
   ],
-  exports: [SharedModule, AdminModule,SuperadminModule],
+  exports: [
+    SharedModule,
+    AdminModule,
+    SuperadminModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

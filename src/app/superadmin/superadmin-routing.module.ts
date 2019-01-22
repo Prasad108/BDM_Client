@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SuperadminHomeComponent } from './superadmin-home/superadmin-home.component';
 
 const routes: Routes = [
-  {path:'superadmin', component: SuperadminHomeComponent }
+  { path: 'superAdmin', component: SuperadminHomeComponent }
 ];
 
 @NgModule({
