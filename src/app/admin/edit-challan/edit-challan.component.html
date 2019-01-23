@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <td>Total Amount</td>
-        <td *ngIf="challan.totalAmount">{{challan.totalAmount}}</td> <td *ngIf="!challan.totalAmount"> --- {{getSum('saleValue') | currency:'INR' }}</td>
+        <td *ngIf="challan.totalAmount">{{challan.totalAmount}}</td> <td *ngIf="!challan.totalAmount">{{getSum('saleValue') | currency:'INR' }}</td>
         <td>Recieved Amount</td>
         <td *ngIf="challan.receivedAmount">{{challan.totalAmount}}</td><td *ngIf="!challan.receivedAmount"> --- </td>
       </tr>
@@ -33,6 +33,7 @@
     </tbody>
   </table>
   <a  [routerLink] = "['addNewBook']"><button class="btn btn-primary"> <i class="fas fa-plus-square"></i> Add New Book to Challan</button></a>
+  <a  [routerLink] = "['settle']"><button class="btn btn-success"> <i class="fas fa-check"></i> Settle</button></a>
 
   <div *ngIf=" challan && challan.cbDetailses.length ==0; else bookdatailsTable" class="alert alert-warning">
       <h4>No Books Issued</h4>

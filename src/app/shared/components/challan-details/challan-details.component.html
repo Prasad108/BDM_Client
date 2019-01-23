@@ -24,7 +24,7 @@
       </tr>
       <tr>
         <td>Total Amount :</td>
-        <td *ngIf="challan.totalAmount">{{challan.totalAmount | currency:'INR': 'Rs '}}</td> <td *ngIf="!challan.totalAmount"> --- </td>
+        <td *ngIf="challan.totalAmount">{{challan.totalAmount | currency:'INR': 'Rs '}}</td> <td *ngIf="!challan.totalAmount">{{getSum('saleValue') | currency:'INR': 'Rs '}}</td>
         <td>Recieved Amount :</td>
         <td *ngIf="challan.receivedAmount">{{challan.totalAmount | currency:'INR': 'Rs '}}</td><td *ngIf="!challan.receivedAmount"> --- </td>
       </tr>
@@ -40,7 +40,7 @@
   <div *ngIf="challan?.cbDetailses.length ==0" class="alert alert-warning">
       <h4>No Books Issued</h4>
   </div>
-  
+
 
   <table id="cbDetailses" class="table table-bordered table-sm table-responsive-lg" *ngIf="challan && challan.cbDetailses.length > 0 ">
       <caption style="caption-side: top;" class="alert alert-secondary" role="alert">List of Issued Books</caption>
