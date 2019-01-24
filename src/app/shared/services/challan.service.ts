@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import {AppSettings} from 'app/appSettings';
 import {Challan} from '../models/Challan';
 import { CbDetails } from '../models/CbDetails';
@@ -23,6 +24,7 @@ export class ChallanService {
   private addNewBookToChallan_URL = AppSettings.API_ENDPOINT + '/cbDetails/';
   private getChallanById_URL = AppSettings.API_ENDPOINT + '/challan/';
   private saveChallan_URL = AppSettings.API_ENDPOINT + '/challan/';
+  private checkIfChallanIsSettled_URL = AppSettings.API_ENDPOINT + '/challan/checkIfChallanIsSettled/';
   getChallanListOfUsersCenter(): Observable<Challan[]> {
     return this.http.get<Challan[]>(this.challanListOfUserCenterURL);
   }
@@ -55,6 +57,12 @@ export class ChallanService {
     (<User>challan.userByIssuedTo) = tempuserByIssuedTo;
     (<User>challan.userByIssuedBy) = tempuserByIssuedBy;
     return this.http.put<Challan>(this.saveChallan_URL + challan.id, challan, AppSettings.HTTP_OPTIONS);
+  }
+
+  checkIfChallanIsSettled(id: any): Observable<boolean> {
+    return this.http.get<boolean>(this.checkIfChallanIsSettled_URL + id).pipe(
+      map(data => !data)
+    );
   }
 
 }

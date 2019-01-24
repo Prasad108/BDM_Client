@@ -11,6 +11,7 @@ import { UpdateInventryComponent } from './inventry/update-inventry/update-inven
 import { AddNewBookToChallanComponent } from './edit-challan/add-new-book-to-challan/add-new-book-to-challan.component';
 import { RequestNewBookComponent } from './inventry/request-new-book/request-new-book.component';
 import { SettleChallanComponent } from './edit-challan/settle-challan/settle-challan.component';
+import { EditChallanGuard } from 'app/shared/guards/edit-challan.guard';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
   {path: 'admin/challans', component: ChallanListComponent},
   {path: 'admin/challans/new', component: NewChallanComponent},
   {path: 'admin/challans/details/:id', component: ChallanDetailsComponent},
-  {path: 'admin/challans/edit/:id', component: EditChallanComponent},
+  {path: 'admin/challans/edit/:id', component: EditChallanComponent, canActivate: [EditChallanGuard] },
   {path: 'admin/challans/edit/:id/update', component: AddUpdateChallanComponent },
   {path: 'admin/challans/edit/:id/addNewBook', component: AddNewBookToChallanComponent },
   {path: 'admin/challans/edit/:id/settle', component: SettleChallanComponent },
