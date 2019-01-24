@@ -48,17 +48,13 @@ export class ChallanService {
   }
 
   saveChallan(challan: Challan): Observable<Challan> {
-    // issuedTo.id = <number> challan.userByIssuedTo;
-    // challan.userByIssuedTo = issuedTo;
-    // issuedBy.id = <number> challan.userByIssuedBy;
-    // challan.userByIssuedBy = issuedBy;
-
-
-    let obj = challan;
-     (<LooseObject>obj.userByIssuedTo).id = <number> challan.userByIssuedTo;
-     (<LooseObject>obj.userByIssuedBy).id = <number> challan.userByIssuedBy;
-    //  challan.userByIssuedBy;
-    return this.http.put<Challan>(this.saveChallan_URL + challan.id, obj, AppSettings.HTTP_OPTIONS);
+    const tempuserByIssuedTo: User = new User();
+    (<number> tempuserByIssuedTo.id) = <number> challan.userByIssuedTo;
+    const tempuserByIssuedBy: User = new User();
+    (<number> tempuserByIssuedBy.id) = <number> challan.userByIssuedBy;
+    (<User>challan.userByIssuedTo) = tempuserByIssuedTo;
+    (<User>challan.userByIssuedBy) = tempuserByIssuedBy;
+    return this.http.put<Challan>(this.saveChallan_URL + challan.id, challan, AppSettings.HTTP_OPTIONS);
   }
 
 }

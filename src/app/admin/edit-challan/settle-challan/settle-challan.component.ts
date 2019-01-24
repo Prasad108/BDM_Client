@@ -48,7 +48,10 @@ export class SettleChallanComponent implements OnInit {
     this.challan.settledDate = new Date();
     this.challan.cbDetailses = null;
     this.challanService.saveChallan(this.challan).subscribe(
-      data => this.toastr.success('Challan Settled Successfully'),
+      data => {
+          this.toastr.success('Challan Settled Successfully');
+          this.router.navigate([this.router.url.slice(0, -13) + 'details/' + this.challanId ]);
+        },
       error => this.toastr.error('Error while Settling Challan')
     );
 
