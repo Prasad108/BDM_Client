@@ -2,7 +2,7 @@
 <table class="table table-hover table-sm">
   <thead class="thead-light">
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">#</th>
       <th scope="col"><i class="fas fa-calendar-alt"></i> Issued Date</th>
       <th scope="col"><i class="fas fa-user-tie"></i> Issued By</th>
       <th scope="col"><i class="far fa-user"></i> Issued To</th>
@@ -11,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let challan of challanList; index as i" [class.table-primary]="challan.settled==1" [class.table-danger]="challan.settled==0">
+    <tr *ngFor="let challan of challanList | orderBy: 'id' : true ; index as i" [class.table-primary]="challan.settled==1" [class.table-danger]="challan.settled==0">
       <th scope="row"> {{i + 1 }}</th>
       <td>{{challan.issuedDate | date: 'MMM d, y'}}</td>
       <td>{{challan.userByIssuedBy.name}}</td>

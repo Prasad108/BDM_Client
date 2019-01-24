@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
 import {ToastaModule} from 'ngx-toasta';
+import { OrderModule } from 'ngx-order-pipe';
 
 import {ConstantsService} from './services/constants.service';
 import {TokenStorageService} from './services/token-storage.service';
@@ -35,6 +36,7 @@ import { ThreeSelectComponent } from './components/three-select/three-select.com
     CommonModule,
     RouterModule,
     MDBBootstrapModule,
+    OrderModule,
     ToastaModule.forRoot()
   ],
   providers: [
@@ -55,7 +57,8 @@ import { ThreeSelectComponent } from './components/three-select/three-select.com
     ChallansComponent,
     ChallanDetailsComponent,
     PageNotFoundComponent,
-    ThreeSelectComponent
+    ThreeSelectComponent,
+    OrderModule
   ]
 })
 export class SharedModule { }

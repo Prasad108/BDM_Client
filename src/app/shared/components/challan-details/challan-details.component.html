@@ -58,7 +58,7 @@
           </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let Book of challan.cbDetailses; let i=index">
+        <tr *ngFor="let Book of challan.cbDetailses | orderBy: 'id' ; let i=index">
           <td>{{i+1}}</td>
           <td>{{Book.book.name.name}} </td>
           <td>{{Book.book.languages.name}} </td>
