@@ -1,3 +1,4 @@
+<a [routerLink]="['/admin/challans/edit', challan.id]" *ngIf="roles.includes('ADMIN') && challan && challan.settled==0" ><button  class="btn btn-primary pull-right"><i class="fas fa-edit" ></i> Edit</button></a>
 <button class="btn btn-primary pull-right" (click)="print()"> <i class="fas fa-file-pdf"></i> print</button>
 
 <table id="ChallanSummary" class="table table-bordered " *ngIf="challan">

@@ -12,20 +12,29 @@ import { AddNewBookToChallanComponent } from './edit-challan/add-new-book-to-cha
 import { RequestNewBookComponent } from './inventry/request-new-book/request-new-book.component';
 import { SettleChallanComponent } from './edit-challan/settle-challan/settle-challan.component';
 import { EditChallanGuard } from 'app/shared/guards/edit-challan.guard';
+import { AdminGuard } from 'app/shared/guards/admin.guard';
 
 
 const routes: Routes = [
-  {path: 'admin', component: AdminHomeComponent},
-  {path: 'admin/challans', component: ChallanListComponent},
-  {path: 'admin/challans/new', component: NewChallanComponent},
-  {path: 'admin/challans/details/:id', component: ChallanDetailsComponent},
-  {path: 'admin/challans/edit/:id', component: EditChallanComponent, canActivate: [EditChallanGuard] },
-  {path: 'admin/challans/edit/:id/update', component: AddUpdateChallanComponent },
-  {path: 'admin/challans/edit/:id/addNewBook', component: AddNewBookToChallanComponent },
-  {path: 'admin/challans/edit/:id/settle', component: SettleChallanComponent },
-  {path: 'admin/inventry', component: InventryComponent},
-  {path: 'admin/inventry/bookName', component: UpdateInventryComponent},
-  {path: 'admin/inventry/RequestNewBook', component: RequestNewBookComponent}
+  {path: 'admin', component: AdminHomeComponent,
+  canActivate: [AdminGuard],
+    children: [
+    {
+      path: '',
+      children: [
+        {path: 'challans', component: ChallanListComponent},
+        {path: 'challans/new', component: NewChallanComponent},
+        {path: 'challans/details/:id', component: ChallanDetailsComponent},
+        {path: 'challans/edit/:id', component: EditChallanComponent, canActivate: [EditChallanGuard] },
+        {path: 'challans/edit/:id/update', component: AddUpdateChallanComponent , canActivate: [EditChallanGuard] },
+        {path: 'challans/edit/:id/addNewBook', component: AddNewBookToChallanComponent, canActivate: [EditChallanGuard] },
+        {path: 'challans/edit/:id/settle', component: SettleChallanComponent },
+        {path: 'inventry', component: InventryComponent},
+        {path: 'inventry/bookName', component: UpdateInventryComponent},
+        {path: 'inventry/RequestNewBook', component: RequestNewBookComponent}
+      ]
+    }]
+  },
 ];
 
 @NgModule({

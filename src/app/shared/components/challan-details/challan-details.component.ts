@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {ChallanService} from 'app/shared/services/challan.service';
 import {Challan} from 'app/shared/models/Challan';
+import { TokenStorageService } from 'app/shared/services/token-storage.service';
 
 import 'jspdf';
 import 'jspdf-autotable';
@@ -17,9 +18,11 @@ export class ChallanDetailsComponent implements OnInit {
   challan: Challan;
   issuedTotal: Number = 0;
   salevalueTotal: Number = 0;
+  roles: string[] = [];
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private challanService: ChallanService
+              private challanService: ChallanService,
+              private tokenStorage: TokenStorageService
                 ) { }
 
   ngOnInit() {
@@ -27,6 +30,10 @@ export class ChallanDetailsComponent implements OnInit {
       this.id = params.get('id');
       this.challanService.getDetailedChallan(this.id).subscribe(data => this.challan = data);
     });
+
+    if (this.tokenStorage.getToken()) {
+      this.roles = this.tokenStorage.getAuthorities();
+    }
 
   }
 
