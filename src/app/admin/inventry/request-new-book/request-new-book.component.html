@@ -1,3 +1,40 @@
-<p>
-  request-new-book works!
-</p>
+<div class="container">
+<form #form="ngForm" (submit)="onSubmit(form)">
+    <div class="form-group">
+      <label class="control-label col-sm-3 inputLabel">Book Name
+      <input #BookName="ngModel" required type="text" class="form-control" placeholder="Book Name" 
+      name="bookName" [(ngModel)]="newBookData.bookName">
+      <div *ngIf="BookName.invalid && BookName.touched" class="alert alert-danger" role="alert">
+            Book Name is reuired...
+      </div>
+      {{BookName.touched}}
+    </label>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-3 inputLabel">Language
+      <input #lang="ngModel" type="text" required class="form-control" placeholder="Book Language" 
+      name="lang" [(ngModel)]="newBookData.lang">
+      <div *ngIf="lang.invalid && lang.touched" class="alert alert-danger" role="alert">
+        Book Language is reuired...
+      </div>
+    </label>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-3 inputLabel"> Type
+      <input #type="ngModel" type="text" required class="form-control" placeholder="Book Type" 
+      name="bookType" [(ngModel)]="newBookData.bookType">
+      <div *ngIf="type.invalid && type.touched" class="alert alert-danger" role="alert">
+        Book Type is reuired...
+      </div>
+    </label>
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-primary waves-effect waves-light"
+      [disabled]="form.invalid">Request Book</button>
+    </div>
+
+</form>
+</div>

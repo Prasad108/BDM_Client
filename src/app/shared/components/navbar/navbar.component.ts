@@ -34,6 +34,10 @@ export class NavbarComponent implements OnInit {
   isUser(): boolean {
     return this.tokenStorage.getAuthorities().includes(UserRoles.USER);
   }
+
+  isSuperadmin(): boolean {
+    return this.tokenStorage.getAuthorities().includes(UserRoles.SUPERADMIN);
+  }
   logout() {
     this.tokenStorage.signOut();
     this.router.navigate(['/home']);

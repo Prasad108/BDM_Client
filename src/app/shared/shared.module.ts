@@ -20,6 +20,7 @@ import { CbDetailsService } from './services/cb-details.service';
 import { UserService } from './services/user.service';
 import { InventryService } from './services/inventry.service';
 import { ThreeSelectComponent } from './components/three-select/three-select.component';
+import { RequestNewBookService } from './services/request-new-book.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ThreeSelectComponent } from './components/three-select/three-select.com
     ShairedService,
     CbDetailsService,
     UserService,
-    InventryService
+    InventryService,
+    RequestNewBookService
   ],
   exports: [
     ToastaModule,
