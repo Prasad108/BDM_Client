@@ -1,35 +1,56 @@
 <div class="container">
 <form #form="ngForm" (submit)="onSubmit(form)">
-    <div class="form-group">
-      <label class="control-label col-sm-3 inputLabel">Book Name
-      <input #BookName="ngModel" required type="text" class="form-control" placeholder="Book Name" 
-      name="bookName" [(ngModel)]="newBookData.bookName">
-      <div *ngIf="BookName.invalid && BookName.touched" class="alert alert-danger" role="alert">
+    <div class="form-group row">
+      <label class="control-label col-sm-3 inputLabel">Book Name</label>
+      <div class="col-xs-2 inputStyle">
+          <input #BookName="ngModel" required type="text" class="form-control" placeholder="Book Name" 
+          name="bookName" [(ngModel)]="newBookData.bookName">
+          <div *ngIf="BookName.invalid && BookName.touched" class="alert alert-danger" role="alert">
             Book Name is reuired...
+          </div>
       </div>
-      {{BookName.touched}}
-    </label>
     </div>
 
-    <div class="form-group">
-      <label class="control-label col-sm-3 inputLabel">Language
-      <input #lang="ngModel" type="text" required class="form-control" placeholder="Book Language" 
-      name="lang" [(ngModel)]="newBookData.lang">
-      <div *ngIf="lang.invalid && lang.touched" class="alert alert-danger" role="alert">
-        Book Language is reuired...
-      </div>
-    </label>
+    <div class="form-group row">
+        <label class="control-label col-sm-3 inputLabel">Language</label>
+        <div class="col-xs-2 inputStyle">  
+            <input #lang="ngModel" type="text" required class="form-control" placeholder="Book Language" 
+            name="lang" [(ngModel)]="newBookData.lang">
+            <div *ngIf="lang.invalid && lang.touched" class="alert alert-danger" role="alert">
+                 Book Language is reuired...
+            </div>
+        </div>
     </div>
 
-    <div class="form-group">
-      <label class="control-label col-sm-3 inputLabel"> Type
-      <input #type="ngModel" type="text" required class="form-control" placeholder="Book Type" 
-      name="bookType" [(ngModel)]="newBookData.bookType">
-      <div *ngIf="type.invalid && type.touched" class="alert alert-danger" role="alert">
-        Book Type is reuired...
-      </div>
-    </label>
+    <div class="form-group row">
+        <label class="control-label col-sm-3 inputLabel"> Type</label>
+        <div class="col-xs-2 inputStyle">
+             <input #type="ngModel" type="text" required class="form-control" placeholder="Book Type" 
+             name="bookType" [(ngModel)]="newBookData.bookType">
+             <div *ngIf="type.invalid && type.touched" class="alert alert-danger" role="alert">
+                 Book Type is reuired...
+              </div>
+        </div>
     </div>
+
+    <div class="form-group row">
+      <label class="control-label col-sm-3 inputLabel"> Price</label>
+      <div class="col-xs-2 inputStyle">
+        <input type="number" pattern="^[0-9]+$" class="form-control" placeholder="Price"
+        name="price" [(ngModel)]="newBookData.price">
+        <div *ngIf="type.invalid && type.touched" class="alert alert-danger" role="alert">
+            Book price is reuired...
+         </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-sm-3 inputLabel"> Abbrivation</label>
+        <div class="col-xs-2 inputStyle">
+          <input type="text" class="form-control" placeholder="Abbrivation"
+          name="abbrivation" [(ngModel)]="newBookData.abbrivation">
+        </div>
+      </div>
 
     <div>
       <button type="submit" class="btn btn-primary waves-effect waves-light"

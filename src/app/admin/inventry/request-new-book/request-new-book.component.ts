@@ -10,7 +10,7 @@ import { RequestNewBookService } from 'app/shared/services/request-new-book.serv
 })
 export class RequestNewBookComponent implements OnInit {
 
-  newBookData=new  NewBook("","","",0);
+  newBookData:NewBook;
 
   constructor(private newBookRequestService: RequestNewBookService) { }
 

@@ -9,13 +9,19 @@ import { AppSettings } from 'app/appSettings';
 })
 export class RequestNewBookService {
 
-  private challanListOfUserCenterURL = AppSettings.API_ENDPOINT + '/newBookRequest/';
+  private newBookServiceRequestFormURL = AppSettings.API_ENDPOINT + '/newBookRequest/';
+  private newBookServiceRequestsURL = AppSettings.API_ENDPOINT + '/newBookRequest/';
 
   constructor(private http: HttpClient) { }
 
   postNewBookRequestForm(newBook: NewBook): Observable<NewBook>{
     console.log("posting form",newBook);
-    return this.http.put<NewBook>(this.challanListOfUserCenterURL,newBook,AppSettings.HTTP_OPTIONS);
+    return this.http.put<NewBook>(this.newBookServiceRequestFormURL,newBook,AppSettings.HTTP_OPTIONS);
+  }
+
+  getNewBookServiceRequests():Observable<NewBook[]>
+  {
+    return this.http.get<NewBook[]>(this.newBookServiceRequestsURL);
   }
 
 }
