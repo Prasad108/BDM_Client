@@ -1,0 +1,23 @@
+<div class="table-responsive">
+<table class="table table-hover table-sm">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col"><i class="fas fa-user-tie"></i>User Name</th>
+      <th scope="col"><i class="fas fa-book-open"></i>Book Name</th>
+      <th scope="col">Status</th>
+      <th scope="col"><i class="fas fa-cogs"></i>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let request of model"> 
+        <td>{{request.user}}</td>
+        <td>{{request.bookName}}</td>
+        <td>{{request.status}}</td>
+        <td><button class="btn btn-info btn-sm">Validate</button></td>
+      </tr>
+  </tbody>
+
+  
+</table>
+
+</div>

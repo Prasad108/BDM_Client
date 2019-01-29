@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NewBook } from 'app/shared/models/NewBookModel';
 
 @Component({
   selector: 'app-superadmin-home',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class SuperadminHomeComponent implements OnInit {
 
   constructor() { }
+
+  newBook : NewBook;
 
   ngOnInit() {
   }

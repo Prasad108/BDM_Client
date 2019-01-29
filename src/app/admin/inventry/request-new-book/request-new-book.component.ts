@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { NewBook } from 'app/shared/models/NewBookModel';
+import { NgForm } from '@angular/forms';
+import { RequestNewBookService } from 'app/shared/services/request-new-book.service';
 
 @Component({
   selector: 'app-request-new-book',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestNewBookComponent implements OnInit {
 
-  constructor() { }
+  newBookData:NewBook;
+
+  constructor(private newBookRequestService: RequestNewBookService) { }
 
   ngOnInit() {
+  }
+
+  onSubmit(form: NgForm){
+    
+    this.newBookRequestService.postNewBookRequestForm(this.newBookData)
+        .subscribe(
+          data => console.log("data->",data),
+          err => console.log("error-> ",err)
+        )
   }
 
 }

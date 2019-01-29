@@ -43,6 +43,16 @@
         </li>
       </ng-container>
 
+      <ng-container *ngIf="isSuperadmin()" style="display:inline;">
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/superAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> <i class="fa fa-user"></i>Super Admin</a>
+          </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/superAdmin/newBookRequests" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> <i class="fa fa-user"></i>New Book Requests</a>
+        </li>
+    </ng-container>
+
     <li class="nav-item" *ngIf="isLoggedIn">
       <a class="nav-link" (click)="logout()">
           <i class="fas fa-sign-out-alt"></i> Log out
