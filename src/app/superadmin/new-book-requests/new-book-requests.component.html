@@ -2,19 +2,58 @@
 <table class="table table-hover table-sm">
   <thead class="thead-light">
     <tr>
-      <th scope="col"><i class="fas fa-user-tie"></i>User Name</th>
-      <th scope="col"><i class="fas fa-book-open"></i>Book Name</th>
+      <th scope="col"><i class="fas fa-user-tie"></i> User Name</th>
+      <th scope="col"><i class="fas fa-book-open"></i> Book Name</th>
+      <th scope="col">Language</th>
+      <th scope="col">Book Type</th>
+      <th scope="col">Price</th>
+      <th scope="col">Abbrivation</th>
       <th scope="col">Status</th>
+      <th scope="col">Remark</th>
       <th scope="col"><i class="fas fa-cogs"></i>Action</th>
     </tr>
   </thead>
   <tbody>
+   <!--   <form #form="ngForm" (change)="onSubmit(form)"> -->
       <tr *ngFor="let request of model"> 
         <td>{{request.user}}</td>
         <td>{{request.bookName}}</td>
-        <td>{{request.status}}</td>
-        <td><button class="btn btn-info btn-sm">Validate</button></td>
+        <td>{{request.language}}</td>
+        <td>{{request.bookType}}</td>
+        <td>{{request.price}}</td>
+        <td>{{request.abbrivation}}</td>
+        <td>
+              <div *ngIf="request.status=='pending'">
+                  <select #statusUpdated class="form-control" name="request.status"
+                  [(ngModel)]="updatedNewBook.status">
+                    <option *ngFor="let st of status">
+                        {{st}}
+                    </option>
+                  </select>
+              </div>
+              <div *ngIf="request.status=='approved'">
+                    <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+              </div>
+              <div *ngIf="request.status=='rejected'">
+                    <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+              </div>
+        </td>
+        <td>
+          <div *ngIf="request.status!='pending'">
+            <div>{{request.remark}}</div>
+          </div>
+          <div *ngIf="request.status=='pending'">
+              <input class="form-control" type="text" name="remark" value="{{request.remark}}" 
+              [(ngModel)]="updatedNewBook.remark">
+            </div>
+        </td>
+        <td>
+          <div *ngIf="request.status=='pending'">
+            <button class="btn btn-primary" type="submit" (click)="onSubmit()">Submit</button>
+          </div>
+        </td>
       </tr>
+    <!-- </form> -->
   </tbody>
 
   

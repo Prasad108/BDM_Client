@@ -11,6 +11,7 @@ export class RequestNewBookService {
 
   private newBookServiceRequestFormURL = AppSettings.API_ENDPOINT + '/newBookRequest/';
   private newBookServiceRequestsURL = AppSettings.API_ENDPOINT + '/newBookRequest/';
+  private newBookRequestByIdURL=AppSettings.API_ENDPOINT + '/newBookRequest/validate/';
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +23,10 @@ export class RequestNewBookService {
   getNewBookServiceRequests():Observable<NewBook[]>
   {
     return this.http.get<NewBook[]>(this.newBookServiceRequestsURL);
+  }
+
+  getRequestById(id):Observable<NewBook>{
+    return this.http.get<NewBook>(this.newBookRequestByIdURL+id);
   }
 
 }

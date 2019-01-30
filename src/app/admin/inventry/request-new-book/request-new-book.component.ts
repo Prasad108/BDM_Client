@@ -10,7 +10,7 @@ import { RequestNewBookService } from 'app/shared/services/request-new-book.serv
 })
 export class RequestNewBookComponent implements OnInit {
 
-  newBookData:NewBook;
+  newBookData = new NewBook(0,'','','',0,'','','','');
 
   constructor(private newBookRequestService: RequestNewBookService) { }
 
@@ -18,10 +18,10 @@ export class RequestNewBookComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-    
+    console.log(form);
     this.newBookRequestService.postNewBookRequestForm(this.newBookData)
         .subscribe(
-          data => console.log("data->",data),
+          data => console.log("data->",this.newBookData),
           err => console.log("error-> ",err)
         )
   }
