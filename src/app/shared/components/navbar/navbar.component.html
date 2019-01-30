@@ -49,8 +49,12 @@
           </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/superAdmin/newBookRequests" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> <i class="fa fa-user"></i>New Book Requests</a>
+          <a class="nav-link" routerLink="/superAdmin/newBookRequests" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> New Book Requests</a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/superAdmin/bookManagement" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> Book Management</a>
+          </li>
     </ng-container>
 
     <li class="nav-item" *ngIf="isLoggedIn">
