@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NewBook } from 'app/shared/models/NewBookModel';
 import { NgForm } from '@angular/forms';
 import { RequestNewBookService } from 'app/shared/services/request-new-book.service';
+import { ToastaService } from 'ngx-toasta';
 
 @Component({
   selector: 'app-request-new-book',
@@ -12,7 +13,7 @@ export class RequestNewBookComponent implements OnInit {
 
   newBookData = new NewBook(0,'','','',0,'','','','');
 
-  constructor(private newBookRequestService: RequestNewBookService) { }
+  constructor(private newBookRequestService: RequestNewBookService,private toastr: ToastaService) { }
 
   ngOnInit() {
   }
@@ -21,8 +22,10 @@ export class RequestNewBookComponent implements OnInit {
     console.log(form);
     this.newBookRequestService.postNewBookRequestForm(this.newBookData)
         .subscribe(
-          data => console.log("data->",this.newBookData),
-          err => console.log("error-> ",err)
+          data => {console.log("data->",this.newBookData);
+        this.toastr.success("Request sent successfully")},
+          err => {console.log("error-> ",err);
+        this.toastr.error("Error accoured while sending request")}
         )
   }
 
