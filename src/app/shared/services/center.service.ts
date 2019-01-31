@@ -10,12 +10,16 @@ import { Center } from './../../shared/models/Center';
 })
 export class CenterService {
 
-  private getAllCenter_URL = AppSettings.API_ENDPOINT + '/center/';
+  private Center_URL = AppSettings.API_ENDPOINT + '/center/';
 
   constructor(private http: HttpClient) { }
 
   getAllCenter(): Observable <Center[]> {
-    return this.http.get<Center[]>(this.getAllCenter_URL);
+    return this.http.get<Center[]>(this.Center_URL);
+  }
+
+  createNew(center: Center): Observable <Center> {
+    return this.http.put<Center>(this.Center_URL, center, AppSettings.HTTP_OPTIONS);
   }
 
 
