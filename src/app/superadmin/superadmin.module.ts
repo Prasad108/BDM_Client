@@ -6,12 +6,16 @@ import { NewBookRequestsComponent } from './new-book-requests/new-book-requests.
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
 import { BookManagementComponent } from './book-management/book-management.component';
+import { CentersComponent } from './centers/centers.component';
+import { CreateNewCenterComponent } from './centers/create-new-center/create-new-center.component';
 @NgModule({
-  declarations: 
+  declarations:
     [
       SuperadminHomeComponent,
       NewBookRequestsComponent,
-      BookManagementComponent
+      BookManagementComponent,
+      CentersComponent,
+      CreateNewCenterComponent
     ],
   imports: [
     CommonModule,
