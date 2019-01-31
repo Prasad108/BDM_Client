@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule , DropdownModule} from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
 import {ToastaModule} from 'ngx-toasta';
 import { OrderModule } from 'ngx-order-pipe';
@@ -36,8 +36,9 @@ import { RequestNewBookService } from './services/request-new-book.service';
     FormsModule,
     CommonModule,
     RouterModule,
-    MDBBootstrapModule,
+    MDBBootstrapModule.forRoot(),
     OrderModule,
+    DropdownModule.forRoot(),
     ToastaModule.forRoot()
   ],
   providers: [
