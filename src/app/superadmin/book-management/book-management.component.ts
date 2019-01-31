@@ -13,16 +13,16 @@ import { ToastaService } from 'ngx-toasta';
 })
 export class BookManagementComponent implements OnInit {
 
-  bookName = new BookName(0,'',''); 
-  language = new Language(0,'');
-  type = new Type(0,'');
+  bookName = new BookName(0, '', '');
+  language = new Language(0, '');
+  type = new Type(0, '');
 
-  constructor(private bookNameService: BookService,private toastr: ToastaService) { }
+  constructor(private bookNameService: BookService, private toastr: ToastaService) { }
 
   ngOnInit() {
   }
 
-  submitBook(form : NgForm){
+  submitBook(form: NgForm) {
     console.log(form);
     this.bookNameService.addBookName(this.bookName).subscribe(
       data => {console.log(this.bookName);
@@ -32,17 +32,18 @@ export class BookManagementComponent implements OnInit {
     );
   }
 
-  submitLang(form : NgForm){
+  submitLang(form: NgForm) {
     console.log(form);
     this.bookNameService.addLanguage(this.language).subscribe(
       data => {console.log(this.bookName);
-      this.toastr.success('Book Language created successfully!');},
+      this.toastr.success('Book Language created successfully!'); },
       err => {console.log(err),
-        this.toastr.error('Error in creating Book')}
+        this.toastr.error('Error in creating Book');
+      }
     );
-  } 
+  }
 
-  submitType(form : NgForm){
+  submitType(form: NgForm) {
     console.log(form.value);
     this.bookNameService.addType(this.type).subscribe(
       data => {console.log(this.bookName);

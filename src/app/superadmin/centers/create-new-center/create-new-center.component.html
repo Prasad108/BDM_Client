@@ -1,0 +1,60 @@
+<div id="compDiv">
+<form #AddNewCenter="ngForm" (submit)="addNewCenter()">
+    <div class="form-group row">
+        <label class="control-label col-sm-3 inputLabel" for="centerName">Name :</label>
+        <div class="col-xs-2 inputStyle" >
+          <input class="form-control" type="text"  id="centerName" required  name="centerName"
+          #centerNameInput="ngModel"
+          [(ngModel)]="center.name"  (input)="validateName()" required
+            >
+          <div *ngIf="centerNameError && centerNameInput.dirty" class="alert alert-danger justify-content-center" role="alert">
+            Name is required
+        </div>
+     </div>
+  </div>
+  <div class="form-group row">
+      <label class="control-label col-sm-3 inputLabel" for="centerLocation">  Location :</label>
+      <div class="col-xs-2 inputStyle" >
+        <input class="form-control" type="text"  id="centerLocation" required  name="centerLocation"
+        #centerLocationInput="ngModel"
+        [(ngModel)]="center.location"  (input)="validateLocation()" required
+          >
+        <div *ngIf="centerLocationError && centerLocationInput.dirty" class="alert alert-danger justify-content-center" role="alert">
+         Location is required
+      </div>
+   </div>
+  </div>
+  <div class="form-group row">
+      <label class="control-label col-sm-3 inputLabel" for="centerPM">  Project Manager:</label>
+      <div class="col-xs-2 inputStyle" >
+        <input class="form-control" type="text"  id="centerPM" required  name="centerPM"
+        #centerPMInput="ngModel"
+        [(ngModel)]="center.pm"  required
+          >
+        <div *ngIf="(center.pm === undefined || center.pm === '') && centerPMInput.dirty" class="alert alert-danger justify-content-center" role="alert">
+         Project Manager is required
+      </div>
+   </div>
+  </div>
+  <div class="form-group row">
+      <label class="control-label col-sm-3 inputLabel" for="centerPOC">  Point Of Contact Details:</label>
+      <div class="col-xs-2 inputStyle" >
+        <input class="form-control" type="text"  id="centerPOC" required  name="centerPOC"
+        #centerPOCInput="ngModel"
+        [(ngModel)]="center.pocDetails"   required
+          >
+        <div *ngIf="(center.pocDetails === undefined || center.pocDetails === '') && centerPOCInput.dirty" class="alert alert-danger justify-content-center" role="alert">
+         POC details are required
+      </div>
+   </div>
+  </div>
+  <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-xs-2 col-sm-offset-3 inputStyle">
+          <button type="submit" [disabled]="AddNewCenter.invalid"
+              class="btn btn-primary waves-effect waves-light">Save
+              <i class="fas fa-save"></i> </button>
+      </div>
+  </div>
+</form>
+</div>

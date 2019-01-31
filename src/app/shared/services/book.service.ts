@@ -14,8 +14,8 @@ export class BookService {
   private getAllBookNameOfUsersInventory_URL = AppSettings.API_ENDPOINT + '/bookName/getAllBookNameOfUsersInventory';
   private getBooNameOfAllBooks_URL = AppSettings.API_ENDPOINT + '/bookName/getBooNameOfAllBooks';
   private addBookName_URL = AppSettings.API_ENDPOINT + '/bookName/';
-  private addLanguage_URL = AppSettings.API_ENDPOINT+ '/languages/';
-  private addType_URL = AppSettings.API_ENDPOINT+ '/type/';
+  private addLanguage_URL = AppSettings.API_ENDPOINT + '/languages/';
+  private addType_URL = AppSettings.API_ENDPOINT + '/type/';
 
   constructor(private http: HttpClient) { }
 
@@ -27,15 +27,15 @@ export class BookService {
     return this.http.get<BookName[]>(this.getBooNameOfAllBooks_URL);
   }
 
-  addBookName(BookName):Observable<BookName>{
-    return this.http.put<BookName>(this.addBookName_URL,BookName,AppSettings.HTTP_OPTIONS);
+  addBookName(bookName): Observable<BookName> {
+    return this.http.put<BookName>(this.addBookName_URL, bookName, AppSettings.HTTP_OPTIONS);
   }
 
-  addLanguage(lang):Observable<Language>{
-    return this.http.put<Language>(this.addLanguage_URL,lang,AppSettings.HTTP_OPTIONS);
+  addLanguage(lang): Observable<Language> {
+    return this.http.put<Language>(this.addLanguage_URL, lang, AppSettings.HTTP_OPTIONS);
   }
 
-  addType(type):Observable<Type>{
-    return this.http.put<Type>(this.addType_URL,type,AppSettings.HTTP_OPTIONS);
+  addType(type): Observable<Type> {
+    return this.http.put<Type>(this.addType_URL, type, AppSettings.HTTP_OPTIONS);
   }
 }

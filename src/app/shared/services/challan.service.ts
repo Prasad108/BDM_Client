@@ -7,9 +7,6 @@ import {Challan} from '../models/Challan';
 import { CbDetails } from '../models/CbDetails';
 import { User } from '../models/User';
 
-interface LooseObject {
-  [key: string]: any;
-}
 @Injectable({
   providedIn: 'root'
 })

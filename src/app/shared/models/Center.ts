@@ -6,7 +6,7 @@ export class Center {
         pocDetails: string;
 
 
-constructor($id: number, $name: string, $location: string, $pm: string, $pocDetails: string) {
+constructor($id?: number, $name?: string, $location?: string, $pm?: string, $pocDetails?: string) {
 this.id = $id;
 this.name = $name;
 this.location = $location;

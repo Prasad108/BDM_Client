@@ -1,0 +1,30 @@
+
+<div id="compDiv">
+    <a [routerLink] = "['new']"><button class="btn btn-primary" > <i class="fas fa-plus-square"></i> Create New Center</button></a>
+    <table class="table   table-responsive-lg" *ngIf="NoCenter">
+        <caption style="caption-side: top;"></caption>
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col"> Name</th>
+                <th scope="col"><i class="fas fa-map-marker-alt"></i> location</th>
+                <th scope="col"><i class="fas fa-user-tie"></i> PM</th>
+                <th scope="col">POC</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let center of centers;  index as i">
+            <td>{{i+1}}</td>
+            <td>{{center.name}} </td>
+            <td>{{center.location}} </td>
+            <td>{{center.pm}} </td>
+            <td>{{center.pocDetails }} </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <ng-template #NoCenter>
+
+      </ng-template>
+</div>

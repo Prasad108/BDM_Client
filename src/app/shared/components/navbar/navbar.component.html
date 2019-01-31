@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#"><i class="fa fa-book"></i> 
+  <a class="navbar-brand" href="#"><i class="fa fa-book"></i>
     BDM
   </a>
 
@@ -7,7 +7,7 @@
           (click)="toggleNavbar()">
     <span class="navbar-toggler-icon"></span>
   </button>
-  
+
 
   <div class="collapse navbar-collapse"
        [ngClass]="{ 'show': navbarOpen }">
@@ -19,7 +19,7 @@
       <li class="nav-item" *ngIf="!isLoggedIn">
         <a  routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link"> <i class="fas fa-sign-in-alt"></i> Login</a>
       </li>
-      
+
 
       <ng-container *ngIf="isAdmin()" style="display:inline;">
           <li class="nav-item">
@@ -32,7 +32,7 @@
               <a class="nav-link" routerLink="admin/inventry" routerLinkActive="active" > <i class="fas fa-clipboard-list"></i> Inventry</a>
             </li>
       </ng-container>
-      
+
       <ng-container *ngIf="isUser()">
         <li class="nav-item" >
           <a class="nav-link" routerLink="/user" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">User</a>
@@ -52,16 +52,17 @@
           <a class="nav-link" routerLink="/superAdmin/newBookRequests" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> New Book Requests</a>
         </li>
 
+
         <li class="nav-item ">
          
             <a class="nav-link " routerLink="/superAdmin/bookManagement" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> Book Management</a>
         </li>
           
-          <li class="btn-group nav-item" mdbDropdown>
+        <li class="btn-group nav-item" mdbDropdown>
               <a mdbDropdownToggle  color="primary" 
-              class="dropdown-toggle waves-light nav-link " mdbWavesEffect>
+                class="dropdown-toggle waves-light nav-link " mdbWavesEffect>
                 Book
-          </a>
+              </a>
             
               <div class="dropdown-menu dropdown-primary">
                   <a class="dropdown-item"  >Book Name</a>
@@ -69,9 +70,10 @@
                 <a class="dropdown-item"  >Language</a>
                 <a class="dropdown-item"  >Type</a>
               </div>
-            </li>
-            
-          
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/superAdmin/centers" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> Centers </a>
+        </li>
     </ng-container>
 
     <li class="nav-item" *ngIf="isLoggedIn">
@@ -79,7 +81,7 @@
           <i class="fas fa-sign-out-alt"></i> Log out
       </a>
     </li>
-      
+
 
 
     </ul>
