@@ -10,6 +10,7 @@
                 <th scope="col"><i class="fas fa-map-marker-alt"></i> location</th>
                 <th scope="col"><i class="fas fa-user-tie"></i> PM</th>
                 <th scope="col">POC</th>
+                <th scope="col"> View</th>
             </tr>
             </thead>
             <tbody>
@@ -19,6 +20,7 @@
             <td>{{center.location}} </td>
             <td>{{center.pm}} </td>
             <td>{{center.pocDetails }} </td>
+            <td>   <a [routerLink]="[ center.id, 'users']"><button class="btn btn-info btn-sm"><i class="fas fa-users fa-2x"></i></button></a></td>
             </tr>
         </tbody>
 

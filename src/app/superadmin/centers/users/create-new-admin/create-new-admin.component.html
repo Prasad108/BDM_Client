@@ -1,0 +1,70 @@
+<div id="compDiv">
+    <form #createNewAdmin="ngForm" (submit)="createNewAdmin()">
+        <div class="form-group row">
+            <label class="control-label col-sm-3 inputLabel" for="userName">Name :</label>
+            <div class="col-xs-2 inputStyle" >
+              <input class="form-control" type="text"  id="userName" required  name="userName"
+              #userNameInput="ngModel"
+              [(ngModel)]="user.name"   required
+                >
+              <div *ngIf="(user.name === undefined || user.name === '') && userNameInput.dirty" class="alert alert-danger justify-content-center" role="alert">
+                Name is required
+            </div>
+         </div>
+      </div>
+      <div class="form-group row">
+          <label class="control-label col-sm-3 inputLabel" for="userCounceller">  Counceller :</label>
+          <div class="col-xs-2 inputStyle" >
+            <input class="form-control" type="text"  id="userCounceller" required  name="userCounceller"
+            #userCouncellerInput="ngModel" [(ngModel)]="user.counceller"  >
+       </div>
+      </div>
+      <div class="form-group row">
+          <label class="control-label col-sm-3 inputLabel" for="userEmail">  Email:</label>
+          <div class="col-xs-2 inputStyle" >
+            <input class="form-control" type="email"  id="userEmail" required  name="userEmail"
+            #userEmailInput="ngModel"
+            [(ngModel)]="user.email"  required   pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+              >
+            <div *ngIf="userEmailInput.invalid && userEmailInput.dirty" class="alert alert-danger justify-content-center" role="alert">
+             Please Enter Valid Email
+          </div>
+       </div>
+      </div>
+      <div class="form-group row">
+          <label class="control-label col-sm-3 inputLabel" for="userMob">  Mobile Number:</label>
+          <div class="col-xs-2 inputStyle" >
+            <input class="form-control" type="number"  id="userMob" required  name="userMob"
+            #userMobInput="ngModel"
+            [(ngModel)]="user.mob"   required pattern="^[789]\d{9}$"
+              >
+            <div *ngIf="userMobInput.invalid && userMobInput.dirty" class="alert alert-danger justify-content-center" role="alert">
+                Please Enter Valid Mobile Number
+          </div>
+       </div>
+      </div>
+      <div class="form-group row">
+          <label class="control-label col-sm-3 inputLabel" for="userUserName">User Name :</label>
+          <div class="col-xs-2 inputStyle" >
+            <input class="form-control" type="text"  id="userUserName" required  name="ususerUserNameerName"
+            #userUserNameInput="ngModel"
+            [(ngModel)]="user.username"   required  required pattern="^.{3,50}$"
+              >
+            <div *ngIf="userUserNameInput.invalid && userUserNameInput.dirty" class="alert alert-danger justify-content-center" role="alert">
+              User Name is required with min 3 char and max 50 char
+          </div>
+       </div>
+    </div>
+    <div class="alert alert-warning row" role="alert">
+       Thise Users By default PASSWORD would be his contact number
+      </div>
+      <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-xs-2 col-sm-offset-3 inputStyle">
+              <button type="submit" [disabled]="createNewAdmin.invalid"
+                  class="btn btn-primary waves-effect waves-light">Save
+                  <i class="fas fa-save"></i> </button>
+          </div>
+      </div>
+    </form>
+    </div>
