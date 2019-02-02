@@ -1,7 +1,9 @@
-<p>
-  home works!
-</p>
+<ng-template #loggedOut>
+  Please login.
+</ng-template>
+<app-comman-home></app-comman-home>
 <div *ngIf="info.token; else loggedOut">
+  <br>
   <h5 class="text-primary">Your Information</h5>
   <p>
     <strong>Username:</strong> {{info.username}}<br/>
@@ -11,7 +13,3 @@
   </p>
   <button class="btn btn-secondary" (click)="logout()">Logout</button>
 </div>
-
-<ng-template #loggedOut>
-  Please login.
-</ng-template>
