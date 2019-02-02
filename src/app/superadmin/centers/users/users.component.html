@@ -1,0 +1,35 @@
+
+<div id="compDiv">
+    <a [routerLink] = "['newAdmin']"><button class="btn btn-primary" > <i class="fas fa-plus-square"></i> &nbsp; &nbsp;<i class="fas fa-user-tie"></i> Create New Admin</button></a>
+    <table class="table   table-responsive-lg" *ngIf="NoCenter">
+        <caption style="caption-side: top;"></caption>
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th  scope="col">ID</th>
+                <th scope="col"> Name</th>
+                <th scope="col"> Counceller</th>
+                <th scope="col">Email</th>
+                <th scope="col">Mob No</th>
+                <th scope="col">Role</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users;  index as i">
+            <td>{{i+1}}</td>
+            <td>{{user.id}} </td>
+            <td>{{user.name}} </td>
+            <td>{{user.counceller}} </td>
+            <td>{{user.email}} </td>
+            <td>{{user.mob }} </td>
+            <td *ngIf="user.roles === 1">User</td>
+            <td *ngIf="user.roles === 2">Admin</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <ng-template #NoCenter>
+
+      </ng-template>
+</div>
