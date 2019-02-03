@@ -1,15 +1,4 @@
-<ng-template #loggedOut>
-  Please login.
-</ng-template>
+<div id="compDiv">
 <app-comman-home></app-comman-home>
-<div *ngIf="info.token; else loggedOut">
-  <br>
-  <h5 class="text-primary">Your Information</h5>
-  <p>
-    <strong>Username:</strong> {{info.username}}<br/>
-    <strong>Roles:</strong> {{info.authorities}}<br />
-    <strong>Token:</strong> {{info.token}} <br />
-    <strong>LoggedIn: </strong>{{info.loggedIn}}
-  </p>
-  <button class="btn btn-secondary" (click)="logout()">Logout</button>
+<img src="assets/images/BGLargeSelling.jpg" class="img-fluid" alt="Responsive image">
 </div>

@@ -1,6 +1,10 @@
-.active{
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-  }
-  
+
+
+.show > .dropdown-menu {
+  background-color: #212121;
+}
+
+ .dropdown-item:hover {
+  background-color: #212121;
+  color: #FFC0CB;
+}

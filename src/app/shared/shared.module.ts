@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { MDBBootstrapModule , DropdownModule} from 'angular-bootstrap-md';
+import { MDBBootstrapModule , DropdownModule, CarouselModule} from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
 import {ToastaModule} from 'ngx-toasta';
 import { OrderModule } from 'ngx-order-pipe';
@@ -39,6 +39,7 @@ import { AppHomeComponent } from './components/app-home/app-home.component';
     CommonModule,
     RouterModule,
     MDBBootstrapModule.forRoot(),
+    CarouselModule.forRoot(),
     OrderModule,
     DropdownModule.forRoot(),
     ToastaModule.forRoot()
@@ -64,6 +65,7 @@ import { AppHomeComponent } from './components/app-home/app-home.component';
     PageNotFoundComponent,
     ThreeSelectComponent,
     AppHomeComponent,
+    CarouselModule,
     OrderModule
   ]
 })
