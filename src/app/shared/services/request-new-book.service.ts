@@ -11,22 +11,21 @@ export class RequestNewBookService {
 
   private newBookServiceRequestFormURL = AppSettings.API_ENDPOINT + '/newBookRequest/';
   private newBookServiceRequestsURL = AppSettings.API_ENDPOINT + '/newBookRequest/';
-  private newBookRequestByIdURL=AppSettings.API_ENDPOINT + '/newBookRequest/validate/';
+  private newBookRequestByIdURL = AppSettings.API_ENDPOINT + '/newBookRequest/validate/';
 
   constructor(private http: HttpClient) { }
 
-  postNewBookRequestForm(newBook: NewBook): Observable<NewBook>{
-    console.log("posting form",newBook);
-    return this.http.put<NewBook>(this.newBookServiceRequestFormURL,newBook,AppSettings.HTTP_OPTIONS);
+  postNewBookRequestForm(newBook: NewBook): Observable<NewBook> {
+    console.log('posting form', newBook);
+    return this.http.put<NewBook>(this.newBookServiceRequestFormURL, newBook, AppSettings.HTTP_OPTIONS);
   }
 
-  getNewBookServiceRequests():Observable<NewBook[]>
-  {
+  getNewBookServiceRequests(): Observable<NewBook[]> {
     return this.http.get<NewBook[]>(this.newBookServiceRequestsURL);
   }
 
-  getRequestById(id):Observable<NewBook>{
-    return this.http.get<NewBook>(this.newBookRequestByIdURL+id);
+  getRequestById(id): Observable<NewBook> {
+    return this.http.get<NewBook>(this.newBookRequestByIdURL + id);
   }
 
 }

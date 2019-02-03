@@ -29,7 +29,7 @@ export class UserService {
     return this.http.get<User[]>(this.getUsersOfCenterByCenterId_URL + id , AppSettings.HTTP_OPTIONS);
   }
 
-  createAdmin(user: User): Observable<string> {
-    return this.http.post<string>(this.createAdmin_URL, user, AppSettings.HTTP_OPTIONS);
+  createAdmin(user): Observable<any> {
+    return this.http.post(this.createAdmin_URL, user, AppSettings.HTTP_OPTIONS);
   }
 }

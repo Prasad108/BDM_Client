@@ -13,14 +13,14 @@ export class InventryService {
   constructor(private httpClient: HttpClient) {
    }
 
-   private listOfBooks=AppSettings.API_ENDPOINT+'/bookName/';
-   private Type=AppSettings.API_ENDPOINT+'/bookName/getbook/';
+   private listOfBooks = AppSettings.API_ENDPOINT + '/bookName/';
+   private Type = AppSettings.API_ENDPOINT + '/bookName/getbook/';
 
-   getAllBooks():Observable<Book[]>{
+   getAllBooks(): Observable<Book[]> {
      return this.httpClient.get<Book[]>(this.listOfBooks);
    }
 
-   getType(id: number):Observable<Type[]>{
-     return this.httpClient.get<Type[]>(this.Type+id);
+   getType(id: number): Observable<Type[]> {
+     return this.httpClient.get<Type[]>(this.Type + id);
    }
 }

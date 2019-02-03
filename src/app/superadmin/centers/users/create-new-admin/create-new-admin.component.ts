@@ -3,8 +3,6 @@ import { User } from 'app/shared/models/User';
 import { ActivatedRoute, Router} from '@angular/router';
 import { ToastaService } from 'ngx-toasta';
 import { UserService } from 'app/shared/services/user.service';
-import { Center } from 'app/shared/models/Center';
-import { Role } from 'app/shared/models/Role';
 
 @Component({
   selector: 'app-create-new-admin',
@@ -25,18 +23,21 @@ export class CreateNewAdminComponent implements OnInit {
       this.centerId = params.get('id');
     });
     this.user.center = this.centerId;
-    // currently for the admin its inndex is is 2
-    this.user.roles = 2;
+     // currently for the admin its inndex is is 2
+      this.user.roles = 2;
   }
 
   createNewAdmin() {
-    console.log(this.user);
+    this.user.password = this.user.mob;
+    console.log(this.router.url.slice(0, -9));
     this.userService.createAdmin(this.user).subscribe(
       data => {
-        this.toastr.success('Admin Created Successfully');
-       // this.router.navigate([this.router.url.slice(0, -9)]);
+        this.toastr.success('New Admin Created Successfully');
+        this.router.navigate([this.router.url.slice(0, -9)]);
       },
-      error => this.toastr.error(error)
+      error => {
+        this.toastr.error(error.error);
+    }
     );
   }
 
