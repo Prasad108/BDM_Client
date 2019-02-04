@@ -50,7 +50,9 @@ export class SettleChallanComponent implements OnInit {
     this.challanService.saveChallan(this.challan).subscribe(
       data => {
           this.toastr.success('Challan Settled Successfully');
-          this.router.navigate([this.router.url.slice(0, -13) + 'details/' + this.challanId ]);
+          let regex = /edit*/gi;
+          console.log(this.router.url.replace(regex, 'details').slice(0, -7));
+          this.router.navigate([this.router.url.replace(regex, 'details').slice(0, -7) ]);
         },
       error => this.toastr.error('Error while Settling Challan')
     );
