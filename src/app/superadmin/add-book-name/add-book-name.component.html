@@ -1,0 +1,60 @@
+<div>
+  <button class="btn btn-primary" type="submit" (click)="clicked($event)">
+    Add Book Name
+  </button>
+</div>
+
+
+<div *ngIf="clickedFlag" id="ManageDiv">
+  <label><h3>Add new Book</h3></label>
+  <form #form1="ngForm" (submit)="submitBook(form1)">
+    <div>
+        <div class="form-group row">
+            <label class="control-label col-xs-2 inputLabel">Book Name</label>
+            <div class="col-xs-2 inputStyle">
+              <input #name="ngModel" required class="form-control" type="text" 
+              name="name" [(ngModel)]="bookName.name">
+              <div *ngIf="bookName.name=='' && name.touched" class="alert alert-danger" role="alert">
+                  Book Name is reuired...
+                </div>
+              </div>
+          </div>
+          {{name.touched}}
+          {{name.invalid}}
+        <div class="form-group row">
+            <label class="control-label col-xs-2 inputLabel">Abbrivation</label>
+            <div class="col-xs-2 inputStyle">
+              <input #abbreviation="ngModel" required class="form-control" type="text" 
+              name="abbreviation" [(ngModel)]="bookName.abbreviation">
+              <div *ngIf="abbreviation.invalid && abbreviation.touched" class="alert alert-danger" role="alert">
+                  Abbrivation is reuired...
+                </div>
+              </div>
+          </div>
+        <div>
+            <button type="submit" [disabled]="form1.invalid" class="btn btn-primary">submit</button>
+        </div>
+  </div>
+  </form>
+</div>
+
+
+
+<div class="table-responsive">
+  <table class="table table-hover table-sm">
+    <thead class="thead-light">
+      <th scope="col" ><i class="fas fa-book-open"></i>Book Name</th>
+      <th scope="col">Abbrivation</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let BookName of bookNameList">
+        <td>
+            {{BookName.name}}
+        </td>
+        <td>
+          {{BookName.abbreviation}}
+      </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

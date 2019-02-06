@@ -1,5 +1,5 @@
 
-export class NewBook{
+export class NewBook {
 
     constructor(
         public id: number,
@@ -11,7 +11,6 @@ export class NewBook{
         public user: string,
         public status: string,
         public remark: string
-    ){
-        
+    ) {
     }
 }

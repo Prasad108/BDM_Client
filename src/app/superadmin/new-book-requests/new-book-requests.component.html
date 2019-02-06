@@ -24,8 +24,10 @@
         <td>
               <div *ngIf="request.status=='pending'">
                   <select #statusUpdated class="form-control" name="request.updatedStatus"
-                  [(ngModel)]="request.updatedStatus">
-                    <option *ngFor="let st of status">
+                  [(ngModel)]="request.updatedStatus"
+                  (change)="validateStatus(statusUpdated.value)">
+                    <option [value]="default">Select status</option>
+                    <option *ngFor="let st of status" [value]="st">
                         {{st}}
                     </option>
                   </select>

@@ -13,10 +13,11 @@ import { ToastaEvent, ToastaService } from 'ngx-toasta';
 export class NewBookRequestsComponent implements OnInit {
 
   model: NewBook[];
+  flag: boolean;
 
   updatedNewBook = new NewBook(0, '', '', '', 0, '', '', '', '');
 
-  status = ['Pending', 'Approved', 'Rejected'];
+  status = ['Approved', 'Rejected'];
 
   constructor(private service: RequestNewBookService,
               private toaster: ToastaService) { }
@@ -27,10 +28,16 @@ export class NewBookRequestsComponent implements OnInit {
     );
   }
 
+  validateStatus(updatedStatus: String) {
+    console.log('---', updatedStatus);
+  }
+
   onSubmit(request: any) {
 
-    this.updatedNewBook.status = request.updatedStatus;
+    this.updatedNewBook.status = request.updatedStatus.toLowerCase();
+    request.status = request.updatedStatus.toLowerCase();
     this.updatedNewBook.remark = request.updatedRemark;
+    request.remark = request.updatedRemark;
     this.updatedNewBook.id = request.id;
    /* this.updatedNewBook.abbrivation=request.abbrivation;
     this.updatedNewBook.bookName=request.bookName;
@@ -43,9 +50,12 @@ export class NewBookRequestsComponent implements OnInit {
     this.service.updateRequest(this.updatedNewBook).subscribe(
        data => {
          console.log('---' , this.updatedNewBook);
+       /*   this.model.find(x => x.id ===  this.updatedNewBook.id).status = this.updatedNewBook.status.toLowerCase(); */
+         this.flag = true;
         this.toaster.success('Request confirmed');
        },
        err => {
+         this.flag = false;
         this.toaster.error('Technical error occured while comfirming the request');
        }
     );
