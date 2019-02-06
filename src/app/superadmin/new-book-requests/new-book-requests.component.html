@@ -14,7 +14,6 @@
     </tr>
   </thead>
   <tbody>
-   <!--   <form #form="ngForm" (change)="onSubmit(form)"> -->
       <tr *ngFor="let request of model"> 
         <td>{{request.user}}</td>
         <td>{{request.bookName}}</td>
@@ -24,9 +23,11 @@
         <td>{{request.abbrivation}}</td>
         <td>
               <div *ngIf="request.status=='pending'">
-                  <select #statusUpdated class="form-control" name="request.status"
-                  [(ngModel)]="updatedNewBook.status">
-                    <option *ngFor="let st of status">
+                  <select #statusUpdated class="form-control" name="request.updatedStatus"
+                  [(ngModel)]="request.updatedStatus"
+                  (change)="validateStatus(statusUpdated.value)">
+                    <option [value]="default">Select status</option>
+                    <option *ngFor="let st of status" [value]="st">
                         {{st}}
                     </option>
                   </select>
@@ -43,20 +44,17 @@
             <div>{{request.remark}}</div>
           </div>
           <div *ngIf="request.status=='pending'">
-              <input class="form-control" type="text" name="remark" value="{{request.remark}}" 
-              [(ngModel)]="updatedNewBook.remark">
+              <input #updatedRemark required class="form-control" type="text" name="remark" value="{{request.updatedRemark}}" 
+              [(ngModel)]="request.updatedRemark">
             </div>
         </td>
         <td>
           <div *ngIf="request.status=='pending'">
-            <button class="btn btn-primary" type="submit" (click)="onSubmit()">Submit</button>
+            <button class="btn btn-primary" type="submit" (click)="onSubmit(request)">Submit</button>
           </div>
         </td>
       </tr>
-    <!-- </form> -->
   </tbody>
-
-  
 </table>
 
 </div>

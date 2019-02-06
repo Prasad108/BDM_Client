@@ -12,6 +12,7 @@ export class RequestNewBookService {
   private newBookServiceRequestFormURL = AppSettings.API_ENDPOINT + '/newBookRequest/';
   private newBookServiceRequestsURL = AppSettings.API_ENDPOINT + '/newBookRequest/';
   private newBookRequestByIdURL = AppSettings.API_ENDPOINT + '/newBookRequest/validate/';
+  private newBookConfimRequest_URL = AppSettings.API_ENDPOINT + '/newBookRequest/confirmRequest/';
 
   constructor(private http: HttpClient) { }
 
@@ -26,6 +27,10 @@ export class RequestNewBookService {
 
   getRequestById(id): Observable<NewBook> {
     return this.http.get<NewBook>(this.newBookRequestByIdURL + id);
+  }
+
+  updateRequest(request: NewBook): Observable<NewBook> {
+    return this.http.put<NewBook>(this.newBookConfimRequest_URL, request, AppSettings.HTTP_OPTIONS);
   }
 
 }

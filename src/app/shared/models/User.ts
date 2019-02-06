@@ -11,11 +11,12 @@ export class User {
         mob: string;
         username: string;
         pwd: string;
+        password: string;
 
 
     constructor($id?: number, $center?: Center |number , $roles?: Role |number ,
          $name?: string, $counceller?: string, $email?: string,
-         $mob?: string, $username?: string, $pwd?: string) {
+         $mob?: string, $username?: string, $pwd?: string,$password?: string) {
         this.id = $id;
         this.center = $center;
         this.roles = $roles;
@@ -25,6 +26,7 @@ export class User {
         this.mob = $mob;
         this.username = $username;
         this.pwd = $pwd;
+        this.password = $password;
     }
 
 }

@@ -22,15 +22,17 @@ export class BookManagementComponent implements OnInit {
   ngOnInit() {
   }
 
-  submitBook(form: NgForm) {
+  /* submitBook(form: NgForm) {
     console.log(form);
     this.bookNameService.addBookName(this.bookName).subscribe(
       data => {console.log(this.bookName);
-      this.toastr.success('New Book created successfully!');},
-      err => {console.log(err),
-      this.toastr.error('Error in creating Book')}
+      this.toastr.success('New Book created successfully!');
+    },
+      err => {console.log(err);
+      this.toastr.error('Error in creating Book');
+    }
     );
-  }
+  } */
 
   submitLang(form: NgForm) {
     console.log(form);
@@ -47,9 +49,11 @@ export class BookManagementComponent implements OnInit {
     console.log(form.value);
     this.bookNameService.addType(this.type).subscribe(
       data => {console.log(this.bookName);
-      this.toastr.success('Book Type created successfully!');},
+      this.toastr.success('Book Type created successfully!');
+    },
       err => {console.log(err),
-        this.toastr.error('Error in creating Book')}
+        this.toastr.error('Error in creating Book');
+      }
     );
   }
 
