@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BookManagementComponent } from './book-management.component';
+import { AddLanguageComponent } from './add-language.component';
 
-describe('BookManagementComponent', () => {
-  let component: BookManagementComponent;
-  let fixture: ComponentFixture<BookManagementComponent>;
+describe('AddLanguageComponent', () => {
+  let component: AddLanguageComponent;
+  let fixture: ComponentFixture<AddLanguageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BookManagementComponent ]
+      declarations: [ AddLanguageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BookManagementComponent);
+    fixture = TestBed.createComponent(AddLanguageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

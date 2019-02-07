@@ -41,12 +41,9 @@ export class AddBookNameComponent implements OnInit {
       data => {console.log(this.bookName);
         this.bookNameList.push(this.bookName);
         this.toastr.success('New Book created successfully!');
-        this.bookName.name = '';
+       /*  this.bookName.name = '';
         this.bookName.abbreviation = '';
-        this.formName.resetForm();
-        // this.formName.control.markAsTouched();
-        // this.formName.control.markAsDirty();
-        // this.formName.control.markAsUntouched();
+        this.formName.resetForm(); */
     },
       err => {console.log(err);
       this.toastr.error('Error in creating Book');

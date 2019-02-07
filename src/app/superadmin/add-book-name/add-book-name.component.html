@@ -1,11 +1,10 @@
-<div>
-  <button class="btn btn-primary" type="submit" (click)="clicked($event)">
+<div id="compDiv">
+  <button mdbBtn color="primary" class="waves-light" type="button" (click)="test.toggle()" mdbWavesEffect>
     Add Book Name
   </button>
-</div>
 
-
-<div *ngIf="clickedFlag" id="ManageDiv">
+<div class="" mdbCollapse #test="bs-collapse">
+<div id="ManageDiv">
   <label><h3>Add new Book</h3></label>
   <form #form1="ngForm" (submit)="submitBook(form1)">
     <div>
@@ -19,8 +18,6 @@
                 </div>
               </div>
           </div>
-          {{name.touched}}
-          {{name.invalid}}
         <div class="form-group row">
             <label class="control-label col-xs-2 inputLabel">Abbrivation</label>
             <div class="col-xs-2 inputStyle">
@@ -37,17 +34,22 @@
   </div>
   </form>
 </div>
+</div>
 
 
 
 <div class="table-responsive">
   <table class="table table-hover table-sm">
     <thead class="thead-light">
+      <th scope="col" >#</th>
       <th scope="col" ><i class="fas fa-book-open"></i>Book Name</th>
       <th scope="col">Abbrivation</th>
     </thead>
     <tbody>
-      <tr *ngFor="let BookName of bookNameList">
+      <tr *ngFor="let BookName of bookNameList ; let i=index">
+          <td>
+              {{i+1}}
+          </td>
         <td>
             {{BookName.name}}
         </td>
@@ -57,4 +59,5 @@
       </tr>
     </tbody>
   </table>
+</div>
 </div>
