@@ -13,7 +13,7 @@ import { Type } from '../models/Type';
 export class BookService {
   private getAllBookNameOfUsersInventory_URL = AppSettings.API_ENDPOINT + '/bookName/getAllBookNameOfUsersInventory';
   private getBooNameOfAllBooks_URL = AppSettings.API_ENDPOINT + '/bookName/getBooNameOfAllBooks';
-  private addBookName_URL = AppSettings.API_ENDPOINT + '/bookName/';
+
   private addLanguage_URL = AppSettings.API_ENDPOINT + '/languages/';
   private addType_URL = AppSettings.API_ENDPOINT + '/type/';
 
@@ -25,10 +25,6 @@ export class BookService {
 
   getBooNameOfAllBooks(): Observable <BookName[]> {
     return this.http.get<BookName[]>(this.getBooNameOfAllBooks_URL);
-  }
-
-  addBookName(bookName): Observable<BookName> {
-    return this.http.put<BookName>(this.addBookName_URL, bookName, AppSettings.HTTP_OPTIONS);
   }
 
   addLanguage(lang): Observable<Language> {
