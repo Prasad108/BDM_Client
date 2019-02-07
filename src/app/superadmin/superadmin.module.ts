@@ -11,6 +11,9 @@ import { CreateNewCenterComponent } from './centers/create-new-center/create-new
 import { UsersComponent } from './centers/users/users.component';
 import { CreateNewAdminComponent } from './centers/users/create-new-admin/create-new-admin.component';
 import { AddBookNameComponent } from './add-book-name/add-book-name.component';
+import { AddBookTypeComponent } from './add-book-type/add-book-type.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations:
     [
@@ -21,13 +24,15 @@ import { AddBookNameComponent } from './add-book-name/add-book-name.component';
       CreateNewCenterComponent,
       UsersComponent,
       CreateNewAdminComponent,
-      AddBookNameComponent
+      AddBookNameComponent,
+      AddBookTypeComponent
     ],
   imports: [
     CommonModule,
     SuperadminRoutingModule,
     MDBBootstrapModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ]
 })
 export class SuperadminModule { }

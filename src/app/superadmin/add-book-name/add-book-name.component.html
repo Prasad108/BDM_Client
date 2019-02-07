@@ -1,12 +1,10 @@
 <div id="compDiv">
-<div>
-  <button class="btn btn-primary" type="submit" (click)="clicked($event)">
+  <button mdbBtn color="primary" class="waves-light" type="button" (click)="test.toggle()" mdbWavesEffect>
     Add Book Name
   </button>
-</div>
 
-
-<div *ngIf="clickedFlag" id="ManageDiv">
+<div class="" mdbCollapse #test="bs-collapse">
+<div id="ManageDiv">
   <label><h3>Add new Book</h3></label>
   <form #form1="ngForm" (submit)="submitBook(form1)">
     <div>
@@ -35,6 +33,7 @@
         </div>
   </div>
   </form>
+</div>
 </div>
 
 

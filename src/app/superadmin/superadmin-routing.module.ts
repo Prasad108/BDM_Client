@@ -8,6 +8,7 @@ import { CreateNewCenterComponent } from './centers/create-new-center/create-new
 import { UsersComponent } from './centers/users/users.component';
 import { CreateNewAdminComponent } from './centers/users/create-new-admin/create-new-admin.component';
 import { AddBookNameComponent } from './add-book-name/add-book-name.component';
+import { AddBookTypeComponent } from './add-book-type/add-book-type.component';
 
 const routes: Routes = [
   { path: 'superAdmin', component: SuperadminHomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'superAdmin/bookManagement', component: BookManagementComponent },
   { path: 'superAdmin/centers', component: CentersComponent },
   { path: 'superAdmin/BookName', component: AddBookNameComponent },
+  { path: 'superAdmin/BookType', component: AddBookTypeComponent },
   { path: 'superAdmin/centers/new', component: CreateNewCenterComponent },
   { path: 'superAdmin/centers/:id/users', component: UsersComponent },
   { path: 'superAdmin/centers/:id/users/newAdmin', component: CreateNewAdminComponent }
