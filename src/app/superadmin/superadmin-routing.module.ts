@@ -5,10 +5,9 @@ import { NewBookRequestsComponent } from './new-book-requests/new-book-requests.
 import { BookManagementComponent } from './book-management/book-management.component';
 import { CentersComponent } from './centers/centers.component';
 import { CreateNewCenterComponent } from './centers/create-new-center/create-new-center.component';
-import { UsersComponent } from './centers/users/users.component';
-import { CreateNewAdminComponent } from './centers/users/create-new-admin/create-new-admin.component';
 import { AddBookNameComponent } from './add-book-name/add-book-name.component';
-
+import { UsersComponent } from 'app/shared/components/users/users.component';
+import { CreateNewUserComponent } from './../shared/components/create-new-user/create-new-user.component';
 const routes: Routes = [
   { path: 'superAdmin', component: SuperadminHomeComponent },
   { path: 'superAdmin/newBookRequests', component: NewBookRequestsComponent },
@@ -17,7 +16,7 @@ const routes: Routes = [
   { path: 'superAdmin/BookName', component: AddBookNameComponent },
   { path: 'superAdmin/centers/new', component: CreateNewCenterComponent },
   { path: 'superAdmin/centers/:id/users', component: UsersComponent },
-  { path: 'superAdmin/centers/:id/users/newAdmin', component: CreateNewAdminComponent }
+  { path: 'superAdmin/centers/:id/users/newAdmin', component: CreateNewUserComponent }
 ];
 
 @NgModule({

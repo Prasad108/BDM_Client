@@ -10,7 +10,7 @@ export class SuperadminHomeComponent implements OnInit {
 
   constructor() { }
 
-  newBook : NewBook;
+  newBook: NewBook;
 
   ngOnInit() {
   }

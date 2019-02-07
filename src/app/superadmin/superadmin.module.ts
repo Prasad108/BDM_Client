@@ -8,8 +8,6 @@ import { FormsModule } from '@angular/forms';
 import { BookManagementComponent } from './book-management/book-management.component';
 import { CentersComponent } from './centers/centers.component';
 import { CreateNewCenterComponent } from './centers/create-new-center/create-new-center.component';
-import { UsersComponent } from './centers/users/users.component';
-import { CreateNewAdminComponent } from './centers/users/create-new-admin/create-new-admin.component';
 import { AddBookNameComponent } from './add-book-name/add-book-name.component';
 @NgModule({
   declarations:
@@ -19,8 +17,6 @@ import { AddBookNameComponent } from './add-book-name/add-book-name.component';
       BookManagementComponent,
       CentersComponent,
       CreateNewCenterComponent,
-      UsersComponent,
-      CreateNewAdminComponent,
       AddBookNameComponent
     ],
   imports: [
