@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { BookTypeService } from 'app/shared/services/book-type.service';
 import { Type } from 'app/shared/models/Type';
 import { NgForm } from '@angular/forms';
 import { ToastaService } from 'ngx-toasta';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TypeService } from 'app/shared/services/type.service';
 
 @Component({
   selector: 'app-add-book-type',
@@ -16,7 +16,7 @@ export class AddBookTypeComponent implements OnInit {
   type = new Type(0, '');
   @ViewChild('form3') formName;
 
-  constructor(private typeService: BookTypeService,
+  constructor(private typeService: TypeService,
     private toastr: ToastaService) { }
 
   ngOnInit() {
@@ -33,8 +33,8 @@ export class AddBookTypeComponent implements OnInit {
         console.log(this.type);
         this.typeList.push(this.type);
         this.toastr.success('New Book created successfully!');
-        this.type.name = '';
-        this.formName.resetForm();
+       /*  this.type.name = '';
+        this.formName.resetForm(); */
       }
     );
   }

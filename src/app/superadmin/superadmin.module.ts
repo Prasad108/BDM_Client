@@ -5,7 +5,6 @@ import { SuperadminHomeComponent } from './superadmin-home/superadmin-home.compo
 import { NewBookRequestsComponent } from './new-book-requests/new-book-requests.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
-import { BookManagementComponent } from './book-management/book-management.component';
 import { CentersComponent } from './centers/centers.component';
 import { CreateNewCenterComponent } from './centers/create-new-center/create-new-center.component';
 import { UsersComponent } from './centers/users/users.component';
@@ -20,7 +19,6 @@ import { AddLanguageComponent } from './add-language/add-language.component';
     [
       SuperadminHomeComponent,
       NewBookRequestsComponent,
-      BookManagementComponent,
       CentersComponent,
       CreateNewCenterComponent,
       UsersComponent,

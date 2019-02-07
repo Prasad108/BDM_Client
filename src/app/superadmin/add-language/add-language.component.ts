@@ -32,8 +32,8 @@ export class AddLanguageComponent implements OnInit {
           console.log(this.lang);
           this.langs.push(this.lang);
           this.toastr.success('New Book created successfully!');
-          this.lang.name = '';
-          this.formName.resetForm();
+         /*  this.lang.name = '';
+          this.formName.resetForm(); */
         }
       );
     }
