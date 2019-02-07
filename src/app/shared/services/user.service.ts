@@ -18,7 +18,7 @@ export class UserService {
   private challanURL = AppSettings.API_ENDPOINT + '/challan/detailed/';
   private getUsersOfCenterByCenterId_URL = AppSettings.API_ENDPOINT + '/user/getUsersOfCenterByCenterId/';
   private getCurrentUserDetails_URL = AppSettings.API_ENDPOINT + '/user/getCurrentUserDetails/';
-
+  private updateUser_URL =  AppSettings.API_ENDPOINT + '/user/update/';
   constructor(private http: HttpClient) { }
 
 
@@ -36,5 +36,9 @@ export class UserService {
 
   getCurrentUserDetails(): Observable<User> {
     return this.http.get<User>(this.getCurrentUserDetails_URL , AppSettings.HTTP_OPTIONS);
+  }
+
+  updateUser(user): Observable<any> {
+    return this.http.post(this.updateUser_URL + user.id, user, AppSettings.HTTP_OPTIONS);
   }
 }

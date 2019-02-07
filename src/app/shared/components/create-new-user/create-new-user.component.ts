@@ -5,6 +5,8 @@ import { ToastaService } from 'ngx-toasta';
 import { UserService } from 'app/shared/services/user.service';
 import { TokenStorageService } from 'app/shared/services/token-storage.service';
 import {UserRoles} from 'app/shared/localEnums';
+import { ShairedService } from 'app/shared/services/shaired.service';
+
 @Component({
   selector: 'app-create-new-user',
   templateUrl: './create-new-user.component.html',
@@ -14,13 +16,23 @@ export class CreateNewUserComponent implements OnInit {
 
   user: User = new User();
   centerId;
+  isUpdateRequest = false;
   constructor(private userService: UserService,
     private toastr: ToastaService,
     private route: ActivatedRoute,
     private router: Router,
-    private tokenStorage: TokenStorageService) { }
+    private tokenStorage: TokenStorageService,
+    private shairedService: ShairedService) { }
 
   ngOnInit() {
+    if (this.router.url.includes('update')) {
+      this.isUpdateRequest = true;
+      if (typeof this.shairedService.user === 'undefined' ) {
+        this.router.navigate([this.router.url.slice(0, -7)]);
+      } else {
+        this.user =  this.shairedService.user;
+      }
+    }
     if (this.isSuperadmin()) {
           this.route.paramMap.subscribe(params => {
             this.centerId = params.get('id');
@@ -35,11 +47,14 @@ export class CreateNewUserComponent implements OnInit {
         );
         this.user.roles = 1;
     }
+
+
   }
 
   createNewUser() {
-    this.user.password = this.user.mob;
-    if (this.isSuperadmin()) {
+    if (!this.isUpdateRequest) {
+      this.user.password = this.user.mob;
+      if (this.isSuperadmin()) {
         this.userService.createUser(this.user).subscribe(
           data => {
             this.toastr.success('New Admin Created Successfully');
@@ -64,6 +79,18 @@ export class CreateNewUserComponent implements OnInit {
       }
       );
     }
+    } else {
+        this.userService.updateUser(this.user).subscribe(
+          data => {
+            this.toastr.success('User Updated Successfully');
+            this.router.navigate([this.router.url.slice(0, -7)]);
+          },
+          error => {
+            this.toastr.error(error.error);
+        }
+        );
+    }
+
   }
 
   isAdmin(): boolean {

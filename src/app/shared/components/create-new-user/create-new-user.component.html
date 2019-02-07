@@ -6,9 +6,10 @@
             <input class="form-control" type="text"  id="userName" required  name="userName"
             #userNameInput="ngModel"
             [(ngModel)]="user.name"   required
+            pattern="^.{3,50}$"
               >
-            <div *ngIf="(user.name === undefined || user.name === '') && userNameInput.dirty" class="alert alert-danger justify-content-center" role="alert">
-              Name is required
+            <div *ngIf="(user.name === undefined || user.name === '' || userNameInput.invalid) && userNameInput.dirty" class="alert alert-danger justify-content-center" role="alert">
+              Name is required, with minimum 3 characeters
           </div>
        </div>
     </div>
@@ -43,7 +44,7 @@
         </div>
      </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row" *ngIf="!isUpdateRequest">
         <label class="control-label col-sm-3 inputLabel" for="userUserName">User Name :</label>
         <div class="col-xs-2 inputStyle" >
           <input class="form-control" type="text"  id="userUserName" required  name="ususerUserNameerName"

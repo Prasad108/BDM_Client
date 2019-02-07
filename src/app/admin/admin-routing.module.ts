@@ -34,7 +34,8 @@ const routes: Routes = [
         {path: 'inventry/bookName', component: UpdateInventryComponent},
         {path: 'inventry/RequestNewBook', component: RequestNewBookComponent},
         {path: 'users', component: UsersComponent},
-        {path: 'users/new', component: CreateNewUserComponent}
+        {path: 'users/new', component: CreateNewUserComponent},
+        {path: 'users/update', component: CreateNewUserComponent},
       ]
     }]
   },

@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'app/shared/services/user.service';
 import { User } from './../../../shared/models/User';
 import { ToastaService } from 'ngx-toasta';
-import { ActivatedRoute} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import { TokenStorageService } from 'app/shared/services/token-storage.service';
 import {UserRoles} from 'app/shared/localEnums';
+import { ShairedService } from 'app/shared/services/shaired.service';
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -16,9 +18,11 @@ export class UsersComponent implements OnInit {
   centerId;
   roles: string[] = [];
   constructor(private userService: UserService,
+    private router: Router,
     private toastr: ToastaService,
     private route: ActivatedRoute,
-    private tokenStorage: TokenStorageService) { }
+    private tokenStorage: TokenStorageService,
+    private shairedService: ShairedService) { }
 
   ngOnInit() {
     this.roles = this.tokenStorage.getAuthorities();
@@ -37,8 +41,11 @@ export class UsersComponent implements OnInit {
           error => this.toastr.error('Error while fetching user list')
       );
     }
+  }
 
-
+  editUser(user: User) {
+    this.shairedService.updateUser(user);
+    this.router.navigate([this.router.url + '/update']);
   }
 
 
