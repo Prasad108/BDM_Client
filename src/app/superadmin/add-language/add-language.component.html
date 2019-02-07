@@ -1,0 +1,48 @@
+<div id="compDiv">
+  <button mdbBtn color="primary" class="waves-light" type="button" (click)="test.toggle()" mdbWavesEffect>
+    Add Language
+</button>
+
+<div class="" mdbCollapse #test="bs-collapse">
+<div id="ManageDiv">
+  <label><h3>Add Language</h3></label>
+  <form #form2="ngForm" (submit)="submitLang(form2)">
+    <div>
+        <div class="form-group row">
+          <label class="control-label col-xs-2 inputLabel">Language</label>
+          <div class="col-xs-2 inputStyle">
+              <input #name="ngModel" required class="form-control" type="text" 
+              name="name" [(ngModel)]="lang.name">
+            <div *ngIf="name.invalid && name.touched" class="alert alert-danger" role="alert">
+                Language is reuired...
+              </div>
+            </div>
+        </div>
+        <div>
+            <button type="submit" [disabled]="form2.invalid" class="btn btn-primary">submit</button>
+        </div>
+    </div>
+  </form>
+</div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover table-sm">
+    <thead class="thead-light">
+      <th scope="col" >#</th>
+      <th scope="col" ><i class="fas fa-book-open"></i>Language</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lang of langs ; let i=index">
+          <td>
+              {{i+1}}
+          </td>
+        <td>
+            {{lang.name}}
+        </td>
+      
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

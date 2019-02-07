@@ -13,6 +13,7 @@ import { CreateNewAdminComponent } from './centers/users/create-new-admin/create
 import { AddBookNameComponent } from './add-book-name/add-book-name.component';
 import { AddBookTypeComponent } from './add-book-type/add-book-type.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddLanguageComponent } from './add-language/add-language.component';
 
 @NgModule({
   declarations:
@@ -25,7 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       UsersComponent,
       CreateNewAdminComponent,
       AddBookNameComponent,
-      AddBookTypeComponent
+      AddBookTypeComponent,
+      AddLanguageComponent
     ],
   imports: [
     CommonModule,

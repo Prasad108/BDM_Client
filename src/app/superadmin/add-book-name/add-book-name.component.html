@@ -41,11 +41,15 @@
 <div class="table-responsive">
   <table class="table table-hover table-sm">
     <thead class="thead-light">
+      <th scope="col" >#</th>
       <th scope="col" ><i class="fas fa-book-open"></i>Book Name</th>
       <th scope="col">Abbrivation</th>
     </thead>
     <tbody>
-      <tr *ngFor="let BookName of bookNameList">
+      <tr *ngFor="let BookName of bookNameList ; let i=index">
+          <td>
+              {{i+1}}
+          </td>
         <td>
             {{BookName.name}}
         </td>

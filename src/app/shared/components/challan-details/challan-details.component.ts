@@ -46,6 +46,7 @@ export class ChallanDetailsComponent implements OnInit {
   }
 
   print () {
+    // tslint:disable-next-line:prefer-const
     let doc = new jsPDF('l');
     // Print the Challan Summary
     doc.autoTable({

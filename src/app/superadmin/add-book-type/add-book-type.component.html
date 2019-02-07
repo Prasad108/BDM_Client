@@ -29,10 +29,14 @@
 <div class="table-responsive">
   <table class="table table-hover table-sm">
     <thead class="thead-light">
+        <th scope="col" >#</th>
       <th scope="col" ><i class="fas fa-book-open"></i>Type Name</th>
     </thead>
     <tbody>
-      <tr *ngFor="let type of typeList">
+      <tr *ngFor="let type of typeList ; let i=index">
+          <td>
+              {{i+1}}
+          </td>
         <td>
             {{type.name}}
         </td>

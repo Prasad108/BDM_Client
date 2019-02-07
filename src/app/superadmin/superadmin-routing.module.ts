@@ -9,6 +9,7 @@ import { UsersComponent } from './centers/users/users.component';
 import { CreateNewAdminComponent } from './centers/users/create-new-admin/create-new-admin.component';
 import { AddBookNameComponent } from './add-book-name/add-book-name.component';
 import { AddBookTypeComponent } from './add-book-type/add-book-type.component';
+import { AddLanguageComponent } from './add-language/add-language.component';
 
 const routes: Routes = [
   { path: 'superAdmin', component: SuperadminHomeComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'superAdmin/centers', component: CentersComponent },
   { path: 'superAdmin/BookName', component: AddBookNameComponent },
   { path: 'superAdmin/BookType', component: AddBookTypeComponent },
+  { path: 'superAdmin/BookLanguage', component: AddLanguageComponent },
   { path: 'superAdmin/centers/new', component: CreateNewCenterComponent },
   { path: 'superAdmin/centers/:id/users', component: UsersComponent },
   { path: 'superAdmin/centers/:id/users/newAdmin', component: CreateNewAdminComponent }
