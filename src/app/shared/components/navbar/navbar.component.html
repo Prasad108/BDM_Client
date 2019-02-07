@@ -32,16 +32,19 @@
               <a class="nav-link" routerLink="admin/inventry" routerLinkActive="active" > <i class="fas fa-clipboard-list"></i> Inventry</a>
             </li> -->
             <li class="btn-group nav-item" mdbDropdown>
-                <a mdbDropdownToggle  color="primary" 
+                <a mdbDropdownToggle  color="primary"
                   class="dropdown-toggle waves-light nav-link " mdbWavesEffect>
                   Inventry
                 </a>
-              
+
                 <div class="dropdown-menu dropdown-primary">
                   <a class="dropdown-item nav-link" [routerLink]="['/admin/inventry/bookName']"> Update inventry </a>
                   <a class="dropdown-item nav-link" [routerLink]="['/admin/inventry/RequestNewBook']"> Request new book</a>
                   <a class="dropdown-item nav-link"> Add new book</a>
                 </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/users" routerLinkActive="active" > <i class="fas fa-users"></i> Uers</a>
           </li>
       </ng-container>
 
@@ -63,17 +66,24 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/superAdmin/newBookRequests" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> New Book Requests</a>
         </li>
-          
+
+
+        <li class="nav-item ">
+
+            <a class="nav-link " routerLink="/superAdmin/bookManagement" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> Book Management</a>
+        </li>
+
         <li class="btn-group nav-item" mdbDropdown>
-              <a mdbDropdownToggle  color="primary" 
+              <a mdbDropdownToggle  color="primary"
                 class="dropdown-toggle waves-light nav-link " mdbWavesEffect>
                 Book
               </a>
-            
+
               <div class="dropdown-menu dropdown-primary">
                 <a class="dropdown-item nav-link" routerLink="/superAdmin/BookName">Book Name</a>
-                <a class="dropdown-item nav-link" routerLink="/superAdmin/BookLanguage">Language</a>
-                <a class="dropdown-item nav-link" routerLink="/superAdmin/BookType">Type</a>
+                <a class="dropdown-item nav-link"  >Books</a>
+                <a class="dropdown-item nav-link"  >Language</a>
+                <a class="dropdown-item nav-link"  >Type</a>
               </div>
         </li>
         <li class="nav-item">

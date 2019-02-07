@@ -50,7 +50,7 @@ export class SettleChallanComponent implements OnInit {
     this.challanService.saveChallan(this.challan).subscribe(
       data => {
           this.toastr.success('Challan Settled Successfully');
-          let regex = /edit*/gi;
+          const regex = /edit*/gi;
           console.log(this.router.url.replace(regex, 'details').slice(0, -7));
           this.router.navigate([this.router.url.replace(regex, 'details').slice(0, -7) ]);
         },

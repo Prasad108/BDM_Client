@@ -13,7 +13,8 @@ import { RequestNewBookComponent } from './inventry/request-new-book/request-new
 import { SettleChallanComponent } from './edit-challan/settle-challan/settle-challan.component';
 import { EditChallanGuard } from 'app/shared/guards/edit-challan.guard';
 import { AdminGuard } from 'app/shared/guards/admin.guard';
-
+import { UsersComponent } from 'app/shared/components/users/users.component';
+import { CreateNewUserComponent } from './../shared/components/create-new-user/create-new-user.component';
 
 const routes: Routes = [
   {path: 'admin', component: AdminHomeComponent,
@@ -31,7 +32,9 @@ const routes: Routes = [
         {path: 'challans/edit/:id/settle', component: SettleChallanComponent },
         {path: 'inventry', component: InventryComponent},
         {path: 'inventry/bookName', component: UpdateInventryComponent},
-        {path: 'inventry/RequestNewBook', component: RequestNewBookComponent}
+        {path: 'inventry/RequestNewBook', component: RequestNewBookComponent},
+        {path: 'users', component: UsersComponent},
+        {path: 'users/new', component: CreateNewUserComponent}
       ]
     }]
   },

@@ -23,6 +23,8 @@ import { InventryService } from './services/inventry.service';
 import { ThreeSelectComponent } from './components/three-select/three-select.component';
 import { RequestNewBookService } from './services/request-new-book.service';
 import { AppHomeComponent } from './components/app-home/app-home.component';
+import { UsersComponent } from './components/users/users.component';
+import { CreateNewUserComponent } from './components/create-new-user/create-new-user.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { AppHomeComponent } from './components/app-home/app-home.component';
     PageNotFoundComponent,
     ThreeSelectComponent,
     AppHomeComponent,
+    UsersComponent,
+    CreateNewUserComponent,
     ],
   imports: [
     BrowserModule,
@@ -64,6 +68,7 @@ import { AppHomeComponent } from './components/app-home/app-home.component';
     ChallanDetailsComponent,
     PageNotFoundComponent,
     ThreeSelectComponent,
+    UsersComponent,
     AppHomeComponent,
     CarouselModule,
     OrderModule

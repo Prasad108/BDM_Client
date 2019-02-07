@@ -12,7 +12,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let challan of challanList | orderBy: 'id' : true ; index as i" [class.table-primary]="challan.settled==1" [class.table-danger]="challan.settled==0">
-      <th scope="row"> {{i + 1 }}</th>
+      <th scope="row"> {{challan.id }}</th>
       <td>{{challan.issuedDate | date: 'MMM d, y'}}</td>
       <td>{{challan.userByIssuedBy.name}}</td>
       <td>{{challan.userByIssuedTo.name}}</td>

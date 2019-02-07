@@ -17,6 +17,7 @@ export class UserService {
   private listOfUserSpecificChallanURL = AppSettings.API_ENDPOINT + '/challan/userSpecificChallanList';
   private challanURL = AppSettings.API_ENDPOINT + '/challan/detailed/';
   private getUsersOfCenterByCenterId_URL = AppSettings.API_ENDPOINT + '/user/getUsersOfCenterByCenterId/';
+  private getCurrentUserDetails_URL = AppSettings.API_ENDPOINT + '/user/getCurrentUserDetails/';
 
   constructor(private http: HttpClient) { }
 
@@ -29,7 +30,11 @@ export class UserService {
     return this.http.get<User[]>(this.getUsersOfCenterByCenterId_URL + id , AppSettings.HTTP_OPTIONS);
   }
 
-  createAdmin(user): Observable<any> {
+  createUser(user): Observable<any> {
     return this.http.post(this.createAdmin_URL, user, AppSettings.HTTP_OPTIONS);
+  }
+
+  getCurrentUserDetails(): Observable<User> {
+    return this.http.get<User>(this.getCurrentUserDetails_URL , AppSettings.HTTP_OPTIONS);
   }
 }
