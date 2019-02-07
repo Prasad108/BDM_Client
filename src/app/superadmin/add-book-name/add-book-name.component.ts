@@ -16,6 +16,7 @@ export class AddBookNameComponent implements OnInit {
   clickedFlag: boolean;
   bookName = new BookName(0, '', '');
   @ViewChild('form1') formName;
+  @ViewChild('test') collapse;
 
 
 
@@ -38,12 +39,13 @@ export class AddBookNameComponent implements OnInit {
   submitBook(form: NgForm) {
     console.log(form);
     this.bookNameService.addBookName(this.bookName).subscribe(
-      data => {console.log(this.bookName);
+      data => {
         this.bookNameList.push(data);
         this.toastr.success('New Book created successfully!');
         this.bookName.name = '';
         this.bookName.abbreviation = '';
         this.formName.resetForm();
+        this.collapse.toggle();
     },
       err => {console.log(err);
       this.toastr.error('Error in creating Book');
