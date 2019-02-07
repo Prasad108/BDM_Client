@@ -11,7 +11,7 @@ import { ToastaService } from 'ngx-toasta';
 })
 export class AddLanguageComponent implements OnInit {
 
-    langs: Language[];
+    langsList: Language[];
     @ViewChild('form2') formName;
     lang = new Language(0, '');
 
@@ -21,7 +21,7 @@ export class AddLanguageComponent implements OnInit {
   ngOnInit() {
     this.langService.getAllLanguage().subscribe(
       data => {
-        this.langs = data;
+        this.langsList = data;
       }
     );
     }
@@ -30,10 +30,10 @@ export class AddLanguageComponent implements OnInit {
       this.langService.addLanguage(this.lang).subscribe(
         data => {
           console.log(this.lang);
-          this.langs.push(this.lang);
+          this.langsList.push(data);
           this.toastr.success('New Book created successfully!');
-         /*  this.lang.name = '';
-          this.formName.resetForm(); */
+          this.lang.name = '';
+          this.formName.resetForm();
         }
       );
     }

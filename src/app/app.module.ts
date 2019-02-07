@@ -15,6 +15,7 @@ import { AdminModule } from 'app/admin/admin.module';
 import {DashboardModule} from 'app/dashboard/dashboard.module';
 import {SharedModule} from 'app/shared/shared.module';
 import { SuperadminModule } from './superadmin/superadmin.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SuperadminModule } from './superadmin/superadmin.module';
     AdminModule,
     DashboardModule,
     SuperadminModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
 
   ],
   exports: [

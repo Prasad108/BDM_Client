@@ -31,10 +31,10 @@ export class AddBookTypeComponent implements OnInit {
     this.typeService.addType(this.type).subscribe(
       data => {
         console.log(this.type);
-        this.typeList.push(this.type);
+        this.typeList.push(data);
         this.toastr.success('New Book created successfully!');
-       /*  this.type.name = '';
-        this.formName.resetForm(); */
+        this.type.name = '';
+        this.formName.resetForm();
       }
     );
   }

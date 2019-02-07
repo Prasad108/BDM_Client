@@ -5,19 +5,22 @@ import { SuperadminHomeComponent } from './superadmin-home/superadmin-home.compo
 import { NewBookRequestsComponent } from './new-book-requests/new-book-requests.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
-import { BookManagementComponent } from './book-management/book-management.component';
 import { CentersComponent } from './centers/centers.component';
 import { CreateNewCenterComponent } from './centers/create-new-center/create-new-center.component';
 import { AddBookNameComponent } from './add-book-name/add-book-name.component';
+import { AddBookTypeComponent } from './add-book-type/add-book-type.component';
+import { AddLanguageComponent } from './add-language/add-language.component';
+
 @NgModule({
   declarations:
     [
       SuperadminHomeComponent,
       NewBookRequestsComponent,
-      BookManagementComponent,
       CentersComponent,
       CreateNewCenterComponent,
-      AddBookNameComponent
+      AddBookNameComponent,
+      AddBookTypeComponent,
+      AddLanguageComponent
     ],
   imports: [
     CommonModule,

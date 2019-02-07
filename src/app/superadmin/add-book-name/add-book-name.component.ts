@@ -39,11 +39,11 @@ export class AddBookNameComponent implements OnInit {
     console.log(form);
     this.bookNameService.addBookName(this.bookName).subscribe(
       data => {console.log(this.bookName);
-        this.bookNameList.push(this.bookName);
+        this.bookNameList.push(data);
         this.toastr.success('New Book created successfully!');
-       /*  this.bookName.name = '';
+        this.bookName.name = '';
         this.bookName.abbreviation = '';
-        this.formName.resetForm(); */
+        this.formName.resetForm();
     },
       err => {console.log(err);
       this.toastr.error('Error in creating Book');
