@@ -29,7 +29,7 @@ export class NewBookRequestsComponent implements OnInit {
   }
 
   validateStatus(updatedStatus: String) {
-    console.log('---', updatedStatus);
+    console.log(updatedStatus);
   }
 
   onSubmit(request: any) {
@@ -39,18 +39,8 @@ export class NewBookRequestsComponent implements OnInit {
     this.updatedNewBook.remark = request.updatedRemark;
     request.remark = request.updatedRemark;
     this.updatedNewBook.id = request.id;
-   /* this.updatedNewBook.abbrivation=request.abbrivation;
-    this.updatedNewBook.bookName=request.bookName;
-    this.updatedNewBook.bookType=request.bookType;
-    this.updatedNewBook.id=request.id;
-    this.updatedNewBook.language=request.language;
-    this.updatedNewBook.price=request.price;
-    this.updatedNewBook.user=request.user; */
-    console.log(this.updatedNewBook);
     this.service.updateRequest(this.updatedNewBook).subscribe(
        data => {
-         console.log('---' , this.updatedNewBook);
-       /*   this.model.find(x => x.id ===  this.updatedNewBook.id).status = this.updatedNewBook.status.toLowerCase(); */
          this.flag = true;
         this.toaster.success('Request confirmed');
        },
