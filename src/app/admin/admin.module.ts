@@ -15,6 +15,8 @@ import { AddNewBookToChallanComponent } from './edit-challan/add-new-book-to-cha
 import { RequestNewBookComponent } from './inventry/request-new-book/request-new-book.component';
 import { SettleChallanComponent } from './edit-challan/settle-challan/settle-challan.component';
 import { UsersComponent } from './users/users.component';
+import { BookRequestsComponent } from './inventry/book-requests/book-requests.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 @NgModule({
   declarations: [
     AdminHomeComponent,
@@ -28,13 +30,15 @@ import { UsersComponent } from './users/users.component';
     AddNewBookToChallanComponent,
     RequestNewBookComponent,
     SettleChallanComponent,
-    UsersComponent
+    UsersComponent,
+    BookRequestsComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
+    MDBBootstrapModule
   ],
   exports: [AdminHomeComponent, AdminMenuComponent, ChallanListComponent]
 })

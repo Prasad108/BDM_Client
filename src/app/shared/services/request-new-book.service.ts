@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { NewBook } from '../models/NewBookModel';
 import { Observable } from 'rxjs';
 import { AppSettings } from 'app/appSettings';
+import { NewBookRequests } from '../models/NewBookRequests';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class RequestNewBookService {
   private newBookServiceRequestsURL = AppSettings.API_ENDPOINT + '/newBookRequest/';
   private newBookRequestByIdURL = AppSettings.API_ENDPOINT + '/newBookRequest/validate/';
   private newBookConfimRequest_URL = AppSettings.API_ENDPOINT + '/newBookRequest/confirmRequest/';
-
+  private getRequestBUserId_URL = AppSettings.API_ENDPOINT + '/newBookRequest/byUser';
   constructor(private http: HttpClient) { }
 
   postNewBookRequestForm(newBook: NewBook): Observable<NewBook> {
@@ -31,6 +32,10 @@ export class RequestNewBookService {
 
   updateRequest(request: NewBook): Observable<NewBook> {
     return this.http.put<NewBook>(this.newBookConfimRequest_URL, request, AppSettings.HTTP_OPTIONS);
+  }
+
+  getRequestsByUser(): Observable<NewBookRequests[]> {
+    return this.http.get<NewBookRequests[]>(this.getRequestBUserId_URL);
   }
 
 }

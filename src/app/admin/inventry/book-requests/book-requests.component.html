@@ -1,0 +1,51 @@
+<div id="compDiv">
+<mdb-card>
+    <mdb-card-header>
+        <a [routerLink]="['RequestNewBook']"><button mdbBtn color="primary" class="waves-light" type="button" mdbWavesEffect>
+            Reuest Now Book
+          </button></a>
+    </mdb-card-header>
+    
+
+    <mdb-card-body>
+<div class="table-responsive">
+<table  mdbTable mdbTableScroll scrollY="true" maxHeight="600" bordered="true" class="table table-striped table-responsive-md btn-table">
+<thead class="thead-light">
+<tr>
+  <th scope="col"><i class="fas fa-book-open"></i> Book Name</th>
+  <th scope="col">Language</th>
+  <th scope="col">Book Type</th>
+  <th scope="col">Price</th>
+  <th scope="col">Abbrivation</th>
+  <th scope="col">Status</th>
+  <th scope="col">Remark</th>
+</tr>
+</thead>
+<tbody>
+  <tr *ngFor="let request of requestList"> 
+    <td>{{request.bookName}}</td>
+    <td>{{request.language}}</td>
+    <td>{{request.bookType}}</td>
+    <td>{{request.price}}</td>
+    <td>{{request.abbrivation}}</td>
+    <td>
+        <div *ngIf="request.status=='approved'">
+            <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+      </div>
+      <div *ngIf="request.status=='rejected'">
+            <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+      </div>
+      <div *ngIf="request.status=='pending'">
+          <i class="fa fa-clock-o fa-2x" aria-hidden="true" aria-hidden="true"></i>
+    </div>
+    </td>
+    <td>{{request.remark}}</td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+
+</mdb-card-body>
+</mdb-card>
+</div>
