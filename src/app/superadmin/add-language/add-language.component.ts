@@ -26,10 +26,8 @@ export class AddLanguageComponent implements OnInit {
     );
     }
     submitLang(form: NgForm) {
-      console.log(this.lang);
       this.langService.addLanguage(this.lang).subscribe(
         data => {
-          console.log(this.lang);
           this.langsList.push(data);
           this.toastr.success('New Book created successfully!');
           this.lang.name = '';

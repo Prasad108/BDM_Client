@@ -29,7 +29,6 @@ export class AddBookNameComponent implements OnInit {
         this.bookNameList = data;
       }
     );
-    console.log('---', this.bookNameList);
   }
 
   clicked($event) {
@@ -37,7 +36,6 @@ export class AddBookNameComponent implements OnInit {
   }
 
   submitBook(form: NgForm) {
-    console.log(form);
     this.bookNameService.addBookName(this.bookName).subscribe(
       data => {
         this.bookNameList.push(data);
@@ -47,7 +45,7 @@ export class AddBookNameComponent implements OnInit {
         this.formName.resetForm();
         this.collapse.toggle();
     },
-      err => {console.log(err);
+      err => {
       this.toastr.error('Error in creating Book');
     }
     );
