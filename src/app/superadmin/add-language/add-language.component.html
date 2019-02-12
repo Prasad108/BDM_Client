@@ -1,7 +1,11 @@
 <div id="compDiv">
-  <button mdbBtn color="primary" class="waves-light" type="button" (click)="test.toggle()" mdbWavesEffect>
-    Add Language
-</button>
+  <mdb-card>
+    <mdb-card-header>
+        <button mdbBtn color="primary" class="waves-light" type="button" (click)="test.toggle()" mdbWavesEffect>
+            Add Book Language
+          </button>
+    </mdb-card-header>
+    <mdb-card-body >
 
 <div class="" mdbCollapse #test="bs-collapse">
 <div id="ManageDiv">
@@ -25,9 +29,13 @@
   </form>
 </div>
 </div>
+</mdb-card-body>
+</mdb-card>
 
+<mdb-card>
+  <mdb-card-body>
 <div class="table-responsive">
-  <table class="table table-hover table-sm">
+  <table mdbTable mdbTableScroll scrollY="true" maxHeight="500" bordered="true" class="table table-hover table-sm">
     <thead class="thead-light">
       <th scope="col" >#</th>
       <th scope="col" ><i class="fas fa-book-open"></i>Language</th>
@@ -45,4 +53,6 @@
     </tbody>
   </table>
 </div>
+</mdb-card-body>
+</mdb-card>
 </div>
