@@ -13,6 +13,7 @@ export class AddLanguageComponent implements OnInit {
 
     langsList: Language[];
     @ViewChild('form2') formName;
+    @ViewChild('test') collapse;
     lang = new Language(0, '');
 
   constructor(private langService: LanguageService,
@@ -32,6 +33,7 @@ export class AddLanguageComponent implements OnInit {
           this.toastr.success('New Book created successfully!');
           this.lang.name = '';
           this.formName.resetForm();
+          this.collapse.toggle();
         }
       );
     }

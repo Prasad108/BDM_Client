@@ -15,6 +15,7 @@ export class AddBookTypeComponent implements OnInit {
   typeList: Type[];
   type = new Type(0, '');
   @ViewChild('form3') formName;
+  @ViewChild('test') collapse;
 
   constructor(private typeService: TypeService,
     private toastr: ToastaService) { }
@@ -34,6 +35,7 @@ export class AddBookTypeComponent implements OnInit {
         this.toastr.success('New Book created successfully!');
         this.type.name = '';
         this.formName.resetForm();
+        this.collapse.toggle();
       }
     );
   }

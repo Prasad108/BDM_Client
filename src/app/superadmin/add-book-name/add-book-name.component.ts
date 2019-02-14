@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { BookNameService } from 'app/shared/services/book-name.service';
 import { BookName } from 'app/shared/models/BookName';
 import { NgForm } from '@angular/forms';
-import { BookService } from 'app/shared/services/book.service';
 import { ToastaService } from 'ngx-toasta';
 
 @Component({
