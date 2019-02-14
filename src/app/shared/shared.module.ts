@@ -5,6 +5,7 @@ import { MDBBootstrapModule , DropdownModule, CarouselModule} from 'angular-boot
 import { FormsModule } from '@angular/forms';
 import {ToastaModule} from 'ngx-toasta';
 import { OrderModule } from 'ngx-order-pipe';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import {ConstantsService} from './services/constants.service';
 import {TokenStorageService} from './services/token-storage.service';
@@ -45,6 +46,7 @@ import { CreateNewUserComponent } from './components/create-new-user/create-new-
     MDBBootstrapModule.forRoot(),
     CarouselModule.forRoot(),
     OrderModule,
+    NgxChartsModule,
     DropdownModule.forRoot(),
     ToastaModule.forRoot()
   ],
@@ -71,6 +73,7 @@ import { CreateNewUserComponent } from './components/create-new-user/create-new-
     UsersComponent,
     AppHomeComponent,
     CarouselModule,
+    NgxChartsModule,
     OrderModule
   ]
 })

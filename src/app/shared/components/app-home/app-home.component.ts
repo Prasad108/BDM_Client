@@ -7,39 +7,36 @@ import * as CanvasJS from 'assets/js/canvasjs.min.js';
 })
 export class AppHomeComponent implements OnInit {
 
+
+  // options
+  showXAxis = true;
+  showYAxis = true;
+  gradient = false;
+  showLegend = true;
+  showXAxisLabel = true;
+  xAxisLabel = 'Center';
+  showYAxisLabel = true;
+  yAxisLabel = 'Distributed Books';
+
+  colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
+ single = [
+
+  { value: 5000, name: 'Ganga Dham VOICE' },
+  { value: 3000, name: 'RVC YOGA' },
+  { value: 2050, name: 'Mithila YOGA' },
+  { value: 1800,  name: 'Atmanivedan YOGA' },
+  { value: 1800,  name: 'Barsana YOGA' },
+  { value: 1200,  name: 'RKB YOGA' },
+  { value: 1008,  name: 'GGD VOICE' },
+  { value: 1000,  name: 'VIT VOICE' },
+  { value: 800,  name: 'SRM VOICE' }
+];
+
   constructor() { }
 
   ngOnInit() {
-    let dataPoints = [
-      { y: 5000, label: 'Ganga Dham VOICE' },
-      { y: 2800, label: 'RVC YOGA' },
-      { y: 2050, label: 'Mithila YOGA' },
-      { y: 1800,  label: 'Atmanivedan YOGA' },
-      { y: 1800,  label: 'Barsana YOGA' },
-      { y: 1200,  label: 'RKB YOGA' },
-      { y: 1008,  label: 'GGD VOICE' },
-      { y: 1000,  label: 'VIT VOICE' },
-      { y: 800,  label: 'SRM VOICE' },
-    ];
-
-    let chart = new CanvasJS.Chart('chartContainer', {
-      animationEnabled: true,
-      title: {
-        text: 'Top Book Distributing Centers of 2018'
-      },
-      axisY: {
-        title: 'Distributed Books',
-      },
-      theme: 'light2',
-      axisX: {
-        title: 'Centers'
-      },
-      data: [{
-        type: 'column',
-        dataPoints : dataPoints
-      }]
-    });
-    chart.render();
   }
 
 }
