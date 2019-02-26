@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import {ToastaModule} from 'ngx-toasta';
 import { OrderModule } from 'ngx-order-pipe';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 
 import {ConstantsService} from './services/constants.service';
 import {TokenStorageService} from './services/token-storage.service';
@@ -48,7 +49,8 @@ import { CreateNewUserComponent } from './components/create-new-user/create-new-
     OrderModule,
     NgxChartsModule,
     DropdownModule.forRoot(),
-    ToastaModule.forRoot()
+    ToastaModule.forRoot(),
+    LoadingBarHttpClientModule,
   ],
   providers: [
     ConstantsService,
@@ -74,7 +76,8 @@ import { CreateNewUserComponent } from './components/create-new-user/create-new-
     AppHomeComponent,
     CarouselModule,
     NgxChartsModule,
-    OrderModule
+    OrderModule,
+    LoadingBarHttpClientModule
   ]
 })
 export class SharedModule { }

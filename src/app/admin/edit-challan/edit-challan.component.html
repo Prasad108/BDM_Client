@@ -32,7 +32,7 @@
 
     </tbody>
   </table>
-  <a  [routerLink] = "['addNewBook']"><button class="btn btn-primary"> <i class="fas fa-plus-square"></i> Add New Book to Challan</button></a>
+  <a *ngIf="challan" [routerLink] = "['addNewBook']"><button class="btn btn-primary"> <i class="fas fa-plus-square"></i> Add New Book to Challan</button></a>
   <a  *ngIf=" challan && challan.cbDetailses.length > 0" [routerLink] = "['settle']"><button class="btn btn-success"> <i class="fas fa-check"></i> Settle</button></a>
 
   <div *ngIf=" challan && challan.cbDetailses.length ==0; else bookdatailsTable" class="alert alert-warning">

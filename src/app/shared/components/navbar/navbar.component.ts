@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from 'app/shared/services/token-storage.service';
 import {UserRoles} from 'app/shared/localEnums';
 import { Router } from '@angular/router';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'app-navbar',
@@ -13,11 +14,13 @@ export class NavbarComponent implements OnInit {
   isLoggedIn: boolean;
   userRole: string[];
 
+
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
   }
   constructor(private tokenStorage: TokenStorageService,
-              private router: Router
+              private router: Router,
+              private loadingBarService: LoadingBarService
           ) {
   }
 
