@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class RequestNewBookComponent implements OnInit {
 
-  newBookData = new NewBook(0, '', '', '', 0, '', '', '', '');
+  newBookData = new NewBook();
 
   constructor(private newBookRequestService: RequestNewBookService, private toastr: ToastaService,
               private router: Router) { }
