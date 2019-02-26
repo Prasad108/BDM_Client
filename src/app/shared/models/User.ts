@@ -16,7 +16,7 @@ export class User {
 
     constructor($id?: number, $center?: Center |number , $roles?: Role |number ,
          $name?: string, $counceller?: string, $email?: string,
-         $mob?: string, $username?: string, $pwd?: string,$password?: string) {
+         $mob?: string, $username?: string, $pwd?: string, $password?: string) {
         this.id = $id;
         this.center = $center;
         this.roles = $roles;
