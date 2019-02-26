@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/BDMClient",
+            "outputPath": "C://Users//Administrator//Desktop//apache-tomcat-8.5.33-windows-x64//apache-tomcat-8.5.33//webapps//BDMClient",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
