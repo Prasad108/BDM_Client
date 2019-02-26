@@ -15,7 +15,7 @@ export class NewBookRequestsComponent implements OnInit {
   model: NewBook[];
   flag: boolean;
 
-  updatedNewBook = new NewBook(0, '', '', '', 0, '', '', '', '');
+  updatedNewBook = new NewBook();
 
   status = ['Approved', 'Rejected'];
 
