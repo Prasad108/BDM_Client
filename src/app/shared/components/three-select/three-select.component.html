@@ -10,7 +10,7 @@
              name="IssuedToUserID" [(ngModel)]="bookNameId"
              (change)="validateBookName()">
                 <option value="default">Select a Book Name ...</option>
-                <option *ngFor="let bookName of bookNames" [value]="bookName.id">{{bookName.name }} ({{bookName.abbreviation }})</option>
+                <option *ngFor="let bookName of bookNames" [value]="bookName.id">{{bookName.name }}</option>
             </select>
             <div *ngIf="nameSelectError" class="alert alert-danger justify-content-center" role="alert">
                Please select Book Name

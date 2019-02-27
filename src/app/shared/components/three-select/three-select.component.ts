@@ -48,6 +48,11 @@ export class ThreeSelectComponent implements OnInit {
           error => this.toastr.error('Error While Fetching Book Names'));
         break;
      }
+     case ThreeSelectMode.ADD_NEW_BOOK: {
+      this.bookService.getBooNameOfAllBooks().subscribe(data => this.bookNames = data,
+        error => this.toastr.error('Error While Fetching Book Names'));
+      break;
+    }
       default: {
          break;
       }
@@ -83,6 +88,11 @@ export class ThreeSelectComponent implements OnInit {
           .subscribe(data => this.bookLanguages = data);
           break;
        }
+       case ThreeSelectMode.ADD_NEW_BOOK: {
+        this.languageService.getAllLanguage()
+        .subscribe(data => this.bookLanguages = data);
+        break;
+      }
         default: {
            break;
         }
@@ -116,6 +126,11 @@ export class ThreeSelectComponent implements OnInit {
           .subscribe(data => this.bookTypes = data);
           break;
        }
+       case ThreeSelectMode.ADD_NEW_BOOK: {
+        this.typeService.getAllType()
+        .subscribe(data => this.bookTypes = data);
+        break;
+      }
         default: {
            break;
         }
