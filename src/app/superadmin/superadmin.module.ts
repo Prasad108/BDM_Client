@@ -10,6 +10,7 @@ import { CreateNewCenterComponent } from './centers/create-new-center/create-new
 import { AddBookNameComponent } from './add-book-name/add-book-name.component';
 import { AddBookTypeComponent } from './add-book-type/add-book-type.component';
 import { AddLanguageComponent } from './add-language/add-language.component';
+import { AddNewBookComponent } from './add-new-book/add-new-book.component';
 
 @NgModule({
   declarations:
@@ -20,7 +21,8 @@ import { AddLanguageComponent } from './add-language/add-language.component';
       CreateNewCenterComponent,
       AddBookNameComponent,
       AddBookTypeComponent,
-      AddLanguageComponent
+      AddLanguageComponent,
+      AddNewBookComponent
     ],
   imports: [
     CommonModule,

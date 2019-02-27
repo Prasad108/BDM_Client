@@ -13,7 +13,7 @@ export class AddBookNameComponent implements OnInit {
 
   bookNameList: BookName[];
   clickedFlag: boolean;
-  bookName = new BookName(0, '', '');
+  bookName = new BookName();
   @ViewChild('form1') formName;
   @ViewChild('test') collapse;
 
@@ -38,14 +38,13 @@ export class AddBookNameComponent implements OnInit {
     this.bookNameService.addBookName(this.bookName).subscribe(
       data => {
         this.bookNameList.push(data);
-        this.toastr.success('New Book created successfully!');
+        this.toastr.success('New Book Name created successfully!');
         this.bookName.name = '';
-        this.bookName.abbreviation = '';
         this.formName.resetForm();
         this.collapse.toggle();
     },
       err => {
-      this.toastr.error('Error in creating Book');
+      this.toastr.error('Error in creating new Book Name');
     }
     );
 

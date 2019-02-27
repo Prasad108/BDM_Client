@@ -9,11 +9,14 @@ import { UsersComponent } from 'app/shared/components/users/users.component';
 import { CreateNewUserComponent } from './../shared/components/create-new-user/create-new-user.component';
 import { AddLanguageComponent } from './add-language/add-language.component';
 import { AddBookTypeComponent } from './add-book-type/add-book-type.component';
+import { AddNewBookComponent } from './add-new-book/add-new-book.component';
+
 const routes: Routes = [
   { path: 'superAdmin', component: SuperadminHomeComponent },
   { path: 'superAdmin/newBookRequests', component: NewBookRequestsComponent },
   { path: 'superAdmin/centers', component: CentersComponent },
   { path: 'superAdmin/BookName', component: AddBookNameComponent },
+  { path: 'superAdmin/Books', component: AddNewBookComponent },
   { path: 'superAdmin/BookLanguage', component: AddLanguageComponent },
   { path: 'superAdmin/BookType', component: AddBookTypeComponent },
   { path: 'superAdmin/centers/new', component: CreateNewCenterComponent },

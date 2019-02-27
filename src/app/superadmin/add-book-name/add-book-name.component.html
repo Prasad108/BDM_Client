@@ -9,7 +9,7 @@
 
 <div class="" mdbCollapse #test="bs-collapse">
   <div id="ManageDiv">
-    <label><h3>Add new Book</h3></label>
+    <label><h3>Add new Book Name</h3></label>
     <form #form1="ngForm" (submit)="submitBook(form1)">
       <div>
           <div class="form-group row">
@@ -18,17 +18,7 @@
                 <input #name="ngModel" required class="form-control" type="text"
                 name="name" [(ngModel)]="bookName.name">
                 <div *ngIf="bookName.name=='' && name.touched" class="alert alert-danger" role="alert">
-                    Book Name is reuired...
-                  </div>
-                </div>
-            </div>
-          <div class="form-group row">
-              <label class="control-label col-xs-2 inputLabel">Abbrivation</label>
-              <div class="col-xs-2 inputStyle">
-                <input #abbreviation="ngModel" required class="form-control" type="text"
-                name="abbreviation" [(ngModel)]="bookName.abbreviation">
-                <div *ngIf="abbreviation.invalid && abbreviation.touched" class="alert alert-danger" role="alert">
-                    Abbrivation is reuired...
+                    Book Name is required...
                   </div>
                 </div>
             </div>
@@ -51,7 +41,6 @@
   <thead class="thead-light">
     <th scope="col" >#</th>
     <th scope="col" ><i class="fas fa-book-open"></i>Book Name</th>
-    <th scope="col">Abbrivation</th>
   </thead>
   <tbody>
     <tr *ngFor="let BookName of bookNameList ; let i=index">
@@ -61,9 +50,6 @@
       <td>
           {{BookName.name}}
       </td>
-      <td>
-        {{BookName.abbreviation}}
-    </td>
     </tr>
   </tbody>
 </table>
