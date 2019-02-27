@@ -13,20 +13,20 @@
        [ngClass]="{ 'show': navbarOpen }">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" >
-        <a  routerLink="/home" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" class="nav-link" > <i class="fa fa-home"></i> Home</a>
+        <a  routerLink="/home" (click)="toggleNavbar()" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" class="nav-link" > <i class="fa fa-home"></i> Home</a>
       </li>
 
       <li class="nav-item" *ngIf="!isLoggedIn">
-        <a  routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link"> <i class="fas fa-sign-in-alt"></i> Login</a>
+        <a  routerLink="/login" (click)="toggleNavbar()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link"> <i class="fas fa-sign-in-alt"></i> Login</a>
       </li>
 
 
       <ng-container *ngIf="isAdmin()" style="display:inline;">
           <li class="nav-item">
-              <a class="nav-link" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> <i class="fa fa-user"></i> Admin</a>
+              <a class="nav-link" (click)="toggleNavbar()" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> <i class="fa fa-user"></i> Admin</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/admin/challans" routerLinkActive="active" > <i class="fas fa-clipboard-list"></i> challans</a>
+              <a class="nav-link" (click)="toggleNavbar()" routerLink="/admin/challans" routerLinkActive="active" > <i class="fas fa-clipboard-list"></i> Challans</a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link" routerLink="admin/inventry" routerLinkActive="active" > <i class="fas fa-clipboard-list"></i> Inventry</a>
@@ -38,33 +38,33 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-primary">
-                  <a class="dropdown-item nav-link" [routerLink]="['/admin/inventry/bookName']"> Update inventry </a>
-                  <a class="dropdown-item nav-link" [routerLink]="['/admin/inventry/bookRequests']"> Request new book</a>
-                  <a class="dropdown-item nav-link"> Add new book</a>
+                  <a class="dropdown-item nav-link" (click)="toggleNavbar()" [routerLink]="['/admin/inventry/bookName']"> Update inventry </a>
+                  <a class="dropdown-item nav-link" (click)="toggleNavbar()" [routerLink]="['/admin/inventry/bookRequests']"> Request new book</a>
+                  <a class="dropdown-item nav-link" (click)="toggleNavbar()"> Add new book</a>
                 </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/admin/users" routerLinkActive="active" > <i class="fas fa-users"></i> Uers</a>
+            <a class="nav-link" (click)="toggleNavbar()" routerLink="/admin/users" routerLinkActive="active" > <i class="fas fa-users"></i> Uers</a>
           </li>
       </ng-container>
 
       <ng-container *ngIf="isUser()">
         <li class="nav-item" >
-          <a class="nav-link" routerLink="/user" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">User</a>
+          <a class="nav-link" (click)="toggleNavbar()" routerLink="/user" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">User</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/user/challans" routerLinkActive="active"> <i class="fas fa-clipboard-list"></i> challans</a>
+          <a class="nav-link" (click)="toggleNavbar()" routerLink="/user/challans" routerLinkActive="active"> <i class="fas fa-clipboard-list"></i> challans</a>
         </li>
       </ng-container>
 
       <ng-container *ngIf="isSuperadmin()" style="display:inline;">
         <li class="nav-item">
-            <a class="nav-link" routerLink="/superAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> <i class="fa fa-user"></i>Super Admin</a>
+            <a class="nav-link" (click)="toggleNavbar()" routerLink="/superAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> <i class="fa fa-user"></i>Super Admin</a>
           </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/superAdmin/newBookRequests" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> New Book Requests</a>
+          <a class="nav-link" (click)="toggleNavbar()" routerLink="/superAdmin/newBookRequests" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> New Book Requests</a>
         </li>
 
         <li class="btn-group nav-item" mdbDropdown>
@@ -74,19 +74,19 @@
               </a>
 
               <div class="dropdown-menu dropdown-primary">
-                <a class="dropdown-item nav-link" routerLink="/superAdmin/BookName">Book Name</a>
-                <a class="dropdown-item nav-link"  >Books</a>
-                <a class="dropdown-item nav-link" routerLink="/superAdmin/BookLanguage">Language</a>
-                <a class="dropdown-item nav-link" routerLink="/superAdmin/BookType">Type</a>
+                <a class="dropdown-item nav-link" (click)="toggleNavbar()" routerLink="/superAdmin/BookName">Book Name</a>
+                <a class="dropdown-item nav-link" (click)="toggleNavbar()"  >Books</a>
+                <a class="dropdown-item nav-link" (click)="toggleNavbar()" routerLink="/superAdmin/BookLanguage">Language</a>
+                <a class="dropdown-item nav-link" (click)="toggleNavbar()" routerLink="/superAdmin/BookType">Type</a>
               </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/superAdmin/centers" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> Centers </a>
+          <a class="nav-link" (click)="toggleNavbar()" routerLink="/superAdmin/centers" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> Centers </a>
         </li>
     </ng-container>
 
     <li class="nav-item" *ngIf="isLoggedIn">
-      <a class="nav-link" (click)="logout()">
+      <a class="nav-link" (click)="logout();toggleNavbar()">
           <i class="fas fa-sign-out-alt"></i> Log out
       </a>
     </li>
