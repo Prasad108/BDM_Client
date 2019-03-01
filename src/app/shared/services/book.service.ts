@@ -12,7 +12,9 @@ import { Type } from '../models/Type';
 })
 export class BookService {
   private getAllBookNameOfUsersInventory_URL = AppSettings.API_ENDPOINT + '/bookName/getAllBookNameOfUsersInventory';
-  private getBooNameOfAllBooks_URL = AppSettings.API_ENDPOINT + '/bookName/getBooNameOfAllBooks';
+  private getBookNameOfAllBooks_URL = AppSettings.API_ENDPOINT + '/bookName/getBooNameOfAllBooks';
+  private getAllBookInDetail_URL = AppSettings.API_ENDPOINT + '/book/getAllBookInDetail';
+
 
   constructor(private http: HttpClient) { }
 
@@ -21,6 +23,10 @@ export class BookService {
   }
 
   getBooNameOfAllBooks(): Observable <BookName[]> {
-    return this.http.get<BookName[]>(this.getBooNameOfAllBooks_URL);
+    return this.http.get<BookName[]>(this.getBookNameOfAllBooks_URL);
+  }
+
+  getAllBooksInDetail(): Observable <Book[]> {
+    return this.http.get<Book[]>(this.getAllBookInDetail_URL);
   }
 }

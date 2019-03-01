@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from 'app/shared/models/Book';
+import { ToastaService } from 'ngx-toasta';
+import { BookService } from './../../shared/services/book.service';
 
 @Component({
   selector: 'app-add-new-book',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddNewBookComponent implements OnInit {
 
-  constructor() { }
+  bookList: Book[];
+
+  constructor(private bookService: BookService,
+              private toastr: ToastaService) { }
 
   ngOnInit() {
+    this.bookService.getAllBooksInDetail().subscribe(
+      data => {
+        this.bookList = data;
+        console.log(this.bookList);
+      }
+      );
   }
-
 }
