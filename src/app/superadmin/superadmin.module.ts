@@ -11,6 +11,7 @@ import { AddBookNameComponent } from './add-book-name/add-book-name.component';
 import { AddBookTypeComponent } from './add-book-type/add-book-type.component';
 import { AddLanguageComponent } from './add-language/add-language.component';
 import { AddNewBookComponent } from './add-new-book/add-new-book.component';
+import { SharedModule } from 'app/shared/shared.module';
 
 @NgModule({
   declarations:
@@ -28,7 +29,8 @@ import { AddNewBookComponent } from './add-new-book/add-new-book.component';
     CommonModule,
     SuperadminRoutingModule,
     MDBBootstrapModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ]
 })
 export class SuperadminModule { }
