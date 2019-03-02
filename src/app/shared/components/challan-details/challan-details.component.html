@@ -1,43 +1,7 @@
 <a [routerLink]="['/admin/challans/edit', challan.id]" *ngIf="roles.includes('ADMIN') && challan && challan.settled==0" ><button  class="btn btn-primary pull-right"><i class="fas fa-edit" ></i> Edit</button></a>
 <button *ngIf="challan" class="btn btn-primary pull-right" (click)="print()"> <i class="fas fa-file-pdf"></i> print</button>
 
-<table id="ChallanSummary" class="table table-bordered " *ngIf="challan">
-      <caption style="caption-side: top;" class="alert alert-dark" role="alert">Challan Summary</caption>
-    <tbody>
-      <tr>
-        <td scope="row">Challan Id</td>
-        <td>{{challan.id}}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>Essuid By   <i class="fas fa-user-tie"></i>:</td>
-        <td>{{challan.userByIssuedBy.name}}</td>
-        <td>Essuid To  <i class="fas fa-user"></i>:</td>
-        <td>{{challan.userByIssuedTo.name}}</td>
-      </tr>
-      <tr>
-        <td>Issued Date <i class="fas fa-calendar-alt"></i>:</td>
-        <td>{{challan.issuedDate | date: 'MMM d, y'}}</td>
-        <td>Settled Date <i class="fas fa-calendar-alt"></i>:</td>
-        <td *ngIf="challan.settled == 1" >{{challan.settledDate | date: 'MMM d, y'}}</td>
-        <td *ngIf="challan.settled == 0" >Not Yet Settled</td>
-      </tr>
-      <tr>
-        <td>Total Amount :</td>
-        <td *ngIf="challan.totalAmount">{{challan.totalAmount | currency:'INR': 'Rs '}}</td> <td *ngIf="!challan.totalAmount">{{getSum('saleValue') | currency:'INR': 'Rs '}}</td>
-        <td>Recieved Amount :</td>
-        <td *ngIf="challan.receivedAmount">{{challan.totalAmount | currency:'INR': 'Rs '}}</td><td *ngIf="!challan.receivedAmount"> --- </td>
-      </tr>
-      <tr *ngIf="challan.expAmount || challan.expComment">
-        <td *ngIf="challan.expAmount">Expenditure Amount :</td>
-        <td *ngIf="challan.expAmount"> {{challan.expAmount | currency:'INR': 'Rs '}}</td>
-        <td *ngIf="challan.expComment">Expenditure Details :</td>
-        <td *ngIf="challan.expComment"> {{challan.expComment}}</td>
-      </tr>
-
-    </tbody>
-  </table>
+<app-challan-summary [challan]="challan" (getSumOf)="getSum($event)"></app-challan-summary>
   <div *ngIf="challan?.cbDetailses.length ==0" class="alert alert-warning">
       <h4>No Books Issued</h4>
   </div>

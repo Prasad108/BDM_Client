@@ -27,6 +27,7 @@ import { RequestNewBookService } from './services/request-new-book.service';
 import { AppHomeComponent } from './components/app-home/app-home.component';
 import { UsersComponent } from './components/users/users.component';
 import { CreateNewUserComponent } from './components/create-new-user/create-new-user.component';
+import { ChallanSummaryComponent } from './components/challan-summary/challan-summary.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CreateNewUserComponent } from './components/create-new-user/create-new-
     AppHomeComponent,
     UsersComponent,
     CreateNewUserComponent,
+    ChallanSummaryComponent,
     ],
   imports: [
     BrowserModule,
@@ -74,6 +76,7 @@ import { CreateNewUserComponent } from './components/create-new-user/create-new-
     ThreeSelectComponent,
     UsersComponent,
     AppHomeComponent,
+    ChallanSummaryComponent,
     CarouselModule,
     NgxChartsModule,
     OrderModule,
