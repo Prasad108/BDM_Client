@@ -45,7 +45,6 @@ export class CreateNewUserComponent implements OnInit {
           data =>  this.user.center = data.center,
           error => this.toastr.error('Error While fetching user information')
         );
-        this.user.roles = 1;
     }
 
 
