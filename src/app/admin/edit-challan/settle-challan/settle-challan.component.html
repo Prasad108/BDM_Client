@@ -1,23 +1,23 @@
 <form #SettleForm="ngForm" (ngSubmit)="settleChallan()">
   <div class="form-group row">
     <div class="col-sm-3 selectLabel">
-          <label class="control-label" for="totalAmmount">Total Ammount :</label>
+          <label class="control-label" for="totalAmount">Total Amount :</label>
     </div>
     <div class="col-sm-4 selectInput" >
-      <input id="totalAmmount" type="text" *ngIf="challan" [(ngModel)]="challan.totalAmount" name="totalAmount" readonly>
+      <input id="totalAmount" type="text" *ngIf="challan" [(ngModel)]="challan.totalAmount" name="totalAmount" readonly>
     </div>
   </div>
   <div class="form-group row">
       <div class="col-sm-3 selectLabel">
-            <label class="control-label" for="receivedAmount">Recieved Ammount :</label>
+            <label class="control-label" for="receivedAmount">Recieved Amount :</label>
       </div>
       <div class="col-sm-4 selectInput" >
         <input id="receivedAmount" type="number" *ngIf="challan"
           [(ngModel)]="challan.receivedAmount" name="receivedAmount"
-          (input)="validateRecievedAmmount()"
+          (input)="validateRecievedAmount()"
           required>
-        <div *ngIf="recievedAmmountError" class="alert alert-danger justify-content-center" role="alert">
-            Please Enter Valid Recieved Ammount
+        <div *ngIf="recievedAmountError" class="alert alert-danger justify-content-center" role="alert">
+            Please Enter Valid Recieved Amount
         </div>
       </div>
   </div>
@@ -31,14 +31,14 @@
         <div id="collapse1" class="panel-collapse collapse">
             <div class="form-group row">
                 <div class="col-sm-3 selectLabel">
-                      <label class="control-label" for="expenditureAmmount">Expenditure Ammount :</label>
+                      <label class="control-label" for="expenditureAmount">Expenditure Amount :</label>
                 </div>
                 <div class="col-sm-4 selectInput" >
-                  <input id="expenditureAmmount" name="expenditureAmmount" type="number"
+                  <input id="expenditureAmount" name="expenditureAmount" type="number"
                   *ngIf="challan" [(ngModel)]="challan.expAmount"
-                  (input)="validateExpenditureAmmount()" >
-                  <div *ngIf="expenditureAmmountError" class="alert alert-danger justify-content-center" role="alert">
-                      Please Enter Valid Expenditure Ammount
+                  (input)="validateExpenditureAmount()" >
+                  <div *ngIf="expenditureAmountError" class="alert alert-danger justify-content-center" role="alert">
+                      Please Enter Valid Expenditure Amount
                   </div>
                 </div>
             </div>
@@ -63,9 +63,9 @@
     <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-xs-2 col-sm-offset-3 challanSubmitBtn">
-            <a (click)="validateRecievedAmmount()">
+            <a (click)="validateRecievedAmount()">
 
-              <button id="" type="submit" [disabled]="SettleForm.invalid || recievedAmmountError || expenditureAmmountError"
+              <button id="" type="submit" [disabled]="SettleForm.invalid || recievedAmountError || expenditureAmountError"
                 class="btn btn-primary waves-effect waves-light">
                   <i class="fas fa-check"></i> Settle Challan
                 </button>

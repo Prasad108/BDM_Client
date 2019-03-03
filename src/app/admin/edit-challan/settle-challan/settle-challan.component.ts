@@ -13,8 +13,8 @@ export class SettleChallanComponent implements OnInit {
 
   challanId;
   challan: Challan;
-  expenditureAmmountError = false;
-  recievedAmmountError = false;
+  expenditureAmountError = false;
+  recievedAmountError = false;
   constructor(private challanService: ChallanService,
     private route: ActivatedRoute,
     private router: Router,
@@ -27,19 +27,19 @@ export class SettleChallanComponent implements OnInit {
       data => this.challan = data
     );
   }
-  validateRecievedAmmount() {
+  validateRecievedAmount() {
     if (this.challan.receivedAmount === undefined || this.challan.receivedAmount <= 0) {
-       this.recievedAmmountError = true;
+       this.recievedAmountError = true;
     } else {
-      this.recievedAmmountError = false;
+      this.recievedAmountError = false;
     }
   }
 
-  validateExpenditureAmmount() {
+  validateExpenditureAmount() {
     if (this.challan.expAmount != null && this.challan.expAmount <= 0) {
-      this.expenditureAmmountError = true;
+      this.expenditureAmountError = true;
    } else {
-     this.expenditureAmmountError = false;
+     this.expenditureAmountError = false;
    }
   }
 
