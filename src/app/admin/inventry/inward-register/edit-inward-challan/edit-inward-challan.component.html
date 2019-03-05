@@ -1,0 +1,57 @@
+<app-challan-summary [challan]="challan" (getSumOf)="getSum($event)"></app-challan-summary>
+
+  <a *ngIf="challan" [routerLink] = "['addNewBook']"><button class="btn btn-primary"> <i class="fas fa-plus-square"></i> Add New Book to Challan</button></a>
+  <a  *ngIf=" challan && challan.cbDetailses.length > 0" [routerLink] = "['settle']"><button class="btn btn-success"> <i class="fas fa-check"></i> Settle</button></a>
+
+  <div *ngIf=" challan && challan.cbDetailses.length ==0; else bookdatailsTable" class="alert alert-warning">
+      <h4>No Books Added</h4>
+  </div>
+<ng-template #bookdatailsTable>
+  <table class="table table-bordered table-sm table-responsive-lg" *ngIf="challan && challan.cbDetailses.length > 0 ">
+      <caption style="caption-side: top;">List of Issued Books</caption>
+      <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col"><i class="fas fa-cogs"></i> Action</th>
+            <th scope="col">Book Name</th>
+            <th scope="col">Language</th>
+            <th scope="col">Type</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Issued</th>
+            <th scope="col">Returned</th>
+            <th scope="col">Sale Value</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let CbDetails of challan.cbDetailses; let i=index">
+          <td>{{i+1}}</td>
+          <td>
+              <div class="btn-group">
+             <a><button (click)="loadModalCbDetails(CbDetails)" class="btn btn-primary btn-sm" ><i class="fas fa-edit"></i></button></a>
+            </div>
+            </td>
+          <td>{{CbDetails.book.name.name}} </td>
+          <td>{{CbDetails.book.languages.name}} </td>
+          <td>{{CbDetails.book.type.name}} </td>
+          <td>{{CbDetails.rate | currency:'INR' }} </td>
+          <td>{{CbDetails.quantity}} </td>
+          <td *ngIf="CbDetails.returned">{{CbDetails.returned}} </td> <td *ngIf="!CbDetails.returned"> 0 </td>
+          <td >{{CbDetails.saleValue | currency:'INR'}} </td>
+        </tr>
+      </tbody>
+      <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total</td>
+            <td>{{getSum('quantity')}}</td>
+            <td>{{getSum('returned')}}</td>
+            <td>{{getSum('saleValue') | currency:'INR' }}</td>
+          </tr>
+        </tfoot>
+
+  </table>
+</ng-template>

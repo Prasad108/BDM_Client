@@ -1,32 +1,19 @@
-import {User} from './User';
-import {CbDetails} from './CbDetails';
+import { User } from "./User";
+import { CbDetails } from "./CbDetails";
 export class Challan {
-
-        id: number;
-        userByIssuedTo?: User | number;
-        userByIssuedBy?: User | number;
-        issuedDate?: Date;
-        settledDate?: Date;
-        totalAmount?: number;
-        receivedAmount?: number;
-        expAmount?: number;
-        expComment?: string;
-        settled?: any;
-        cbDetailses?: CbDetails[];
-
-    constructor($id: number, $userByIssuedTo: User |number, $userByIssuedBy: User |number,
-         $issuedDate: Date, $settledDate: Date, $totalAmount: number,
-         $receivedAmount: number, $expAmount: number, $expComment: string) {
-        this.id = $id;
-        this.userByIssuedTo = $userByIssuedTo;
-        this.userByIssuedBy = $userByIssuedBy;
-        this.issuedDate = $issuedDate;
-        this.settledDate = $settledDate;
-        this.totalAmount = $totalAmount;
-        this.receivedAmount = $receivedAmount;
-        this.expAmount = $expAmount;
-        this.expComment = $expComment;
-    }
-
-
+  constructor(
+    public id?: number,
+    public userByIssuedTo?: User | number,
+    public userByIssuedBy?: User | number,
+    public issuedDate?: Date,
+    public settledDate?: Date,
+    public totalAmount?: number,
+    public receivedAmount?: number,
+    public expAmount?: number,
+    public expComment?: string,
+    public settled?: any,
+    public inventoryChallan?: boolean,
+    public addedToInventory?: boolean,
+    public cbDetailses?: CbDetails[]
+  ) {}
 }

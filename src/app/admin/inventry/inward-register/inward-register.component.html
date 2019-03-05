@@ -1,0 +1,33 @@
+<button class="btn btn-primary" (click)=createNewChallan()> <i class="fas fa-plus-square"></i> Create New Inward Challan</button>
+
+<div class="table-responsive">
+  <table class="table table-hover table-sm">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"><i class="fas fa-calendar-alt"></i> Issued Date</th>
+        <th scope="col"><i class="fas fa-user-tie"></i> Created By</th>
+        <th scope="col">Status</th>
+        <th scope="col"><i class="fas fa-cogs"></i> Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let challan of challanList | orderBy: 'id' : true ; index as i" [class.table-primary]="challan.settled==1" [class.table-danger]="challan.settled==0">
+        <th scope="row"> {{challan.id }}</th>
+        <td>{{challan.issuedDate | date: 'MMM d, y'}}</td>
+        <td>{{challan.userByIssuedBy.name}}</td>
+        <td *ngIf="challan.settled==1"><i class="fas fa-check"></i></td>  <td *ngIf="challan.settled==0"><i class="fas fa-clock"></i></td>
+        <td>
+          <div class="btn-group">
+          <a [routerLink]="['details', challan.id]"><button class="btn btn-info btn-sm"><i class="fas fa-eye"></i></button></a>
+          <a [routerLink]="['edit', challan.id]" *ngIf=" challan.settled==0"><button  class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button></a>
+        </div>
+        </td>
+
+      </tr>
+
+    </tbody>
+  </table>
+  </div>
+
+
