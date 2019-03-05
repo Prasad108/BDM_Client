@@ -1,0 +1,72 @@
+<app-three-select [mode]="threeSelectMode" (threeSelected)=afterSelect($event)></app-three-select>
+
+<table class="table table-bordered table-sm table-responsive-lg" *ngIf="CbDetails?.book">
+    <caption style="caption-side: top;">You Have Issued this kooks</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col"><i class="fas fa-cogs"></i> Action</th>
+            <th scope="col">Book Name</th>
+            <th scope="col">Language</th>
+            <th scope="col">Type</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Issued</th>
+            <th scope="col">Returned</th>
+            <th scope="col">Sale Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>1</td>
+        <td>
+            <div class="btn-group">
+            <a><button (click)="updateCbDetails()" class="btn btn-primary btn-sm" ><i class="fas fa-edit"></i></button></a>
+            </div>
+            </td>
+        <td>{{CbDetails.book.name.name}} </td>
+        <td>{{CbDetails.book.languages.name}} </td>
+        <td>{{CbDetails.book.type.name}} </td>
+        <td>{{CbDetails.rate | currency:'INR' }} </td>
+        <td>{{CbDetails.quantity}} </td>
+        <td *ngIf="CbDetails.returned">{{CbDetails.returned}} </td> <td *ngIf="!CbDetails.returned"> 0 </td>
+        <td >{{CbDetails.saleValue | currency:'INR'}} </td>
+        </tr>
+    </tbody>
+
+</table>
+<div *ngIf="bookDoesNotExistForChallan">
+        <form novalidate #AddNewBook="ngForm" (submit)="addNewBook()">
+             <div class="form-group row">
+                           <label class="control-label col-sm-3 inputLabel" for="bookRate">Book Rate :</label>
+                     <div class="col-xs-2 inputStyle" >
+                            <input class="form-control" type="number"  id="bookRate" required  name="bookRate"
+                            #bookRateInput="ngModel"
+                            [(ngModel)]="bookRate"  (input)="validateRate()"
+                             >
+                           <div *ngIf="bookRateError && bookRateInput.dirty" class="alert alert-danger justify-content-center" role="alert">
+                              Rate should be positive number.
+                          </div>
+                     </div>
+            </div>
+            <div class="form-group row">
+                    <label class="control-label col-sm-3 inputLabel" for="issuedQuantity">Add Quantity :</label>
+              <div class="col-xs-2 inputStyle" >
+                     <input class="form-control" type="number"  id="issuedQuantity" required  name="issuedQuantity"
+                     #bookIssuedQuantityInput="ngModel"
+                     [(ngModel)]="bookIssuedQuantity" (input)="validateIssuedQuantity()" (focusout)="validateIssuedQuantity()"
+                      >
+                    <div *ngIf="bookIssuedQuantityError" class="alert alert-danger justify-content-center" role="alert">
+                      Quantity should be positive number.
+                   </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-xs-2 col-sm-offset-3 inputStyle">
+                    <button type="submit" [disabled]="AddNewBook.invalid || bookIssuedQuantityError || bookRateError"
+                        class="btn btn-primary waves-effect waves-light">Save
+                        <i class="fas fa-save"></i> </button>
+                </div>
+            </div>
+        </form>
+     </div>

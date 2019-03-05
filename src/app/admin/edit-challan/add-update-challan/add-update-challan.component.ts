@@ -1,10 +1,9 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange, ViewChild, ElementRef} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {CbDetails} from 'app/shared/models/CbDetails';
 import { ShairedService } from 'app/shared/services/shaired.service';
 import { CbDetailsService } from 'app/shared/services/cb-details.service';
 import { PreviousRouteService } from 'app/shared/services/previous-route.service';
-import { NgForm } from '@angular/forms';
 import { ToastaService } from 'ngx-toasta';
 
 @Component({
@@ -16,8 +15,6 @@ export class AddUpdateChallanComponent implements OnInit {
    cbDetails: CbDetails;
    errorMessage = false;
    succuessMessage = false;
-
-   @ViewChild('form') form: ElementRef;
 
   constructor(private shairedService: ShairedService,
               private cbDetailsService: CbDetailsService,
@@ -75,13 +72,6 @@ export class AddUpdateChallanComponent implements OnInit {
       return false;
     }
   }
-
-  //  validateForm(form: NgForm): boolean {
-  //   //  console.log('pristine: ' + form.pristine + ' dirty: ' + form.dirty);
-  //   //  console.log((!form.dirty  && (form.invalid  || !this.validateReturned() || !this.validateRate())));
-  //   console.log(form);
-  //      return ( (form.invalid  || !this.validateReturned() || !this.validateRate()));
-  //  }
 
 
 }

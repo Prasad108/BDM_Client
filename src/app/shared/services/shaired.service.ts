@@ -8,6 +8,8 @@ import { User } from '../models/User';
 export class ShairedService {
   cbDetails: CbDetails;
   public $cbDetails: Subject<CbDetails> = new Subject<CbDetails>();
+  inwardCbDetails: CbDetails;
+  public $inwardCbDetails: Subject<CbDetails> = new Subject<CbDetails>();
   user: User;
   public $user: Subject<User> = new Subject<User>();
 
@@ -15,6 +17,7 @@ export class ShairedService {
   constructor() {
     this.$cbDetails.subscribe(data => this.cbDetails = data);
     this.$user.subscribe(data => this.user = data);
+    this.$inwardCbDetails.subscribe(data =>  this.inwardCbDetails = data );
   }
 
   updateCbDetails(data: CbDetails) {
@@ -25,6 +28,11 @@ export class ShairedService {
   updateUser(data: User) {
     this.user = data;
     this.$user.next(data);
+  }
+
+  updateInwardCbDetails(data: CbDetails) {
+    this.cbDetails = data;
+    this.$inwardCbDetails.next(data);
   }
 
 }

@@ -17,6 +17,8 @@ import { BookRequestsComponent } from './inventry/book-requests/book-requests.co
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { InwardRegisterComponent } from './inventry/inward-register/inward-register.component';
 import { EditInwardChallanComponent } from './inventry/inward-register/edit-inward-challan/edit-inward-challan.component';
+import { AddNewBookToInwardChallanComponent } from './inventry/inward-register/edit-inward-challan/add-new-book-to-inward-challan/add-new-book-to-inward-challan.component';
+import { UpdateInwardChallanCbDetailsComponent } from './inventry/inward-register/edit-inward-challan/update-inward-challan-cb-details/update-inward-challan-cb-details.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { EditInwardChallanComponent } from './inventry/inward-register/edit-inwa
     BookRequestsComponent,
     InwardRegisterComponent,
     EditInwardChallanComponent,
+    AddNewBookToInwardChallanComponent,
+    UpdateInwardChallanCbDetailsComponent,
   ],
   imports: [
     CommonModule,
