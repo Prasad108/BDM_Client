@@ -41,10 +41,19 @@
       </td>
     </tr>
     <tr>
-        <td>Issued Quantity</td>
-        <td>  {{cbDetails.quantity}} </td>
-    </tr>
-    <tr>
+      <td><label for="bookQuantity" class="col-sm-4 col-form-label">Book Quantity</label></td>
+      <td>
+        <input type="number"  required #bookQuantity="ngModel" name="bookQuantity"
+         class="form-control" id="inputCbDetailsQuantity" placeholder="Book Quantity"
+         (input)="updateSaleValue()" [(ngModel)]="cbDetails.quantity" min="0"
+         >
+           <div *ngIf="!validatebookQuantity() || bookQuantity.invalid" class="alert alert-danger justify-content-center" role="alert">
+             Quantity is required, it must be greater than 0.
+        </div>
+      </td>
+
+  </tr>
+    <!-- <tr>
         <td><label for="inputCbDetailsReturned" class="col-sm-4 col-form-label">Returned Quantity</label></td>
         <td>
           <input type="number"  required #returnedQuantity="ngModel" name="cbDetailsReturned"
@@ -56,7 +65,7 @@
           </div>
         </td>
 
-    </tr>
+    </tr> -->
     <tr>
         <td> <label for="inputCbDetailsSaleVlaue" class="col-sm-4 col-form-label">Sale Value</label></td>
         <td>
@@ -78,7 +87,7 @@
     Failed to updted the issued book
 </div>
 <div class="modal-footer justify-content-center">
-  <a><button type="submit" [disabled]=" Updateform.invalid  || !validateReturned() || !validateRate()" class="btn btn-primary waves-effect waves-light">Save
+  <a><button type="submit" [disabled]=" Updateform.invalid  || !validatebookQuantity() || !validateRate()" class="btn btn-primary waves-effect waves-light">Save
       <i class="fas fa-save"></i> </button>
   </a>
    <button type="button" (click)="goBack()" class="btn btn-outline-primary waves-effect"> <i class="fas fa-arrow-left"></i> Back</button>

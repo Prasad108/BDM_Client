@@ -1,5 +1,5 @@
-import { User } from "./User";
-import { CbDetails } from "./CbDetails";
+import { User } from './User';
+import { CbDetails } from './CbDetails';
 export class Challan {
   constructor(
     public id?: number,

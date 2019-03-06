@@ -48,7 +48,7 @@ export class UpdateInwardChallanCbDetailsComponent implements OnInit {
  }
 
  updateSaleValue() {
-   this.cbDetails.saleValue = (this.cbDetails.rate * (this.cbDetails.quantity - this.cbDetails.returned ));
+   this.cbDetails.saleValue = (this.cbDetails.rate * (this.cbDetails.quantity));
  }
 
  goBack() {
@@ -63,8 +63,8 @@ export class UpdateInwardChallanCbDetailsComponent implements OnInit {
    }
  }
 
- validateReturned(): boolean {
-   if (this.cbDetails.returned <= this.cbDetails.quantity && this.cbDetails.returned >= 0) {
+ validatebookQuantity(): boolean {
+   if ( this.cbDetails.quantity > 0) {
      return true;
    } else {
      return false;

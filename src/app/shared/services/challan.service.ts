@@ -24,6 +24,7 @@ export class ChallanService {
   private getChallanById_URL = AppSettings.API_ENDPOINT + '/challan/';
   private saveChallan_URL = AppSettings.API_ENDPOINT + '/challan/';
   private checkIfChallanIsSettled_URL = AppSettings.API_ENDPOINT + '/challan/checkIfChallanIsSettled/';
+  private addToInventory_URL = AppSettings.API_ENDPOINT + '/challan/addToInventory/';
   getChallanListOfUsersCenter(): Observable<Challan[]> {
     return this.http.get<Challan[]>(this.challanListOfUserCenterURL);
   }
@@ -70,6 +71,10 @@ export class ChallanService {
     return this.http.get<boolean>(this.checkIfChallanIsSettled_URL + id).pipe(
       map(data => !data)
     );
+  }
+
+  addToInventory(id: any): Observable<Challan> {
+    return this.http.get<Challan>(this.addToInventory_URL + id);
   }
 
 }
