@@ -9,14 +9,19 @@ import { EditChallanComponent } from './edit-challan/edit-challan.component';
 import {AdminRoutingModule} from './admin-routing.module';
 import { AddUpdateChallanComponent } from './edit-challan/add-update-challan/add-update-challan.component';
 import { NewChallanComponent } from './challan-list/new-challan/new-challan.component';
-import { InventryComponent } from './inventry/inventry.component';
-import { UpdateInventryComponent } from './inventry/update-inventry/update-inventry.component';
 import { AddNewBookToChallanComponent } from './edit-challan/add-new-book-to-challan/add-new-book-to-challan.component';
 import { RequestNewBookComponent } from './inventry/request-new-book/request-new-book.component';
 import { SettleChallanComponent } from './edit-challan/settle-challan/settle-challan.component';
 import { UsersComponent } from './users/users.component';
 import { BookRequestsComponent } from './inventry/book-requests/book-requests.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { InwardRegisterComponent } from './inventry/inward-register/inward-register.component';
+import { EditInwardChallanComponent } from './inventry/inward-register/edit-inward-challan/edit-inward-challan.component';
+import { AddNewBookToInwardChallanComponent } from './inventry/inward-register/edit-inward-challan/add-new-book-to-inward-challan/add-new-book-to-inward-challan.component';
+import { UpdateInwardChallanCbDetailsComponent } from './inventry/inward-register/edit-inward-challan/update-inward-challan-cb-details/update-inward-challan-cb-details.component';
+import { SettleInwardChallanComponent } from './inventry/inward-register/edit-inward-challan/settle-inward-challan/settle-inward-challan.component';
+import { StockComponent } from './inventry/stock/stock.component';
+
 @NgModule({
   declarations: [
     AdminHomeComponent,
@@ -25,13 +30,17 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     EditChallanComponent,
     AddUpdateChallanComponent,
     NewChallanComponent,
-    InventryComponent,
-    UpdateInventryComponent,
     AddNewBookToChallanComponent,
     RequestNewBookComponent,
     SettleChallanComponent,
     UsersComponent,
-    BookRequestsComponent
+    BookRequestsComponent,
+    InwardRegisterComponent,
+    EditInwardChallanComponent,
+    AddNewBookToInwardChallanComponent,
+    UpdateInwardChallanCbDetailsComponent,
+    SettleInwardChallanComponent,
+    StockComponent,
   ],
   imports: [
     CommonModule,

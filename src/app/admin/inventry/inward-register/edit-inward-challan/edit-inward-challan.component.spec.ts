@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InventryComponent } from './inventry.component';
+import { EditInwardChallanComponent } from './edit-inward-challan.component';
 
-describe('InventryComponent', () => {
-  let component: InventryComponent;
-  let fixture: ComponentFixture<InventryComponent>;
+describe('EditInwardChallanComponent', () => {
+  let component: EditInwardChallanComponent;
+  let fixture: ComponentFixture<EditInwardChallanComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InventryComponent ]
+      declarations: [ EditInwardChallanComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InventryComponent);
+    fixture = TestBed.createComponent(EditInwardChallanComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

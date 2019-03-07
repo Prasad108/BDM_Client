@@ -19,7 +19,6 @@ export class AddNewBookComponent implements OnInit {
     this.bookService.getAllBooksInDetail().subscribe(
       data => {
         this.bookList = data;
-        console.log(this.bookList);
       }
       );
   }

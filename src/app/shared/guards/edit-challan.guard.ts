@@ -20,7 +20,6 @@ export class EditChallanGuard implements CanActivate, OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.challanId = params.get('id');
-      console.log( this.challanId);
     });
   }
   canActivate(

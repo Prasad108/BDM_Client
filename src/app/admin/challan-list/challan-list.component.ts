@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ChallanService} from 'app/shared/services/challan.service';
 import {Challan} from 'app/shared/models/Challan';
-import { ChallansComponent } from 'app/shared/components/challans/challans.component';
 
 @Component({
   selector: 'app-challan-list',

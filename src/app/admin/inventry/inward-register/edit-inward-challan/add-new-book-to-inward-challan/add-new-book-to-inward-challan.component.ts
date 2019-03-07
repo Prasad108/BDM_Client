@@ -9,11 +9,11 @@ import { Challan } from 'app/shared/models/Challan';
 import { Book } from 'app/shared/models/Book';
 import {ThreeSelectMode} from 'app/shared/Enum/threeSelectEnum';
 @Component({
-  selector: 'app-add-new-book-to-challan',
-  templateUrl: './add-new-book-to-challan.component.html',
-  styleUrls: ['./add-new-book-to-challan.component.css']
+  selector: 'app-add-new-book-to-inward-challan',
+  templateUrl: './add-new-book-to-inward-challan.component.html',
+  styleUrls: ['./add-new-book-to-inward-challan.component.css']
 })
-export class AddNewBookToChallanComponent implements OnInit {
+export class AddNewBookToInwardChallanComponent implements OnInit {
   challanId;
   CbDetails: CbDetails;
   bookDoesNotExistForChallan = false;
@@ -24,7 +24,7 @@ export class AddNewBookToChallanComponent implements OnInit {
   bookRate: number;
   bookRateError = false;
   bookIssuedQuantityError = false;
-  threeSelectMode: ThreeSelectMode = ThreeSelectMode.BOOKS_IN_INVENTORY;
+  threeSelectMode: ThreeSelectMode = ThreeSelectMode.ALL_BOOKS;
   constructor(
     private cbDetailsService: CbDetailsService,
     private route: ActivatedRoute,
@@ -44,7 +44,7 @@ export class AddNewBookToChallanComponent implements OnInit {
     this.CbDetails = null;
     this.bookDoesNotExistForChallan = false;
     if (result.bookNameId !== 'default' && result.languageId !== 'default' && result.typeId !== 'default') {
-      this.cbDetailsService.getCbDetailFromChallanWithRequestedNameLangType(
+      this.cbDetailsService.getInwardCbDetailFromChallanWithRequestedNameLangType(
         this.challanId, result.bookNameId, result.languageId, result.typeId)
       .subscribe(
         data => {
@@ -54,7 +54,6 @@ export class AddNewBookToChallanComponent implements OnInit {
             this.bookId = data.bookId;
             this.rate = data.rate;
             this.bookRate = data.rate;
-            this.inventryStock = data.inventryStock;
             this.bookDoesNotExistForChallan = true;
 
           }
@@ -77,12 +76,12 @@ export class AddNewBookToChallanComponent implements OnInit {
     }
   }
   validateIssuedQuantity(): boolean {
-    if (this.bookIssuedQuantity > this.inventryStock || this.bookIssuedQuantity < 1 || this.bookIssuedQuantity == null) {
-        this.bookIssuedQuantityError = true;
-        return true;
+    if (this.bookIssuedQuantity < 0 ) {
+      this.bookIssuedQuantityError = true;
+      return true;
     } else {
       this.bookIssuedQuantityError = false;
-        return false;
+      return false;
     }
   }
   addNewBook() {

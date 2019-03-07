@@ -15,15 +15,22 @@ export class ChallanService {
   constructor(private http: HttpClient) { }
 
   private challanListOfUserCenterURL = AppSettings.API_ENDPOINT + '/challan/detailedChallnListForUsersCenter';
+  private inwardChallanListOfUserCenterURL = AppSettings.API_ENDPOINT + '/challan/inward/detailedChallnListForUsersCenter';
   private listOfUserSpecificChallanURL = AppSettings.API_ENDPOINT + '/challan/userSpecificChallanList';
   private challanURL = AppSettings.API_ENDPOINT + '/challan/detailed/';
   private createNewChallanURL = AppSettings.API_ENDPOINT + '/challan/new/';
+  private creatNewInwardChallanURL = AppSettings.API_ENDPOINT + '/challan/inward/new/';
   private addNewBookToChallan_URL = AppSettings.API_ENDPOINT + '/cbDetails/';
   private getChallanById_URL = AppSettings.API_ENDPOINT + '/challan/';
   private saveChallan_URL = AppSettings.API_ENDPOINT + '/challan/';
   private checkIfChallanIsSettled_URL = AppSettings.API_ENDPOINT + '/challan/checkIfChallanIsSettled/';
+  private addToInventory_URL = AppSettings.API_ENDPOINT + '/challan/addToInventory/';
   getChallanListOfUsersCenter(): Observable<Challan[]> {
     return this.http.get<Challan[]>(this.challanListOfUserCenterURL);
+  }
+
+  getInwardChallanListOfUsersCenter(): Observable<Challan[]> {
+    return this.http.get<Challan[]>(this.inwardChallanListOfUserCenterURL);
   }
 
  getListOfUserSpecificChallan (): Observable<Challan[]> {
@@ -36,6 +43,10 @@ export class ChallanService {
 
   creatNewChallan(id: number): Observable<Challan> {
     return this.http.post<Challan>(this.createNewChallanURL + id, '', AppSettings.HTTP_OPTIONS);
+  }
+
+  creatNewInwardChallan(): Observable<Challan> {
+    return this.http.get<Challan>(this.creatNewInwardChallanURL);
   }
 
   addNewBookToChallan(cb: any): Observable<CbDetails> {
@@ -60,6 +71,10 @@ export class ChallanService {
     return this.http.get<boolean>(this.checkIfChallanIsSettled_URL + id).pipe(
       map(data => !data)
     );
+  }
+
+  addToInventory(id: any): Observable<Challan> {
+    return this.http.get<Challan>(this.addToInventory_URL + id);
   }
 
 }

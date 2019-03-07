@@ -16,6 +16,7 @@ export class BookService {
   private getAllBookInDetail_URL = AppSettings.API_ENDPOINT + '/book/getAllBookInDetail';
 
 
+
   constructor(private http: HttpClient) { }
 
   getAllBookNameOfUsersInventory(): Observable <BookName[]> {

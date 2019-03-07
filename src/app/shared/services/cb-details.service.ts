@@ -24,6 +24,9 @@ export class CbDetailsService {
   private _updateCbDetailsURL = AppSettings.API_ENDPOINT + '/cbDetails/';
   private _getCbDetailFromChallanWithRequestedNameLangTypeURL = AppSettings.API_ENDPOINT
   + '/cbDetails/getCbDetailFromChallanWithRequestedNameLangType/';
+  private _getInwardCbDetailFromChallanWithRequestedNameLangTypeURL = AppSettings.API_ENDPOINT
+  + '/cbDetails/getInwardCbDetailFromChallanWithRequestedNameLangType/';
+
   private tempChallan: Challan;
   constructor(private http: HttpClient) { }
   private data: JSON;
@@ -40,6 +43,11 @@ export class CbDetailsService {
   }
   getCbDetailFromChallanWithRequestedNameLangType(challan, name, lang , type): Observable<any> {
     return this.http.get<any>(this._getCbDetailFromChallanWithRequestedNameLangTypeURL
+      + challan + '/' + name + '/' + lang + '/' + type);
+  }
+
+  getInwardCbDetailFromChallanWithRequestedNameLangType(challan, name, lang , type): Observable<any> {
+    return this.http.get<any>(this._getInwardCbDetailFromChallanWithRequestedNameLangTypeURL
       + challan + '/' + name + '/' + lang + '/' + type);
   }
 }

@@ -4,6 +4,7 @@ import { AppSettings } from 'app/appSettings';
 import { Observable } from 'rxjs';
 import { Book } from '../models/Book';
 import { Type } from '../models/Type';
+import { StockJson } from '../models/StockJson';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class InventryService {
 
    private listOfBooks = AppSettings.API_ENDPOINT + '/bookName/';
    private Type = AppSettings.API_ENDPOINT + '/bookName/getbook/';
+   private getInventryDetailsOfCurrentUser_URL = AppSettings.API_ENDPOINT + '/inventry/getInventryDetailsOfCurrentUser/';
 
    getAllBooks(): Observable<Book[]> {
      return this.httpClient.get<Book[]>(this.listOfBooks);
@@ -23,4 +25,8 @@ export class InventryService {
    getType(id: number): Observable<Type[]> {
      return this.httpClient.get<Type[]>(this.Type + id);
    }
+
+   getInventryDetailsOfCurrentUser(): Observable<StockJson[]> {
+    return this.httpClient.get<StockJson[]>(this.getInventryDetailsOfCurrentUser_URL);
+  }
 }

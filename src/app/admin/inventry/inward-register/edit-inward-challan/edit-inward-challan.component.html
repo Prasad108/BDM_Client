@@ -1,0 +1,117 @@
+<button *ngIf="challan" class="btn btn-primary pull-right" (click)="print()"> <i class="fas fa-file-pdf"></i> print</button>
+<table id="ChallanSummary" class="table table-bordered " *ngIf="challan">
+  <caption style="caption-side: top;" class="alert alert-dark" role="alert">Challan Summary</caption>
+<tbody>
+  <tr>
+    <td scope="row">Challan Id</td>
+    <td>{{challan.id}}</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Created By   <i class="fas fa-user-tie"></i>:</td>
+    <td>{{challan.userByIssuedBy.name}}</td>
+    <td>Status</td>
+    <td *ngIf="challan.addedToInventory==0">Yet Not added Inventory</td>
+    <td *ngIf="challan.addedToInventory==1 && challan.settled==0">Added To Inventory</td>
+    <td *ngIf="challan.addedToInventory==1 && challan.settled==1">Settled</td>
+  </tr>
+  <tr>
+    <td>Issued Date <i class="fas fa-calendar-alt"></i>:</td>
+    <td>{{challan.issuedDate | date: 'MMM d, y'}}</td>
+    <td>Settled Date <i class="fas fa-calendar-alt"></i>:</td>
+    <td *ngIf="challan.settled == 1" >{{challan.settledDate | date: 'MMM d, y'}}</td>
+    <td *ngIf="challan.settled == 0" >Not Yet Settled</td>
+  </tr>
+  <tr>
+    <td>Total Amount : </td>
+    <td>{{challan.totalAmount | currency:'INR': 'Rs '}}</td>
+    <td>Paid Amount :</td>
+    <td >{{challan.receivedAmount | currency:'INR': 'Rs '}}</td>
+  </tr>
+  <tr *ngIf="challan.expAmount || challan.expComment">
+    <td *ngIf="challan.expAmount">Expenditure Amount :</td>
+    <td *ngIf="challan.expAmount"> {{challan.expAmount | currency:'INR': 'Rs '}}</td>
+    <td *ngIf="challan.expComment">Expenditure Details :</td>
+    <td *ngIf="challan.expComment"> {{challan.expComment}}</td>
+  </tr>
+
+</tbody>
+</table>
+
+
+  <a *ngIf="challan && !challan.addedToInventory" [routerLink] = "['addNewBook']"><button class="btn btn-primary"> <i class="fas fa-plus-square"></i> Add New Book to Challan</button></a>
+  <a  *ngIf="challan && !challan.addedToInventory && challan.cbDetailses.length > 0" ><button  type="button" mdbBtn class="btn btn-success relative waves-light" (click)="basicModal.show()" mdbWavesEffect> <i class="fas fa-check"></i> Add To Inventory</button></a>
+  <a  *ngIf="challan && challan.addedToInventory && challan.cbDetailses.length > 0 && challan.settled==0" [routerLink] = "['settle']"><button class="btn btn-success"> <i class="fas fa-check"></i> Settle</button></a>
+
+  <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">Add To Inventory</h4>
+        </div>
+        <div class="modal-body">
+          Add {{getSum('quantity')}} books worth {{getSum('saleValue') | currency:'INR' }} to Inventory, this cannot be undone!
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Cancel</button>
+          <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect (click)="basicModal.hide();addToInventory();">Add To Inventory</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf=" challan && challan.cbDetailses.length ==0; else bookdatailsTable" class="alert alert-warning">
+      <h4>No Books Added</h4>
+  </div>
+<ng-template #bookdatailsTable>
+  <table id="cbDetailses" class="table table-bordered table-sm table-responsive-lg" *ngIf="challan && challan.cbDetailses.length > 0 ">
+      <caption style="caption-side: top;">List of Issued Books</caption>
+      <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col" *ngIf="challan && !challan.addedToInventory"><i class="fas fa-cogs"></i> Action</th>
+            <th scope="col">Book Name</th>
+            <th scope="col">Language</th>
+            <th scope="col">Type</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Issued</th>
+            <th scope="col">Returned</th>
+            <th scope="col">Sale Value</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let CbDetails of challan.cbDetailses; let i=index">
+          <td>{{i+1}}</td>
+          <td *ngIf="challan && !challan.addedToInventory">
+              <div class="btn-group">
+             <a><button (click)="loadModalCbDetails(CbDetails)" class="btn btn-primary btn-sm" ><i class="fas fa-edit"></i></button></a>
+            </div>
+            </td>
+          <td>{{CbDetails.book.name.name}} </td>
+          <td>{{CbDetails.book.languages.name}} </td>
+          <td>{{CbDetails.book.type.name}} </td>
+          <td>{{CbDetails.rate | currency:'INR': 'Rs ' }} </td>
+          <td>{{CbDetails.quantity}} </td>
+          <td *ngIf="CbDetails.returned">{{CbDetails.returned}} </td> <td *ngIf="!CbDetails.returned"> 0 </td>
+          <td >{{CbDetails.saleValue | currency:'INR': 'Rs '}} </td>
+        </tr>
+      </tbody>
+      <tfoot>
+          <tr>
+            <td *ngIf="challan && !challan.addedToInventory"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total</td>
+            <td>{{getSum('quantity')}}</td>
+            <td>{{getSum('returned')}}</td>
+            <td>{{getSum('saleValue') | currency:'INR': 'Rs ' }}</td>
+          </tr>
+        </tfoot>
+
+  </table>
+</ng-template>

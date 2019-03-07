@@ -18,7 +18,6 @@ export class RequestNewBookService {
   constructor(private http: HttpClient) { }
 
   postNewBookRequestForm(newBook: NewBook): Observable<NewBook> {
-    console.log('posting form', newBook);
     return this.http.put<NewBook>(this.newBookServiceRequestFormURL, newBook, AppSettings.HTTP_OPTIONS);
   }
 

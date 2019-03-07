@@ -1,0 +1,96 @@
+<div class="modal-content">
+  <form #Updateform="ngForm" novalidate  (ngSubmit)="updateCbDetail()">
+<!--Header-->
+<div class="modal-header">
+  <p class="heading lead">Update Issued Book
+  </p>
+
+
+  <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true" class="white-text">×</span>
+  </button>
+</div>
+
+<!--Body  -->
+<div class="modal-body" *ngIf="cbDetails" >
+
+  <table class="table table-bordered">
+    <tr>
+      <td>Book Name</td>
+      <td>{{cbDetails.book.name.name}}</td>
+    </tr>
+    <tr>
+      <td>Book Language</td>
+      <td>{{cbDetails.book.languages.name}}</td>
+    </tr>
+    <tr>
+        <td>Book Type</td>
+        <td>{{cbDetails.book.type.name}}</td>
+    </tr>
+    <tr>
+      <td >
+          <label for="inputRate" required class="col-sm-4 col-form-label">Rate</label>
+      </td>
+      <td>
+         <input type="number" #inputeRate="ngModel" required name="cbDetailsRate"
+         class="form-control" id="inputRate" placeholder="Rate"
+         (input)="updateSaleValue()" [(ngModel)]="cbDetails.rate" min="1" step="1" >
+         <div *ngIf="!validateRate()" class="alert alert-danger justify-content-center" role="alert">
+          Rate is required and it must be greater than 0.
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="bookQuantity" class="col-sm-4 col-form-label">Book Quantity</label></td>
+      <td>
+        <input type="number"  required #bookQuantity="ngModel" name="bookQuantity"
+         class="form-control" id="inputCbDetailsQuantity" placeholder="Book Quantity"
+         (input)="updateSaleValue()" [(ngModel)]="cbDetails.quantity" min="0"
+         >
+           <div *ngIf="!validatebookQuantity() || bookQuantity.invalid" class="alert alert-danger justify-content-center" role="alert">
+             Quantity is required, it must be greater than 0.
+        </div>
+      </td>
+
+  </tr>
+    <!-- <tr>
+        <td><label for="inputCbDetailsReturned" class="col-sm-4 col-form-label">Returned Quantity</label></td>
+        <td>
+          <input type="number"  required #returnedQuantity="ngModel" name="cbDetailsReturned"
+           class="form-control" id="inputCbDetailsReturned" placeholder="Returned Quantity"
+           (input)="updateSaleValue()" [(ngModel)]="cbDetails.returned" min="0"
+            [attr.max]="cbDetails.quantity" >
+             <div *ngIf="!validateReturned() || returnedQuantity.invalid" class="alert alert-danger justify-content-center" role="alert">
+               Returned quantity is required, it must be greater than 0 and  less than Issued quantity.
+          </div>
+        </td>
+
+    </tr> -->
+    <tr>
+        <td> <label for="inputCbDetailsSaleVlaue" class="col-sm-4 col-form-label">Sale Value</label></td>
+        <td>
+          <input type="number" required name="cbDetailsSaleValue" disabled class="form-control"
+           id="inputCbDetailsSaleVlaue"  [(ngModel)]="cbDetails.saleValue"
+            min="0">
+          </td>
+    </tr>
+
+  </table>
+
+</div>
+
+<!--Footer-->
+<div *ngIf="succuessMessage" class="alert alert-primary justify-content-center" role="alert">
+    Successfully updted issued book
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger justify-content-center" role="alert">
+    Failed to updted the issued book
+</div>
+<div class="modal-footer justify-content-center">
+  <a><button type="submit" [disabled]=" Updateform.invalid  || !validatebookQuantity() || !validateRate()" class="btn btn-primary waves-effect waves-light">Save
+      <i class="fas fa-save"></i> </button>
+  </a>
+   <button type="button" (click)="goBack()" class="btn btn-outline-primary waves-effect"> <i class="fas fa-arrow-left"></i> Back</button>
+</div>
+</form>
+</div>

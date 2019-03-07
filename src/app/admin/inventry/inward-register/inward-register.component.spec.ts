@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpdateInventryComponent } from './update-inventry.component';
+import { InwardRegisterComponent } from './inward-register.component';
 
-describe('UpdateInventryComponent', () => {
-  let component: UpdateInventryComponent;
-  let fixture: ComponentFixture<UpdateInventryComponent>;
+describe('InwardRegisterComponent', () => {
+  let component: InwardRegisterComponent;
+  let fixture: ComponentFixture<InwardRegisterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpdateInventryComponent ]
+      declarations: [ InwardRegisterComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UpdateInventryComponent);
+    fixture = TestBed.createComponent(InwardRegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
