@@ -48,7 +48,6 @@ export class AddNewBookToInwardChallanComponent implements OnInit {
         this.challanId, result.bookNameId, result.languageId, result.typeId)
       .subscribe(
         data => {
-          console.log(data);
           if (data.found) {
             this.CbDetails = data;
           } else {

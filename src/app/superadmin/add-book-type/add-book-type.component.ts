@@ -28,7 +28,6 @@ export class AddBookTypeComponent implements OnInit {
     );
   }
   submitType(form: NgForm) {
-    console.log(form);
     this.typeService.addType(this.type).subscribe(
       data => {
         this.typeList.push(data);

@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ChallanService } from 'app/shared/services/challan.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Challan } from './../../../shared/models/Challan';
 import { ToastaService } from 'ngx-toasta';
+import { Challan } from './../../../../../shared/models/Challan';
 
 @Component({
-  selector: 'app-settle-challan',
-  templateUrl: './settle-challan.component.html',
-  styleUrls: ['./settle-challan.component.css']
+  selector: 'app-settle-inward-challan',
+  templateUrl: './settle-inward-challan.component.html',
+  styleUrls: ['./settle-inward-challan.component.css']
 })
-export class SettleChallanComponent implements OnInit {
-
+export class SettleInwardChallanComponent implements OnInit {
   challanId;
   challan: Challan;
   expenditureAmountError = false;
@@ -50,8 +49,7 @@ export class SettleChallanComponent implements OnInit {
     this.challanService.saveChallan(this.challan).subscribe(
       data => {
           this.toastr.success('Challan Settled Successfully');
-          const regex = /edit*/gi;
-          this.router.navigate([this.router.url.replace(regex, 'details').slice(0, -7) ]);
+          this.router.navigate([this.router.url.slice(0, -7)]);
         },
       error => this.toastr.error('Error while Settling Challan')
     );

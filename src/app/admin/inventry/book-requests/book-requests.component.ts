@@ -18,7 +18,6 @@ export class BookRequestsComponent implements OnInit {
     this.requestNewBookService.getRequestsByUser().subscribe(
       data => {
         this.requestList = data;
-        console.log(data);
       },
       err => {
         console.log(err);
