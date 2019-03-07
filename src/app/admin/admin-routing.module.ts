@@ -19,6 +19,7 @@ import { EditInwardChallanComponent } from './inventry/inward-register/edit-inwa
 import { AddNewBookToInwardChallanComponent } from './inventry/inward-register/edit-inward-challan/add-new-book-to-inward-challan/add-new-book-to-inward-challan.component';
 import { UpdateInwardChallanCbDetailsComponent } from './inventry/inward-register/edit-inward-challan/update-inward-challan-cb-details/update-inward-challan-cb-details.component';
 import { SettleInwardChallanComponent } from './inventry/inward-register/edit-inward-challan/settle-inward-challan/settle-inward-challan.component';
+import { StockComponent } from './inventry/stock/stock.component';
 
 const routes: Routes = [
   {path: 'admin', component: AdminHomeComponent,
@@ -41,6 +42,7 @@ const routes: Routes = [
         {path: 'inventry/inwardRegister/edit/:id/settle', component: SettleInwardChallanComponent},
         {path: 'inventry/bookRequests/RequestNewBook', component: RequestNewBookComponent},
         {path: 'inventry/bookRequests', component: BookRequestsComponent},
+        {path: 'inventry/stock', component: StockComponent},
         {path: 'users', component: UsersComponent},
         {path: 'users/new', component: CreateNewUserComponent},
         {path: 'users/update', component: CreateNewUserComponent},
