@@ -1,0 +1,31 @@
+<mdb-card>
+  <mdb-card-header>Reports</mdb-card-header>
+  <mdb-card-body>
+      <form>
+        <div class="form-group row">
+          <div class="col-sm-3 selectLabel">
+                <label class="control-label" for="reportSelect">Select Report</label>
+          </div>
+          <div class="col-sm-4 selectInput" >
+                <select class="form-control" id="reportSelect"
+                #bookNameSelect="ngModel"
+                 name="reportSelect" [(ngModel)]="report"
+                 (change)="validateReport()">
+                    <option value="default">Select a Report...</option>
+                    <option value="1">Total books distributed between date range</option>
+                    <option value="2">Books distributed of choosen users between date range. </option>
+                    <option value="3">Three</option>
+                    <!-- <option *ngFor="let bookName of bookNames" [value]="bookName.id">{{bookName.name }}</option> -->
+                </select>
+                <div *ngIf="nameSelectError" class="alert alert-danger justify-content-center" role="alert">
+                   Please select Book Name
+               </div>
+          </div>
+      </div>
+      </form>
+      <p><a >Total books distributed between date range</a></p>
+      <p><a>Books distributed of choosen users between date range. </a></p>
+      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+   
+  </mdb-card-body>
+</mdb-card>
