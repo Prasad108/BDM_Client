@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { MDBBootstrapModule , DropdownModule, CarouselModule} from 'angular-bootstrap-md';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ToastaModule} from 'ngx-toasta';
 import { OrderModule } from 'ngx-order-pipe';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 
 import {ConstantsService} from './services/constants.service';
 import {TokenStorageService} from './services/token-storage.service';
@@ -53,6 +54,8 @@ import { ChallanSummaryComponent } from './components/challan-summary/challan-su
     DropdownModule.forRoot(),
     ToastaModule.forRoot(),
     LoadingBarHttpClientModule,
+    ReactiveFormsModule,
+    NgxDaterangepickerMd.forRoot()
   ],
   providers: [
     ConstantsService,
@@ -80,7 +83,8 @@ import { ChallanSummaryComponent } from './components/challan-summary/challan-su
     CarouselModule,
     NgxChartsModule,
     OrderModule,
-    LoadingBarHttpClientModule
+    LoadingBarHttpClientModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }

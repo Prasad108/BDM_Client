@@ -1,18 +1,16 @@
 <mdb-card>
   <mdb-card-header>Reports</mdb-card-header>
   <mdb-card-body>
-      <form>
+      <form [formGroup]="reportsForm">
         <div class="form-group row">
           <div class="col-sm-3 selectLabel">
                 <label class="control-label" for="reportSelect">Select Report</label>
           </div>
           <div class="col-sm-4 selectInput" >
-                <select class="form-control" id="reportSelect"
-                #bookNameSelect="ngModel"
-                 name="reportSelect" [(ngModel)]="report"
-                 (change)="validateReport()">
+                <select class="form-control" id="reportSelect" 
+                formControlName="reportSelect" (change)="validateReport()">
                     <option value="default">Select a Report...</option>
-                    <option value="1">Total books distributed between date range</option>
+                    <option value="TOTAL_BOOKS_DISTRIBUTED_BETWEEN_DATE_RANGE">Total books distributed between date range</option>
                     <option value="2">Books distributed of choosen users between date range. </option>
                     <option value="3">Three</option>
                     <!-- <option *ngFor="let bookName of bookNames" [value]="bookName.id">{{bookName.name }}</option> -->
@@ -23,9 +21,11 @@
           </div>
       </div>
       </form>
-      <p><a >Total books distributed between date range</a></p>
-      <p><a>Books distributed of choosen users between date range. </a></p>
-      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-   
+      <input type="text" ngxDaterangepickerMd
+      [(ngModel)]="selected" class="form-control" placeholder="Choose date"
+      />
+      {{reportsForm.value | json}}
+
+      <h1 [hidden]="!reportsForm.controls.startDate"> startDate</h1>
   </mdb-card-body>
 </mdb-card>
