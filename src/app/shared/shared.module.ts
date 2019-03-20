@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { MDBBootstrapModule , DropdownModule, CarouselModule} from 'angular-bootstrap-md';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ToastaModule} from 'ngx-toasta';
 import { OrderModule } from 'ngx-order-pipe';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -53,6 +53,7 @@ import { ChallanSummaryComponent } from './components/challan-summary/challan-su
     DropdownModule.forRoot(),
     ToastaModule.forRoot(),
     LoadingBarHttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     ConstantsService,
@@ -80,7 +81,8 @@ import { ChallanSummaryComponent } from './components/challan-summary/challan-su
     CarouselModule,
     NgxChartsModule,
     OrderModule,
-    LoadingBarHttpClientModule
+    LoadingBarHttpClientModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
