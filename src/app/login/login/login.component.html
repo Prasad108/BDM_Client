@@ -40,26 +40,26 @@
 <form name="form" class="text-center border border-light p-5" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 
     <p class="h4 mb-4">Sign in</p>
-  
+
     <!-- Email -->
-    <input type="email" id="defaultLoginFormEmail" class="form-control " placeholder="Username" 
+    <input type="email" id="defaultLoginFormEmail" class="form-control " placeholder="Username"
     name="username" [(ngModel)]="form.username" #username="ngModel"
     required >
 
     <div *ngIf="f.submitted && username.invalid">
         <div *ngIf="username.errors.required">Username is required</div>
       </div>
-  
+
     <!-- Password -->
-    <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" 
+    <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password"
     name="password" [(ngModel)]="form.password" #password="ngModel" required minlength="6" >
-  
+
     <div *ngIf="f.submitted && password.invalid">
         <div *ngIf="password.errors.required">Password is required</div>
         <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
     </div>
 
-    
+
 
     <!-- <div class="d-flex justify-content-around">
       <div>
@@ -71,10 +71,10 @@
       <!--  <a href="">Forgot password?</a>
       </div>
     </div> -->
-  
+
     <!-- Sign in button -->
     <button mdbBtn color="info" block="true" class="my-4" type="submit">Sign in</button>
-  
+
     <div class="form-group">
         <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
           Login failed: {{errorMessage}}
@@ -85,27 +85,27 @@
     <p>Not a member?
       <a [routerLink]="['/signUp']">Register</a>
     </p>
-  
+
     <!-- Social login -->
     <!-- <p>or sign in with:</p>
-  
+
     <a type="button" class="light-blue-text mx-2">
-      
+
       <mdb-icon icon="facebook"></mdb-icon>
     </a>
     <a type="button" class="light-blue-text mx-2">
-      
+
       <mdb-icon icon="twitter"></mdb-icon>
     </a>
     <a type="button" class="light-blue-text mx-2">
-      
+
       <mdb-icon icon="linkedin"></mdb-icon>
     </a>
     <a type="button" class="light-blue-text mx-2">
-      
+
       <mdb-icon icon="github"></mdb-icon>
     </a> -->
-  
+
   </form>
   <!-- Default form login -->
 </ng-template>

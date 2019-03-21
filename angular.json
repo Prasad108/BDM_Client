@@ -30,7 +30,8 @@
               "./node_modules/font-awesome/scss/font-awesome.scss",
               "./node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
               "./node_modules/angular-bootstrap-md/scss/mdb-free.scss",
-              "./node_modules/ngx-toasta/styles/style-default.css"
+              "./node_modules/ngx-toasta/styles/style-default.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

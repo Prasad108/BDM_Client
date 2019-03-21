@@ -7,8 +7,8 @@ import {ToastaModule} from 'ngx-toasta';
 import { OrderModule } from 'ngx-order-pipe';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
-import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
-
+// import { NgxDaterangepickerMd } from '';
+import { DemoMaterialModule} from 'app/shared/material.module'
 import {ConstantsService} from './services/constants.service';
 import {TokenStorageService} from './services/token-storage.service';
 import {ChallanService} from './services/challan.service';
@@ -29,6 +29,7 @@ import { AppHomeComponent } from './components/app-home/app-home.component';
 import { UsersComponent } from './components/users/users.component';
 import { CreateNewUserComponent } from './components/create-new-user/create-new-user.component';
 import { ChallanSummaryComponent } from './components/challan-summary/challan-summary.component';
+import { CustomDatesRangeComponent } from 'app/shared/components/custom-dates-range/custom-dates-range.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ChallanSummaryComponent } from './components/challan-summary/challan-su
     PageNotFoundComponent,
     ThreeSelectComponent,
     AppHomeComponent,
+    CustomDatesRangeComponent,
     UsersComponent,
     CreateNewUserComponent,
     ChallanSummaryComponent,
@@ -55,7 +57,8 @@ import { ChallanSummaryComponent } from './components/challan-summary/challan-su
     ToastaModule.forRoot(),
     LoadingBarHttpClientModule,
     ReactiveFormsModule,
-    NgxDaterangepickerMd.forRoot()
+    // NgxDaterangepickerMd.forRoot()
+    DemoMaterialModule
   ],
   providers: [
     ConstantsService,
@@ -84,7 +87,9 @@ import { ChallanSummaryComponent } from './components/challan-summary/challan-su
     NgxChartsModule,
     OrderModule,
     LoadingBarHttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DemoMaterialModule,
+    CustomDatesRangeComponent
   ]
 })
 export class SharedModule { }

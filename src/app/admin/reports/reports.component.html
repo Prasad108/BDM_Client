@@ -7,7 +7,7 @@
                 <label class="control-label" for="reportSelect">Select Report</label>
           </div>
           <div class="col-sm-4 selectInput" >
-                <select class="form-control" id="reportSelect" 
+                <select class="form-control" id="reportSelect"
                 formControlName="reportSelect" (change)="validateReport()">
                     <option value="default">Select a Report...</option>
                     <option value="TOTAL_BOOKS_DISTRIBUTED_BETWEEN_DATE_RANGE">Total books distributed between date range</option>
@@ -20,12 +20,11 @@
                </div>
           </div>
       </div>
-      </form>
       <input type="text" ngxDaterangepickerMd
       [(ngModel)]="selected" class="form-control" placeholder="Choose date"
       />
-      {{reportsForm.value | json}}
+      <app-custom-dates-range [hidden]="!reportsForm.controls.startDate"></app-custom-dates-range>
+      </form>
 
-      <h1 [hidden]="!reportsForm.controls.startDate"> startDate</h1>
   </mdb-card-body>
 </mdb-card>
