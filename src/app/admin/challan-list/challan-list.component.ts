@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ChallanService} from 'app/shared/services/challan.service';
 import {Challan} from 'app/shared/models/Challan';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { User } from 'app/shared/models/User';
+import { UserService } from 'app/shared/services/user.service';
 
 
 @Component({
@@ -15,10 +17,15 @@ export class ChallanListComponent implements OnInit {
 
   searchForm: FormGroup;
 
+  userList: User[];
+
   constructor(private challanService: ChallanService,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private userService: UserService) { }
 
   ngOnInit() {
+
+    this.userService.getAllUserOfCurrentUsersCenter().subscribe(data => this.userList = data );
 
     this.challanService.getChallanListOfUsersCenter().subscribe(data => {
       this.challanList = data;
@@ -27,8 +34,8 @@ export class ChallanListComponent implements OnInit {
     this.searchForm = this.fb.group ({
           challanID : '',
           issuedByMe : false,
-          issuedBy: '1',
-          issuedTo: '1',
+          issuedBy: 'default',
+          issuedTo: 'default',
           challanStatus: 'All'
     });
 
@@ -41,8 +48,8 @@ export class ChallanListComponent implements OnInit {
       }
       if (data === null) {
         this.searchForm.addControl('issuedByMe', new FormControl(false, Validators.required) );
-        this.searchForm.addControl('issuedBy', new FormControl('1', Validators.required) );
-        this.searchForm.addControl('issuedTo', new FormControl('1', Validators.required) );
+        this.searchForm.addControl('issuedBy', new FormControl('default', Validators.required) );
+        this.searchForm.addControl('issuedTo', new FormControl('default', Validators.required) );
         this.searchForm.addControl('challanStatus', new FormControl('All', Validators.required) );
 
       }
@@ -53,7 +60,7 @@ export class ChallanListComponent implements OnInit {
       if (data) {
         this.searchForm.removeControl('issuedBy');
       } else {
-        this.searchForm.addControl('issuedBy', new FormControl('1', Validators.required) );
+        this.searchForm.addControl('issuedBy', new FormControl('default', Validators.required) );
       }
     });
 

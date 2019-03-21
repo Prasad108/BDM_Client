@@ -1,12 +1,17 @@
 <a [routerLink] = "['new']"><button class="btn btn-primary" > <i class="fas fa-plus-square"></i> Create New Challan</button></a>
-<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Search</button>
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
   
   <div class="collapse" id="collapseExample">
     <div class="card card-body">
       <form [formGroup]="searchForm">
           <p>
             {{searchForm.value | json}}
+           
         </p>
+        <pre>{{userList | json}}</pre>
+        <div >
+            <pre *ngFor="let user of userlist" >{{user |json}}</pre>
+            </div>
         <label>
             Challan Id:
             <input type="number" formControlName="challanID">
@@ -18,21 +23,15 @@
           <div class="form-group" [hidden]="!searchForm.controls.issuedBy">
             <label for="exampleFormControlSelect1">Issued By</label>
             <select class="form-control" id="exampleFormControlSelect1" formControlName="issuedBy">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+                    <option value="default">Select a User ...</option>
+                    <option *ngFor="let user of userlist" [value]="user.id">{{user.name}}</option>
             </select>
           </div>
           <div class="form-group" [hidden]="!searchForm.controls.issuedTo">
             <label for="exampleFormControlSelect1">Issued To</label>
             <select class="form-control" id="exampleFormControlSelect1" formControlName="issuedTo">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+                    <option value="default">Select a User ...</option>
+                    <option *ngFor="let user of userlist" [value]="user.id">{{user.name}}</option>
             </select>
           </div>  
           <div class="form-group" [hidden]="!searchForm.controls.challanStatus">
@@ -44,6 +43,9 @@
             </select>
           </div>
       </form>
+      <button class="btn btn-primary" type="button"aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+        <button class="btn btn-primary" type="button"aria-expanded="false" aria-controls="collapseExample"> Close</button>
     </div>
+    
   </div>
 <app-challans [challanList]="challanList" ></app-challans>
