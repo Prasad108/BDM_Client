@@ -1,7 +1,7 @@
 <mdb-card>
   <mdb-card-header>Reports</mdb-card-header>
   <mdb-card-body>
-      <form [formGroup]="reportsForm">
+      <form [formGroup]="reportsForm" (ngSubmit)="getReport()">
         <div class="form-group row">
           <div class="col-sm-3 selectLabel">
                 <label class="control-label" for="reportSelect">Select Report</label>
@@ -20,10 +20,19 @@
                </div>
           </div>
       </div>
-      <input type="text" ngxDaterangepickerMd
-      [(ngModel)]="selected" class="form-control" placeholder="Choose date"
-      />
-      <app-custom-dates-range [hidden]="!reportsForm.controls.startDate"></app-custom-dates-range>
+      <mat-form-field *ngIf="reportsForm.controls.date">
+        <input matInput class="selectInput" 
+               placeholder="Choose a date range"
+               [satDatepicker]="picker2"
+               formControlName="date">
+        <sat-datepicker #picker2 [rangeMode]="true">
+        </sat-datepicker>
+        <sat-datepicker-toggle matSuffix [for]="picker2"></sat-datepicker-toggle>
+      </mat-form-field>
+      {{dateRange.value | json}}
+      <!-- <app-custom-dates-range [hidden]="!reportsForm.controls.startDate"></app-custom-dates-range> -->
+<br>
+      <button class="btn btn-primary" [disabled]="!reportsForm.valid">Submit</button>
       </form>
 
   </mdb-card-body>
