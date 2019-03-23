@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Reports } from 'app/shared/Enum/reports';
-import {ValidateSelect, ValidateDateRange} from 'app/shared/validators/selectValidator';
+import {ValidateSelect} from 'app/shared/validators/selectValidator';
 import { ReportService } from 'app/shared/services/report.service';
 import { TotalBDWithinDateRange } from 'app/shared/models/TotalBDWithinDateRange';
 import { ReportsForm } from 'app/shared/models/ReportsForm';
