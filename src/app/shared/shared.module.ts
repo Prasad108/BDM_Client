@@ -2,12 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { MDBBootstrapModule , DropdownModule, CarouselModule} from 'angular-bootstrap-md';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ToastaModule} from 'ngx-toasta';
 import { OrderModule } from 'ngx-order-pipe';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
-
+// import { NgxDaterangepickerMd } from '';
+import { PivotViewModule } from '@syncfusion/ej2-angular-pivotview';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, SatDatepickerModule } from 'saturn-datepicker';
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DemoMaterialModule} from 'app/shared/material.module';
 import {ConstantsService} from './services/constants.service';
 import {TokenStorageService} from './services/token-storage.service';
 import {ChallanService} from './services/challan.service';
@@ -24,10 +28,12 @@ import { UserService } from './services/user.service';
 import { InventryService } from './services/inventry.service';
 import { ThreeSelectComponent } from './components/three-select/three-select.component';
 import { RequestNewBookService } from './services/request-new-book.service';
+import { ReportService } from './services/report.service';
 import { AppHomeComponent } from './components/app-home/app-home.component';
 import { UsersComponent } from './components/users/users.component';
 import { CreateNewUserComponent } from './components/create-new-user/create-new-user.component';
 import { ChallanSummaryComponent } from './components/challan-summary/challan-summary.component';
+
 
 @NgModule({
   declarations: [
@@ -53,6 +59,11 @@ import { ChallanSummaryComponent } from './components/challan-summary/challan-su
     DropdownModule.forRoot(),
     ToastaModule.forRoot(),
     LoadingBarHttpClientModule,
+    ReactiveFormsModule,
+    // NgxDaterangepickerMd.forRoot()
+    DemoMaterialModule,
+    SatDatepickerModule,
+    PivotViewModule
   ],
   providers: [
     ConstantsService,
@@ -65,7 +76,10 @@ import { ChallanSummaryComponent } from './components/challan-summary/challan-su
     CbDetailsService,
     UserService,
     InventryService,
-    RequestNewBookService
+    RequestNewBookService,
+    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+    ReportService,
   ],
   exports: [
     ToastaModule,
@@ -80,7 +94,11 @@ import { ChallanSummaryComponent } from './components/challan-summary/challan-su
     CarouselModule,
     NgxChartsModule,
     OrderModule,
-    LoadingBarHttpClientModule
+    LoadingBarHttpClientModule,
+    ReactiveFormsModule,
+    DemoMaterialModule,
+    SatDatepickerModule,
+    PivotViewModule
   ]
 })
 export class SharedModule { }

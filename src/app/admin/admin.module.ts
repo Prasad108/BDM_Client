@@ -21,6 +21,7 @@ import { AddNewBookToInwardChallanComponent } from './inventry/inward-register/e
 import { UpdateInwardChallanCbDetailsComponent } from './inventry/inward-register/edit-inward-challan/update-inward-challan-cb-details/update-inward-challan-cb-details.component';
 import { SettleInwardChallanComponent } from './inventry/inward-register/edit-inward-challan/settle-inward-challan/settle-inward-challan.component';
 import { StockComponent } from './inventry/stock/stock.component';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { StockComponent } from './inventry/stock/stock.component';
     UpdateInwardChallanCbDetailsComponent,
     SettleInwardChallanComponent,
     StockComponent,
+    ReportsComponent,
   ],
   imports: [
     CommonModule,

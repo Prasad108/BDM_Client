@@ -1,0 +1,50 @@
+<mdb-card>
+  <mdb-card-header>Reports</mdb-card-header>
+  <mdb-card-body>
+      <form [formGroup]="reportsForm" (ngSubmit)="getReport()">
+        <div class="form-group row">
+          <div class="col-sm-3 selectLabel">
+                <label class="control-label" for="reportSelect">Select Report</label>
+          </div>
+          <div class="col-sm-4 selectInput" >
+                <select class="form-control" id="reportSelect"
+                formControlName="reportSelect" (change)="validateReport()">
+                    <option value="default">Select a Report...</option>
+                    <option value="TOTAL_BOOKS_DISTRIBUTED_BETWEEN_DATE_RANGE">Total books distributed between date range</option>
+                    <!-- <option value="2">Books distributed of choosen users between date range. </option> -->
+                    <!-- <option *ngFor="let bookName of bookNames" [value]="bookName.id">{{bookName.name }}</option> -->
+                </select>
+                <div *ngIf="nameSelectError" class="alert alert-danger justify-content-center" role="alert">
+                   Please select Book Name
+               </div>
+          </div>
+      </div>
+      <mat-form-field *ngIf="reportsForm.controls.date" class="selectInput" >
+        <input matInput 
+               placeholder="Choose a date range"
+               [satDatepicker]="picker2"
+               formControlName="date">
+        <sat-datepicker #picker2 [rangeMode]="true">
+        </sat-datepicker>
+        <sat-datepicker-toggle matSuffix [for]="picker2"></sat-datepicker-toggle>
+      </mat-form-field>
+      <!-- {{dateRange.value | json}} -->
+      <!-- <app-custom-dates-range [hidden]="!reportsForm.controls.startDate"></app-custom-dates-range> -->
+<br>
+      <button class="btn btn-primary" [disabled]="!reportsForm.valid">Submit</button>
+      </form>
+
+  </mdb-card-body>
+</mdb-card>
+<mdb-card *ngIf="showResult">
+  <mdb-card-header>Reports Results</mdb-card-header>
+  <mdb-card-body>
+      <div  *ngIf="reportResult?.length == 0;else showPivoteTable">
+             No data found 
+        </div>
+        <ng-template #showPivoteTable>
+          <ejs-pivotview #pivotview id='PivotView' [dataSource]=dataSource [width]=width ></ejs-pivotview>
+        </ng-template>
+    </mdb-card-body>
+  </mdb-card>
+
