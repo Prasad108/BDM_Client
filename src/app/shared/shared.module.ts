@@ -8,6 +8,8 @@ import { OrderModule } from 'ngx-order-pipe';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 // import { NgxDaterangepickerMd } from '';
+import { PivotViewModule } from '@syncfusion/ej2-angular-pivotview';
+import { GroupingBarService } from '@syncfusion/ej2-angular-pivotview';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, SatDatepickerModule } from 'saturn-datepicker';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DemoMaterialModule} from 'app/shared/material.module';
@@ -63,7 +65,8 @@ import { CustomDatesRangeComponent } from 'app/shared/components/custom-dates-ra
     ReactiveFormsModule,
     // NgxDaterangepickerMd.forRoot()
     DemoMaterialModule,
-    SatDatepickerModule
+    SatDatepickerModule,
+    PivotViewModule
   ],
   providers: [
     ConstantsService,
@@ -79,7 +82,8 @@ import { CustomDatesRangeComponent } from 'app/shared/components/custom-dates-ra
     RequestNewBookService,
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
     {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
-    ReportService
+    ReportService,
+    GroupingBarService
   ],
   exports: [
     ToastaModule,
@@ -98,7 +102,8 @@ import { CustomDatesRangeComponent } from 'app/shared/components/custom-dates-ra
     ReactiveFormsModule,
     DemoMaterialModule,
     CustomDatesRangeComponent,
-    SatDatepickerModule
+    SatDatepickerModule,
+    PivotViewModule
   ]
 })
 export class SharedModule { }

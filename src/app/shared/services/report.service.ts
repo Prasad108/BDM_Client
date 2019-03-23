@@ -8,11 +8,11 @@ import { TotalBDWithinDateRange } from '../models/TotalBDWithinDateRange';
   providedIn: 'root'
 })
 export class ReportService {
-  private reportURL = AppSettings.API_ENDPOINT + '/getTotalBDInDateRange/';
+  private reportURL = AppSettings.API_ENDPOINT + '/reports/getTotalBDInDateRange/';
 
   constructor(private http: HttpClient) { }
 
-  addLanguage(formData): Observable<TotalBDWithinDateRange> {
-    return this.http.post<TotalBDWithinDateRange>(this.reportURL, formData, AppSettings.HTTP_OPTIONS );
+  getReport(formData): Observable<TotalBDWithinDateRange[]> {
+    return this.http.post<TotalBDWithinDateRange[]>(this.reportURL, formData, AppSettings.HTTP_OPTIONS );
   }
 }
