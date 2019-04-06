@@ -5,9 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from 'app/login/login/login.component';
 import { HomeComponent } from 'app/dashboard/home/home.component';
-import { UserHomeComponent} from 'app/user/user-home/user-home.component';
 import {SignUpComponent} from 'app/login//sign-up/sign-up.component';
-import {ChallansComponent} from 'app/shared/components/challans/challans.component';
 import {PageNotFoundComponent} from 'app/shared/components/page-not-found/page-not-found.component';
 
 
@@ -23,7 +21,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, {useHash: true})],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }
