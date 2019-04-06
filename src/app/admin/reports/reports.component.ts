@@ -23,6 +23,10 @@ export class ReportsComponent implements OnInit {
   public data: DataManager;
   public dataSource: IDataOptions;
   public width: string;
+  colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
+  single = [];
   constructor( private fb: FormBuilder,
     private reportService: ReportService) { }
 
@@ -53,6 +57,15 @@ export class ReportsComponent implements OnInit {
 
     this.reportService.getReport(formToSent).subscribe(data => {this.reportResult = data;
       if (data.length > 0) {
+        this.single = [];
+        for (const result of data) {
+          const record: any = {
+            value : result.numberOfBooks,
+            name : result.bookName + ' ' + result.bookLanguage + ' ' + result.bookType
+          };
+          this.single.push(record);
+          // console.log(number);
+      }
         this.loadPivoteTable();
       } else {
         this.showEmpty();
@@ -83,6 +96,9 @@ export class ReportsComponent implements OnInit {
         expandAll: false,
         };
       this.width = '100%';
+    }
+    onSelect(event) {
+      console.log(event);
     }
 }
 

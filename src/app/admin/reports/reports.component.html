@@ -44,6 +44,13 @@
         </div>
         <ng-template #showPivoteTable>
           <ejs-pivotview #pivotview id='PivotView' [dataSource]=dataSource [width]=width ></ejs-pivotview>
+          <ngx-charts-advanced-pie-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="single"
+      [gradient]="gradient"
+      (select)="onSelect($event)">
+    </ngx-charts-advanced-pie-chart>
         </ng-template>
     </mdb-card-body>
   </mdb-card>
