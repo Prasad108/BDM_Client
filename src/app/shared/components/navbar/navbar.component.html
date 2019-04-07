@@ -23,7 +23,7 @@
 
       <ng-container *ngIf="isAdmin()" style="display:inline;">
           <li class="nav-item">
-              <a class="nav-link" (click)="toggleNavbar()" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> <i class="fa fa-user"></i> Admin</a>
+              <a class="nav-link" (click)="toggleNavbar()" routerLink="/admin/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> <i class="fa fa-user"></i> Admin</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" (click)="toggleNavbar()" routerLink="/admin/challans" routerLinkActive="active" > <i class="fas fa-clipboard-list"></i> Challans</a>
@@ -44,7 +44,7 @@
                 </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" (click)="toggleNavbar()" routerLink="/admin/reports" routerLinkActive="active" > <i class="fa fa-bar-chart" aria-hidden="true"></i> Reports</a>
+            <a class="nav-link" (click)="toggleNavbar()" routerLink="/admin/reports" routerLinkActive="active" > <i class="fa fa-chart-pie" aria-hidden="true"></i> Reports</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" (click)="toggleNavbar()" routerLink="/admin/users" routerLinkActive="active" > <i class="fas fa-users"></i> Uers</a>

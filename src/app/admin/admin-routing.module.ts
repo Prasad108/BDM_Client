@@ -21,6 +21,7 @@ import { UpdateInwardChallanCbDetailsComponent } from './inventry/inward-registe
 import { SettleInwardChallanComponent } from './inventry/inward-register/edit-inward-challan/settle-inward-challan/settle-inward-challan.component';
 import { StockComponent } from './inventry/stock/stock.component';
 import { ReportsComponent } from './reports/reports.component';
+import { HomeComponent } from './admin-home/home/home.component';
 
 const routes: Routes = [
   {path: 'admin', component: AdminHomeComponent,
@@ -29,6 +30,7 @@ const routes: Routes = [
     {
       path: '',
       children: [
+        {path: 'home', component: HomeComponent},
         {path: 'challans', component: ChallanListComponent},
         {path: 'challans/new', component: NewChallanComponent},
         {path: 'challans/details/:id', component: ChallanDetailsComponent},
