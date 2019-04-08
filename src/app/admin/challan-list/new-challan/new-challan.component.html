@@ -10,7 +10,7 @@
                name="IssuedToUserID" [(ngModel)]="IssuedToUserID" (blur)="ValidateUser()"
                (change)="ValidateUser()">
                   <option value="default">Select a User ...</option>
-                  <option *ngFor="let user of userlist" [value]="user.id">{{user.name}}</option>
+                  <option *ngFor="let user of userlist | orderBy: order name" [value]="user.id">{{user.name}}</option>
               </select>
               <div *ngIf="userSelectError" class="alert alert-danger justify-content-center" role="alert">
                  Please select a User
