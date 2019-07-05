@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "C://Users//Administrator//Desktop//apache-tomcat-8.5.33-windows-x64//apache-tomcat-8.5.33//webapps//BDMClient",
+            "outputPath": "dist/BDMClient",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -25,8 +25,7 @@
             "styles": [
               "src/styles.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
-              "./node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "./node_modules/font-awesome/scss/font-awesome.scss",
               "./node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
               "./node_modules/angular-bootstrap-md/scss/mdb-free.scss",
@@ -45,10 +44,9 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "./node_modules/chart.js/dist/Chart.js",
-              "./node_modules/hammerjs/hammer.min.js",
+              "./node_modules/chart.js/dist/Chart.min.js",
               "./node_modules/jspdf/dist/jspdf.min.js",
-              "./node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.js"
+              "./node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.min.js"
             ]
           },
           "configurations": {
@@ -105,7 +103,6 @@
             "karmaConfig": "src/karma.conf.js",
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/styles.css"
             ],
             "scripts": [],

@@ -9,13 +9,13 @@ import { Challan } from 'app/shared/models/Challan';
 })
 export class UserChalanListComponent implements OnInit {
 
-  challanList:Challan[];
-  constructor(private challanService:ChallanService) { }
+  challanList: Challan[];
+  constructor(private challanService: ChallanService) { }
 
   ngOnInit() {
-    this.challanService.getListOfUserSpecificChallan().subscribe(data=>{
-      this.challanList=data;
-    })
+    this.challanService.getListOfUserSpecificChallan().subscribe(data => {
+      this.challanList = data;
+    });
   }
 
 }

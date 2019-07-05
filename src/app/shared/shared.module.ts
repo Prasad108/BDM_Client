@@ -7,7 +7,6 @@ import {ToastaModule} from 'ngx-toasta';
 import { OrderModule } from 'ngx-order-pipe';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
-// import { NgxDaterangepickerMd } from '';
 import { PivotViewModule } from '@syncfusion/ej2-angular-pivotview';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, SatDatepickerModule } from 'saturn-datepicker';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';

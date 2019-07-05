@@ -29,7 +29,7 @@ export class NewBookRequestsComponent implements OnInit {
   }
 
   validateStatus(updatedStatus: String) {
-    //console.log(updatedStatus);
+    // console.log(updatedStatus);
   }
 
   onSubmit(request: any) {
