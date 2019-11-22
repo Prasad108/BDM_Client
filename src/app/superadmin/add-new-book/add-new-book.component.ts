@@ -46,7 +46,6 @@ export class AddNewBookComponent implements OnInit {
 
   
   afterSelect(result) {
-  
     if (result.bookNameId !== 'default' && result.languageId !== 'default' && result.typeId !== 'default') {
         console.log("result.bookNameId " +result.bookNameId);
         console.log("result.languageId "+ result.languageId);
