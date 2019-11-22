@@ -1,39 +1,60 @@
+<mdb-card>
+  <mdb-card-header>
+    <button mdbBtn color="primary" class="waves-light" type="button" (click)="test.toggle()" mdbWavesEffect>
+      Add Book
+    </button>
+  </mdb-card-header>
+  <mdb-card-body>
+
+    <div class="" mdbCollapse #test="bs-collapse">
+      <div id="ManageDiv">
+        <label>
+          <h3>Add Book</h3>
+        </label>
+        <app-three-select [mode]="threeSelectMode" (threeSelected)=afterSelect($event)></app-three-select>
+
+      </div>
+    </div>
+  </mdb-card-body>
+</mdb-card>
+
+
 
 <mdb-card>
   <mdb-card-body>
     <div class="table-responsive">
-<table  mdbTable mdbTableScroll scrollY="true" maxHeight="500" bordered="true" class="table table-hover table-sm">
-<thead class="thead-light">
-<th scope="col" >#</th>
-<th scope="col" ><i class="fas fa-book-open"></i>Name</th>
-<th scope="col" ><i></i>Language</th>
-<th scope="col" ><i></i>Type</th>
-<th scope="col" ><i></i>Price</th>
-<th scope="col" ><i></i>Abbreviation</th>
-</thead>
-<tbody>
-<tr *ngFor="let Book of bookList ; let i=index">
-  <td>
-      {{i+1}}
-  </td>
- <td>
-    {{Book.name.name}}
-</td>
-<td>
-  {{Book.languages.name}}
-</td>
-<td>
-  {{Book.type.name}}
-</td>
-<td>
-  {{Book.price}}
-</td>
-<td>
-  {{Book.abbreviation}}
-</td>
-</tr>
-</tbody>
-</table>
-</div>
+      <table mdbTable mdbTableScroll scrollY="true" maxHeight="500" bordered="true" class="table table-hover table-sm">
+        <thead class="thead-light">
+          <th scope="col">#</th>
+          <th scope="col"><i class="fas fa-book-open"></i>Name</th>
+          <th scope="col"><i></i>Language</th>
+          <th scope="col"><i></i>Type</th>
+          <th scope="col"><i></i>Price</th>
+          <th scope="col"><i></i>Abbreviation</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Book of bookList ; let i=index">
+            <td>
+              {{i+1}}
+            </td>
+            <td>
+              {{Book.name.name}}
+            </td>
+            <td>
+              {{Book.languages.name}}
+            </td>
+            <td>
+              {{Book.type.name}}
+            </td>
+            <td>
+              {{Book.price}}
+            </td>
+            <td>
+              {{Book.abbreviation}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </mdb-card-body>
 </mdb-card>

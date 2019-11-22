@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  url: 'http://softus.in:4321'
+  url: 'http://bdm-env.ynwxwxjtsj.us-east-2.elasticbeanstalk.com'
 
 };

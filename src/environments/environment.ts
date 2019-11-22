@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'http://localhost:4321'
+  url: 'http://bdm-env.ynwxwxjtsj.us-east-2.elasticbeanstalk.com'
 };
 
 /*

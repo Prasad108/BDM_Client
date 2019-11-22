@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "analyze": "webpack-bundle-analyzer dist/BDMClient/stats.json"
   },
   "private": true,
   "dependencies": {
@@ -35,6 +36,9 @@
     "hammerjs": "^2.0.8",
     "jquery": "^1.12.4",
     "jspdf": "^1.5.3",
+    "jquery-ui-bundle": "^1.12.1-migrate",
+    "jquery-ui-dist": "^1.12.1",
+    "pivottable": "^2.22.0",
     "jspdf-autotable": "^3.0.2",
     "ngx-bootstrap": "^3.1.3",
     "ngx-order-pipe": "^2.0.2",
@@ -55,6 +59,7 @@
     "@types/jspdf": "^1.2.2",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
+    "gzipper": "^2.8.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "^3.1.4",
