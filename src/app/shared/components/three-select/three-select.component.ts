@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { CbDetails } from 'app/shared/models/CbDetails';
 import { BookService } from './../../../shared/services/book.service';
 import { BookName } from './../../../shared/models/BookName';
@@ -16,6 +16,13 @@ import {ThreeSelectMode} from 'app/shared/Enum/threeSelectEnum';
 export class ThreeSelectComponent implements OnInit {
   @Output() threeSelected = new EventEmitter<any>();
   @Input() mode: ThreeSelectMode;
+  @Input() set reset(value: boolean) {
+    if ( value === true) {
+      this.bookNameId = 'default';
+      this.languageId = 'default';
+      this.typeId = 'default';
+    }
+}
   cbDetails: CbDetails;
   bookNames: BookName[];
   bookLanguages: Language[];

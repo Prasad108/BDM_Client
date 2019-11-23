@@ -1,6 +1,6 @@
 <mdb-card>
   <mdb-card-header>
-    <button mdbBtn color="primary" class="waves-light" type="button" (click)="test.toggle()" mdbWavesEffect>
+    <button mdbBtn  color="primary" class="waves-light" type="button" (click)="test.toggle()" mdbWavesEffect>
       Add Book
     </button>
   </mdb-card-header>
@@ -11,8 +11,39 @@
         <label>
           <h3>Add Book</h3>
         </label>
-        <app-three-select [mode]="threeSelectMode" (threeSelected)=afterSelect($event)></app-three-select>
-
+        <app-three-select #threeSelect [reset]="resetThreeSelect" [mode]="threeSelectMode" (threeSelected)=afterSelect($event)></app-three-select>
+        <div *ngIf="addNewBook">
+          <form novalidate #AddNewBook="ngForm" (submit)="saveNewBook()">
+            <div class="form-group row">
+              <label class="control-label col-sm-3 inputLabel" for="bookPrice">Book Price :</label>
+              <div class="col-xs-2 inputStyle">
+                <input class="form-control" type="number" id="bookPrice" required name="bookPrice" #bookRateInput="ngModel"
+                  [(ngModel)]="bookPrice" (input)="validatePrice()">
+                <div *ngIf="bookPriceError" class="alert alert-danger justify-content-center" role="alert">
+                  Price should be positive number.
+                </div>
+              </div>
+            </div>
+            <div class=" form-group row">
+              <label class="control-label col-sm-3 inputLabel" for="abbreviation">Abbrevation :</label>
+              <div class="col-xs-2 inputStyle">
+                <input class="form-control" type="text" id="abbreviation" required name="abbreviation"
+                  #bookInventryStockInput="ngModel" [(ngModel)]="bookAbbreviation">
+                <div *ngIf="bookAbbreviationError" class="alert alert-danger justify-content-center" role="alert">
+                  please Enter Book Abbreviation
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-xs-2 col-sm-offset-3 inputStyle">
+                  <button type="submit" [disabled]="AddNewBook.invalid || bookPriceError || bookAbbreviationError" 
+                      class="btn btn-primary waves-effect waves-light">Save
+                      <i class="fas fa-save"></i> </button>
+              </div>
+          </div>
+          </form>
+        </div>
       </div>
     </div>
   </mdb-card-body>

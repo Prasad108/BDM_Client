@@ -1,13 +1,14 @@
 import { Language } from './Language';
 import { Type } from './Type';
+import { BookName } from './BookName';
 
 export class Book {
   constructor(
     public id?: number,
-    public languages?: Language | number | string,
-    type?: Type | number | string,
-    public name?: string,
-    price?: number,
-    abrreviation?: string
+    public languages?: number | string | Language,
+    public type?: number | string | Type,
+    public name?: BookName | string,
+    public price?: number,
+    public abbreviation?: string
   ) {}
 }
