@@ -8,6 +8,7 @@ import { LanguageService } from 'app/shared/services/language.service';
 import { TypeService } from 'app/shared/services/type.service';
 import { Type } from 'app/shared/models/Type';
 import {ThreeSelectMode} from 'app/shared/Enum/threeSelectEnum';
+import { BookNameService } from 'app/shared/services/book-name.service';
 @Component({
   selector: 'app-three-select',
   templateUrl: './three-select.component.html',
@@ -37,7 +38,8 @@ export class ThreeSelectComponent implements OnInit {
   constructor(private bookService: BookService,
               private toastr: ToastaService,
               private languageService: LanguageService,
-              private typeService: TypeService
+              private typeService: TypeService,
+              private bookNameService: BookNameService
     ) { }
 
   ngOnInit() {
@@ -56,7 +58,7 @@ export class ThreeSelectComponent implements OnInit {
         break;
      }
      case ThreeSelectMode.ADD_NEW_BOOK: {
-      this.bookService.getBooNameOfAllBooks().subscribe(data => this.bookNames = data,
+      this.bookNameService.getAllBookName().subscribe(data => this.bookNames = data,
         error => this.toastr.error('Error While Fetching Book Names'));
       break;
     }
