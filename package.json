@@ -34,7 +34,7 @@
     "core-js": "^2.6.10",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
-    "jquery": "^1.12.4",
+    "jquery": "^3.5.0",
     "jquery-ui-bundle": "^1.12.1-migrate",
     "jquery-ui-dist": "^1.12.1",
     "jspdf": "^1.5.3",
