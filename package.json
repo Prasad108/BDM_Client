@@ -37,7 +37,7 @@
     "jquery": "^1.12.4",
     "jquery-ui-bundle": "^1.12.1-migrate",
     "jquery-ui-dist": "^1.12.1",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.2.11",
     "ngx-bootstrap": "^3.3.0",
     "ngx-order-pipe": "^2.0.4",
